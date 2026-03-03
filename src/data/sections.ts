@@ -221,6 +221,105 @@ O Cowork pode: ler dezenas de documentos de uma vez, organizar pastas, criar Wor
           'Os termos mais usados no dia a dia são: Token, Projeto, Skill e Conector',
         ],
       },
+      {
+        title: 'Qual Modelo Usar? Opus, Sonnet e Haiku',
+        subtitle: 'Cada modelo tem um papel no seu escritório',
+        level: 'iniciante',
+        icon: 'layers',
+        analogy: {
+          text: 'Pense no escritório: o **sócio sênior** (Opus) resolve casos complexos e toma decisões estratégicas. O **associado pleno** (Sonnet) faz de tudo com competência e rapidez. O **estagiário eficiente** (Haiku) executa tarefas repetitivas em segundos. **Você não escala o sócio para fotocopiar — e não manda o estagiário fazer sustentação oral.**',
+        },
+        content: `O Claude possui 3 modelos. Escolher o modelo certo para cada tarefa é tão importante quanto escolher o advogado certo para cada caso.
+
+**Comparativo completo:**
+
+| Característica | **Opus 4.6** | **Sonnet 4.6** | **Haiku 4.5** |
+|---------------|-------------|---------------|--------------|
+| **Perfil** | Sócio sênior | Associado pleno | Estagiário eficiente |
+| **Inteligência** | Máxima | Alta | Boa |
+| **Velocidade** | Moderada | Rápida | Ultra-rápida |
+| **Contexto** | 1M tokens (beta) | 1M tokens (beta) | 200K tokens |
+| **Custo API** | $15/$75 por M tokens | $3/$15 por M tokens | $0.80/$4 por M tokens |
+| **Melhor para** | Análise complexa, estratégia | Uso diário, redação, pesquisa | Volume alto, triagem, rotina |
+
+**Quando usar cada modelo:**
+
+| Tarefa Jurídica | Modelo Ideal | Por quê |
+|----------------|-------------|---------|
+| Parecer jurídico complexo | **Opus** | Raciocínio profundo e multifatorial |
+| Análise de contrato M&A | **Opus** | Detecta nuances e riscos ocultos |
+| Estratégia de caso | **Opus** | Avaliação de cenários e probabilidades |
+| Redação de petição | **Sonnet** | Equilíbrio entre qualidade e velocidade |
+| Pesquisa de jurisprudência | **Sonnet** | Rápido e preciso na busca |
+| Revisão de contratos simples | **Sonnet** | Suficiente para riscos padrão |
+| Triagem de e-mails | **Haiku** | Volume alto, decisão binária |
+| Classificação de documentos | **Haiku** | Repetitivo e previsível |
+| Resumo de decisões | **Haiku** | Extrair pontos-chave rapidamente |
+
+**No claude.ai (Chat/Cowork):**
+Você pode alternar entre os modelos no seletor de modelo (canto superior). O Cowork usa Opus por padrão. O Chat permite escolher.
+
+**Dica de ouro:**
+Use Haiku para pré-processamento → Sonnet para análise → Opus para decisões estratégicas. Esse pipeline economiza até 80% de custo com mesma qualidade final.`,
+        tips: [
+          'No Chat: alterne entre modelos conforme a complexidade da tarefa',
+          'Para redação diária (petições, contratos, e-mails): Sonnet é o melhor custo-benefício',
+          'Para análises que exigem raciocínio profundo: sempre Opus com Raciocínio Estendido',
+          'Para triagem de 50+ documentos: use Haiku via API — é 18x mais barato que Opus',
+        ],
+      },
+      {
+        title: 'Claude vs ChatGPT vs Gemini para Advogados',
+        subtitle: 'Comparação objetiva para quem precisa escolher',
+        level: 'iniciante',
+        icon: 'arrow-right-left',
+        analogy: {
+          text: 'ChatGPT é o **advogado carismático** (popular, bom em tudo, às vezes superficial). Gemini é o **pesquisador com acesso à biblioteca** (conectado ao Google, bom em busca). Claude é o **redator técnico meticuloso** (melhor texto, mais seguro, mais profundo). **Cada um tem força — mas para advocacia, a diferença é real.**',
+        },
+        content: `Comparação prática focada no que importa para advogados brasileiros:
+
+**Comparativo geral:**
+
+| Critério | **Claude** | **ChatGPT** | **Gemini** |
+|----------|-----------|------------|-----------|
+| **Qualidade de redação** | Excelente | Boa | Boa |
+| **Raciocínio jurídico** | Excelente | Bom | Bom |
+| **Instrução longa (>5 págs)** | Excelente | Limitado | Bom |
+| **Janela de contexto** | 1M tokens | 128K tokens | 2M tokens |
+| **Análise de PDFs** | Nativa, até 32MB | Sim | Sim |
+| **Segurança de dados** | Alta (não treina com dados) | Variável | Variável |
+| **Pesquisa na web** | Integrada | Integrada | Nativa (Google) |
+| **Plugins/integrações** | Crescendo rápido | Maduro (GPTs) | Limitado |
+| **Desktop agent** | Cowork (muito poderoso) | Operator | Limitado |
+| **Preço Pro** | $20/mês | $20/mês | $19.99/mês |
+
+**Onde o Claude se destaca para advogados:**
+- **Redação de peças processuais** — Texto mais fluido, menos "robotizado", melhor estrutura
+- **Análise de documentos longos** — 1M tokens = ~2.500 páginas em uma única conversa
+- **Fidelidade às instruções** — Segue prompt complexo com muito mais precisão
+- **Segurança** — Dados não usados para treino (Pro+), Enterprise com confidencialidade total
+- **Cowork** — Agent desktop que lê seus arquivos, cria documentos e automatiza fluxos
+- **Legal Plugin** — Plugin oficial para análise de contratos com classificação de risco
+
+**Onde ChatGPT vence:**
+- Ecossistema de GPTs (milhares de assistentes prontos)
+- Geração de imagens (DALL-E integrado)
+- Mais popular = mais tutoriais disponíveis
+
+**Onde Gemini vence:**
+- Integração nativa com Google Workspace
+- Busca web mais natural (é o Google)
+- Janela de contexto de 2M tokens
+
+**Veredicto para advogados brasileiros:**
+Para **redação jurídica**, **análise de contratos** e **raciocínio complexo**, o Claude é superior. Para **pesquisa web rápida**, Gemini tem vantagem. Para quem já usa o ecossistema Google intensamente, Gemini é mais conveniente. **A recomendação: Claude como ferramenta principal + Gemini/Perplexity como complemento para pesquisa.**`,
+        tips: [
+          'Não é preciso escolher apenas um — use cada IA onde ela é melhor',
+          'Claude para redação e análise profunda, Perplexity/Gemini para pesquisa rápida',
+          'Para escritórios que precisam de segurança máxima: Claude Enterprise é a escolha mais segura',
+          'Teste os 3 com a mesma petição — a diferença de qualidade na redação é visível',
+        ],
+      },
     ],
   },
 
@@ -571,6 +670,111 @@ O Cowork pode: ler dezenas de documentos de uma vez, organizar pastas, criar Wor
         prompt: `Sou advogado(a) [sua especialidade] no Brasil, inscrito(a) na OAB/[UF] nº [número]. Atuo principalmente em [áreas]. Sempre considere a legislação brasileira vigente, especialmente [CPC, CLT, CDC, CC etc]. Use linguagem técnica jurídica. Quando possível, cite jurisprudência recente dos tribunais superiores (STF, STJ, TST). Formate respostas com: I) tese principal, II) fundamentos legais, III) jurisprudência, IV) conclusão.`,
         links: [
           { label: 'Acessar Personalizar', url: 'https://claude.ai/settings' },
+        ],
+      },
+      {
+        title: 'Estilos de Escrita Jurídica',
+        subtitle: 'O Claude escreve como você — literalmente',
+        level: 'intermediario',
+        icon: 'pen-tool',
+        analogy: {
+          text: 'Todo advogado experiente tem um **estilo de escrita reconhecível** — a forma como estrutura argumentos, a escolha de palavras, o tom. Os Estilos (Styles) permitem que o Claude **absorva e reproduza** esse estilo em todas as respostas. É como clonar sua voz jurídica.',
+        },
+        content: `Os Estilos permitem definir COMO o Claude escreve — não apenas O QUE ele escreve. Diferente do Personalizar (que diz quem você é), o Estilo define a forma, o tom e a estrutura das respostas.
+
+**4 estilos pré-definidos:**
+
+| Estilo | Descrição | Uso Jurídico |
+|--------|-----------|-------------|
+| **Normal** | Equilibrado, conversacional | Conversas internas, brainstorming |
+| **Formal** | Polido, profissional, preciso | Petições, pareceres, contratos |
+| **Conciso** | Direto, sem rodeios | Resumos executivos, despachos, e-mails rápidos |
+| **Explicativo** | Didático, detalhado | Explicar direito para clientes leigos |
+
+**O poder dos Estilos Personalizados:**
+
+Envie amostras do SEU trabalho (petições, pareceres, e-mails) e o Claude aprende a escrever como você. Isso inclui:
+- Estrutura de parágrafos e argumentos
+- Vocabulário e termos técnicos preferidos
+- Tom (mais combativo, mais conciliador, mais técnico)
+- Nível de formalidade
+- Padrões de citação jurisprudencial
+
+**Exemplo prático:**
+Um advogado tributarista envia 3 pareceres e 2 petições como amostra. O Claude aprende que ele prefere: parágrafos curtos, citação no formato "STJ, REsp nº X, Rel. Min. Y", argumentação dedutiva (premissa geral → caso concreto), e conclusões numeradas.
+
+**Estilos combinados com Skills:**
+O Estilo define a FORMA. O Skill define o CONTEÚDO. Juntos, o Claude escreve como você E sabe o que você precisa.`,
+        steps: [
+          'Acesse claude.ai → clique no seu avatar → "Estilos"',
+          'Escolha um estilo pré-definido (Formal é o melhor para começar)',
+          'Para personalizar: clique em "Criar Estilo Personalizado"',
+          'Envie 2-5 amostras do seu trabalho (petições, pareceres, e-mails)',
+          'O Claude analisa e cria um perfil de escrita que replica seu estilo',
+        ],
+        tips: [
+          'Crie estilos diferentes para contextos diferentes: "Petição" (formal), "Cliente" (acessível), "Colega" (técnico direto)',
+          'O estilo "Formal" é ideal como ponto de partida para toda redação jurídica',
+          'Envie suas MELHORES peças como amostra — o Claude vai replicar aquele nível',
+          'Estilos funcionam em conjunto com Skills e Projetos — não se sobrepõem',
+        ],
+      },
+      {
+        title: 'Memória Inteligente',
+        subtitle: 'O Claude lembra de você entre conversas',
+        level: 'intermediario',
+        icon: 'brain',
+        analogy: {
+          text: 'Imagine um assistente que **nunca esquece**: lembra que você prefere citar o STJ antes do STF, que seu cliente João Silva tem processo em 3 varas diferentes, e que você odeia latinismos. A Memória do Claude faz exatamente isso — e agora é **grátis para todos**.',
+        },
+        content: `A Memória permite que o Claude lembre informações de conversas anteriores e as use automaticamente em conversas futuras. Desde março de 2026, está disponível gratuitamente para todos os usuários.
+
+**Como funciona:**
+
+| Aspecto | Detalhes |
+|---------|---------|
+| **Atualização** | A cada 24 horas, o Claude sintetiza suas conversas recentes |
+| **Escopo** | Lembra preferências, padrões de trabalho, contexto recorrente |
+| **Controle** | Você pode pausar, deletar ou gerenciar o que é lembrado |
+| **Privacidade** | Dados da memória não são usados para treinamento |
+
+**O que o Claude pode lembrar:**
+- Sua área de atuação e especialidades
+- Clientes recorrentes e contexto dos casos
+- Preferências de formatação e estilo
+- Jurisprudência que você cita frequentemente
+- Termos técnicos específicos da sua prática
+- Fluxos de trabalho que você repete
+
+**Exemplo prático:**
+Na segunda-feira, você diz: "Estou trabalhando no caso Maria Silva, rescisão indireta, 5ª Vara do Trabalho de BH." Na quinta, em outra conversa, basta dizer "continue a análise do caso Maria Silva" — o Claude já sabe tudo.
+
+**Importação de memórias:**
+O Claude agora permite importar memórias do ChatGPT e outros assistentes. Se você já tem histórico em outra IA, pode trazê-lo para o Claude sem começar do zero.
+
+**Memória vs. Projeto:**
+
+| | Memória | Projeto |
+|-|---------|---------|
+| **Persiste** | Globalmente | Dentro do projeto |
+| **Escopo** | Preferências e padrões gerais | Documentos e instruções de um caso |
+| **Controle** | Automático (com edição manual) | Totalmente manual |
+| **Uso ideal** | Personalização geral | Contexto específico de um caso |`,
+        steps: [
+          'A memória já está ativa por padrão — basta usar o Claude normalmente',
+          'Para gerenciar: Configurações → Privacidade → Controles de Memória',
+          'Para deletar memórias específicas: peça "esqueça que eu prefiro X"',
+          'Para importar do ChatGPT: Configurações → Memória → Importar',
+          'Para pausar temporariamente: use o modo Incógnito',
+        ],
+        tips: [
+          'Nas primeiras conversas, seja explícito sobre suas preferências — o Claude vai lembrar',
+          'Diga coisas como "sempre que eu pedir uma petição, use o formato Visual Law"',
+          'A memória funciona JUNTO com Projetos — use ambos para contexto máximo',
+          'Revise suas memórias periodicamente em Configurações para garantir que estão corretas',
+        ],
+        links: [
+          { label: 'Gerenciar Memória', url: 'https://claude.ai/settings/data-privacy-controls' },
         ],
       },
       {
@@ -1647,6 +1851,239 @@ DIRETRIZES:
         ],
       },
       {
+        title: 'Excel e PowerPoint Jurídico',
+        subtitle: 'O Claude opera diretamente nas suas planilhas e apresentações',
+        level: 'intermediario',
+        icon: 'spreadsheet',
+        analogy: {
+          text: 'Em vez de pedir ao Claude para gerar dados e depois copiar para o Excel, agora ele **abre sua planilha e trabalha nela diretamente**. É como ter um assistente que senta na sua cadeira, abre o Excel e preenche tudo sozinho — incluindo fórmulas.',
+        },
+        content: `O Cowork pode operar diretamente dentro do Microsoft Excel e PowerPoint, criando, editando e formatando arquivos sem que você precise copiar e colar nada.
+
+**No Excel — O que o Claude faz:**
+
+| Tarefa | Exemplo Prático |
+|--------|----------------|
+| **Criar planilhas completas** | Tabela de prazos processuais com fórmulas de contagem |
+| **Inserir fórmulas** | DATEDIF para calcular tempo de contribuição, SUMPRODUCT para somar verbas |
+| **Formatação condicional** | Prazos em vermelho (<5 dias), amarelo (6-15), verde (>15) |
+| **Gráficos e dashboards** | Gráfico de barras com valor das causas por vara |
+| **Análise de dados** | Tabela dinâmica de processos por status, comarca, valor |
+| **Correção monetária** | Planilha com IPCA-E, INPC ou SELIC aplicados automaticamente |
+
+**No PowerPoint — O que o Claude faz:**
+
+| Tarefa | Exemplo Prático |
+|--------|----------------|
+| **Criar apresentações** | Sustentação oral com slides profissionais |
+| **Resumo visual de caso** | Timeline, quadro de partes, mapa de provas em slides |
+| **Relatório para cliente** | Apresentação executiva com gráficos e conclusões |
+| **Material de treinamento** | Slides para equipe sobre nova legislação |
+
+**Como funciona:**
+Basta pedir ao Cowork e ele cria ou edita o arquivo diretamente. O arquivo aparece na sua pasta como .xlsx ou .pptx pronto para uso.`,
+        prompt: `Crie uma planilha Excel completa de controle de prazos processuais com as seguintes especificações:
+
+Colunas: Nº Processo | Cliente | Vara | Tipo de Prazo | Data Inicial | Prazo (dias) | Data Final | Status | Observações
+
+Funcionalidades:
+1. Fórmula de data final: =Data Inicial + Prazo (considerando dias úteis com WORKDAY)
+2. Formatação condicional no Status:
+   - VENCIDO (vermelho) se Data Final < HOJE
+   - URGENTE (amarelo) se faltam menos de 5 dias úteis
+   - NO PRAZO (verde) se faltam mais de 5 dias úteis
+3. Linha de cabeçalho congelada
+4. Filtros automáticos em todas as colunas
+5. Aba separada "Dashboard" com: total de prazos por status, próximos 5 prazos a vencer, processos por vara
+
+Preencha com 10 linhas de exemplo realistas de processos trabalhistas.`,
+        tips: [
+          'Peça planilhas com fórmulas prontas — o Claude insere WORKDAY, DATEDIF, SUMPRODUCT corretamente',
+          'Para apresentações de sustentação oral: peça "crie slides com máximo 5 bullets por slide"',
+          'Combine com dados do DataJud: o Claude pode buscar dados e já jogar na planilha',
+          'Arquivos são salvos na pasta do Cowork — arraste para onde quiser depois',
+        ],
+      },
+      {
+        title: 'Comparação Multi-documentos',
+        subtitle: 'Analise dezenas de documentos lado a lado',
+        level: 'avancado',
+        icon: 'copy',
+        analogy: {
+          text: 'Imagine ter um **quadro branco gigante** onde você cola 10 contratos lado a lado e marca as diferenças com caneta vermelha. O Claude faz isso em segundos — compara cláusulas, identifica divergências e gera um relatório consolidado.',
+        },
+        content: `Uma das tarefas mais demoradas na advocacia é comparar múltiplos documentos. O Cowork do Claude, com sua janela de contexto de 1 milhão de tokens (~2.500 páginas), faz isso com profundidade impossível para qualquer humano.
+
+**Tipos de comparação disponíveis:**
+
+| Tipo | Documentos | Resultado |
+|------|-----------|-----------|
+| **Contrato vs. Contrato** | 2+ minutas/versões | Tabela de diferenças cláusula a cláusula |
+| **Contrato vs. Legislação** | Contrato + lei aplicável | Cláusulas ilegais ou abusivas identificadas |
+| **Petição vs. Contestação** | Inicial + defesa | Mapa de convergências e divergências |
+| **Decisão vs. Precedentes** | Sentença + jurisprudência | Conformidade com entendimento dominante |
+| **Laudos técnicos** | 2+ laudos periciais | Pontos concordantes vs. divergentes |
+| **Edital vs. Proposta** | Licitação: edital + proposta | Conformidade com requisitos do edital |
+
+**Prompt estruturado para comparação:**
+
+O Claude deve receber todos os documentos na mesma conversa e instruções claras sobre o que comparar.
+
+**Formatos de saída:**
+- **Tabela de divergências:** Cláusula | Doc A | Doc B | Análise
+- **Relatório de conformidade:** Item | Conforme? | Observações
+- **Mapa de risco:** Ponto | Risco | Recomendação
+- **Consolidação:** Síntese unificada de múltiplas fontes`,
+        prompt: `Compare os documentos a seguir e gere um relatório estruturado:
+
+DOCUMENTOS:
+[Cole ou anexe os documentos aqui]
+
+ANÁLISE SOLICITADA:
+1. MAPA DE DIVERGÊNCIAS — Tabela com cada ponto de diferença:
+   | Tema | Documento A | Documento B | Impacto | Recomendação |
+
+2. PONTOS DE CONVERGÊNCIA — O que é idêntico ou equivalente entre os documentos
+
+3. CLÁUSULAS/PONTOS DE RISCO — Itens que apresentam risco jurídico ou inconsistência:
+   | Cláusula | Risco | Severidade (Alta/Média/Baixa) | Sugestão |
+
+4. ANÁLISE CONSOLIDADA — Resumo executivo das diferenças mais relevantes e recomendação de ação
+
+Seja específico: cite números de cláusulas, artigos de lei e trechos exatos dos documentos.`,
+        tips: [
+          'Coloque todos os documentos na mesma pasta do Cowork para análise conjunta',
+          'Para contratos: peça comparação cláusula a cláusula com referência ao CC/CDC/CLT',
+          'Para due diligence: analise todos os contratos de uma empresa em uma única sessão',
+          'O Claude consegue processar até ~2.500 páginas em uma única conversa (1M tokens)',
+        ],
+      },
+      {
+        title: 'Preparação para Negociação e Mediação',
+        subtitle: 'Estratégia completa antes de sentar à mesa',
+        level: 'avancado',
+        icon: 'target',
+        analogy: {
+          text: 'Um general não entra em batalha sem um **plano tático, inteligência sobre o inimigo e cenários de contingência**. Uma negociação ou mediação exige a mesma preparação. O Claude monta seu arsenal completo: BATNA, ZOPA, cenários e roteiro de concessões.',
+        },
+        content: `A preparação é o que separa uma negociação amadora de uma profissional. Este fluxo gera todos os documentos que você precisa antes de sentar à mesa.
+
+**O que o Claude prepara:**
+
+| Documento | Descrição |
+|-----------|-----------|
+| **Análise de Posições** | Posição do seu cliente vs. posição adversa — interesses declarados e ocultos |
+| **BATNA** (Best Alternative) | Melhor alternativa caso a negociação fracasse — para ambos os lados |
+| **ZOPA** (Zona de Acordo) | Faixa de valores/condições onde o acordo é possível |
+| **Cenários de Acordo** | 3 cenários: ideal, aceitável e mínimo — com fundamentação |
+| **Roteiro de Concessões** | O que conceder em cada rodada e o que exigir em troca |
+| **Argumentos-chave** | Top 5 argumentos por ordem de impacto persuasivo |
+| **Contra-argumentos** | Antecipação das objeções adversas com respostas preparadas |
+| **Âncora Inicial** | Valor/condição de abertura com justificativa técnica |
+
+**Para mediação especificamente:**
+- Resumo do caso para o mediador (objetivo, neutro)
+- Mapa de interesses (não posições) de ambas as partes
+- Propostas criativas de solução (ganha-ganha)
+- Cálculo comparativo: custo do acordo vs. custo de litigar
+
+**Quando usar:**
+- Audiências de conciliação (CPC art. 334)
+- Mediação judicial ou extrajudicial
+- Negociação de acordos trabalhistas
+- Termos de ajustamento de conduta (TAC)
+- Acordos de leniência
+- Negociação de contratos complexos`,
+        prompt: `Prepare uma análise completa de negociação para o seguinte caso:
+
+CONTEXTO DO CASO:
+[Descreva: partes, objeto, histórico, valores envolvidos, fase processual]
+
+GERE OS SEGUINTES DOCUMENTOS:
+
+1. ANÁLISE DE POSIÇÕES
+   - Posição e interesses do meu cliente
+   - Posição e interesses prováveis da parte adversa
+   - Interesses ocultos identificados
+
+2. BATNA DE AMBOS OS LADOS
+   - Melhor alternativa do meu cliente se não houver acordo
+   - Melhor alternativa da parte adversa
+   - Qual lado tem mais pressão para acordar?
+
+3. ZOPA (Zona de Possível Acordo)
+   - Valor/condição mínima aceitável para meu cliente
+   - Valor/condição máxima que a parte adversa provavelmente aceita
+   - Faixa de acordo provável
+
+4. CENÁRIOS DE ACORDO (tabela)
+   | Cenário | Valor/Condições | Probabilidade | Justificativa |
+   - Ideal, Aceitável, Mínimo
+
+5. ROTEIRO DE CONCESSÕES
+   - O que oferecer primeiro (menor impacto)
+   - O que exigir em troca de cada concessão
+   - Limites inegociáveis
+
+6. ARGUMENTOS E CONTRA-ARGUMENTOS (tabela)
+   | Nosso Argumento | Provável Objeção | Nossa Resposta |
+
+7. RECOMENDAÇÃO ESTRATÉGICA
+   - Âncora de abertura sugerida
+   - Estratégia de negociação (competitiva, colaborativa, mista)
+   - Momento ideal para apresentar proposta`,
+        tips: [
+          'Forneça o máximo de informações sobre a parte adversa — quanto mais contexto, melhor a análise',
+          'Para audiências do art. 334 CPC: prepare o BATNA antes — muitos advogados chegam sem',
+          'Combine com o Skill de Jurisprudência para fundamentar cada cenário com precedentes',
+          'Peça ao Claude para calcular o custo de oportunidade: "quanto custa litigar vs. acordar?"',
+        ],
+        flowSteps: [
+          { title: 'Contexto', description: 'Forneça o caso completo: partes, valores, histórico, fase processual' },
+          { title: 'Análise', description: 'Claude mapeia posições, interesses, BATNA e ZOPA' },
+          { title: 'Cenários', description: 'Monta 3 cenários de acordo com probabilidades' },
+          { title: 'Roteiro', description: 'Gera estratégia de concessões e contra-argumentos' },
+          { title: 'Preparação', description: 'Documento consolidado pronto para levar à mesa' },
+        ],
+      },
+      {
+        title: 'Automação Recorrente e Agendada',
+        subtitle: 'Tarefas que o Claude executa sozinho, toda semana',
+        level: 'avancado',
+        icon: 'clock',
+        analogy: {
+          text: 'Imagine um estagiário que **toda segunda-feira de manhã** já tem pronto na sua mesa: relatório de prazos da semana, alertas de publicações, e resumo de atualizações dos processos. Sem você pedir. A automação recorrente do Cowork faz exatamente isso.',
+        },
+        content: `O Cowork permite agendar tarefas que se repetem automaticamente em intervalos definidos. O Claude executa, salva os resultados e notifica você quando termina.
+
+**Automações recorrentes para escritórios:**
+
+| Frequência | Tarefa | Resultado |
+|-----------|--------|-----------|
+| **Diária** | Verificar publicações no DJe | Relatório de intimações e prazos do dia |
+| **Diária** | Resumo de e-mails jurídicos | Destaques do inbox com prioridade |
+| **Semanal** | Relatório de prazos | Planilha com todos os prazos da semana |
+| **Semanal** | Atualização de processos | Status de cada caso com movimentações |
+| **Quinzenal** | Relatório para clientes | E-mail automático com andamento dos casos |
+| **Mensal** | Dashboard do escritório | Métricas: novos casos, encerrados, receita, prazos |
+| **Mensal** | Compliance check | Verificação de pendências administrativas |
+
+**Como configurar:**
+No Cowork, peça ao Claude para criar uma tarefa recorrente. Ele perguntará: frequência, horário, pasta de trabalho e formato de saída.
+
+**Exemplo de configuração:**
+"Execute toda segunda às 7h: leia a pasta 'Processos Ativos', gere um relatório Excel com prazos da semana ordenados por urgência, e salve na pasta 'Relatórios Semanais'."
+
+**Combinação poderosa:**
+Automação recorrente + Conectores = fluxo totalmente automático. Exemplo: Claude verifica Gmail diariamente → identifica intimações → atualiza planilha de prazos → envia alerta no Slack.`,
+        tips: [
+          'Comece com 1 automação semanal (relatório de prazos) e vá adicionando gradualmente',
+          'Configure alertas por Slack ou e-mail para ser notificado quando a tarefa completar',
+          'Sempre revise os primeiros resultados — ajuste o prompt até a qualidade ficar consistente',
+          'Para escritórios com equipe: cada advogado pode ter suas automações personalizadas',
+        ],
+      },
+      {
         title: 'Automação de Escritório com Cowork',
         subtitle: 'Fluxos completos end-to-end',
         level: 'expert',
@@ -2243,6 +2680,90 @@ Use linguagem objetiva, adequada para petição, sem redundâncias ou adjetivaç
           { title: 'Triagem e Hierarquia', description: 'Classifica precedentes: vinculantes → orientadores → reforço secundário' },
           { title: 'Contextualização', description: 'Conecta cada precedente aos fatos do caso — transforma citação em argumento' },
           { title: 'Integração à Tese', description: 'Monta bloco: norma → precedente vinculante → orientador → conexão com pedido' },
+        ],
+      },
+      {
+        title: 'Skill de Estratégia de Caso',
+        subtitle: 'Análise estratégica completa antes de peticionar',
+        level: 'avancado',
+        icon: 'target',
+        analogy: {
+          text: 'Antes de redigir qualquer peça, o advogado experiente faz uma **análise estratégica silenciosa**: mapeia teses, avalia riscos, antecipa objeções e escolhe o melhor caminho processual. Este Skill faz o Claude operar como um **estrategista de caso** — ele analisa antes de executar.',
+        },
+        content: `A maioria dos advogados pede ao Claude "faça uma petição" sem antes pensar estrategicamente. Este Skill força uma etapa de análise estratégica antes de qualquer redação.
+
+**O que o Skill gera:**
+
+| Documento | Conteúdo |
+|-----------|---------|
+| **Mapa de Teses** | Todas as teses possíveis classificadas por probabilidade de êxito |
+| **Análise de Risco** | Pontos fortes e fracos do caso — sem otimismo |
+| **Cenários** | Melhor caso, caso provável e pior caso — com fundamentação |
+| **Estratégia Processual** | Tipo de ação, competência, rito, pedidos, provas necessárias |
+| **Timeline Estratégica** | Cronograma de ações e decisões estratégicas |
+| **Antecipação de Defesa** | O que a outra parte provavelmente vai argumentar |
+
+**Por que funciona:**
+O Skill separa o **pensar** do **fazer**. Primeiro o Claude analisa todas as variáveis e gera um diagnóstico honesto. Só depois, com a estratégia aprovada, parte para a redação.
+
+**Diferencial:**
+O Skill instrui o Claude a ser **criticamente honesto** — se o caso é fraco, ele diz. Se há risco de perda, ele quantifica. Isso protege o advogado de viés de confirmação e melhora a qualidade da orientação ao cliente.`,
+        prompt: `SKILL: Estratégia de Caso — Análise Antes de Redigir
+
+Quando o usuário apresentar um caso novo ou pedir para avaliar uma situação jurídica, ANTES de redigir qualquer peça, execute esta análise estratégica completa:
+
+═══ FASE 1 — DIAGNÓSTICO DO CASO ═══
+
+1. RESUMO FÁTICO: Sintetize os fatos em ordem cronológica, separando fatos provados de fatos alegados.
+
+2. ENQUADRAMENTO JURÍDICO: Identifique as áreas do direito aplicáveis, legislação incidente e competência.
+
+3. MAPA DE TESES (tabela obrigatória):
+| Tese | Fundamento Legal | Probabilidade de Êxito | Jurisprudência | Observações |
+Inclua TODAS as teses possíveis — principais e subsidiárias.
+
+═══ FASE 2 — ANÁLISE DE RISCO ═══
+
+4. PONTOS FORTES DO CASO: O que favorece o cliente — provas, legislação, jurisprudência.
+
+5. PONTOS FRACOS E VULNERABILIDADES: Onde o caso é fraco — seja honesto e direto. Inclua riscos de sucumbência e honorários.
+
+6. ANTECIPAÇÃO DA DEFESA: Os 3-5 argumentos mais prováveis da parte adversa e como respondê-los.
+
+7. CENÁRIOS (tabela obrigatória):
+| Cenário | Probabilidade | Resultado | Impacto Financeiro |
+- Melhor caso, Caso provável, Pior caso
+
+═══ FASE 3 — ESTRATÉGIA PROCESSUAL ═══
+
+8. RECOMENDAÇÃO DE AÇÃO: Tipo de ação, rito, foro, pedidos recomendados.
+
+9. PROVAS NECESSÁRIAS: Lista de documentos e provas que devem ser produzidos.
+
+10. TIMELINE ESTRATÉGICA: Cronograma com marcos e decisões.
+
+11. RECOMENDAÇÃO AO CLIENTE: Resumo objetivo para apresentar ao cliente, incluindo riscos e custos estimados.
+
+REGRA: Seja criticamente honesto. Se o caso é fraco, diga. Se há risco alto de perda, quantifique. O advogado precisa de diagnóstico real, não de confirmação de viés.`,
+        tips: [
+          'Use ANTES de iniciar qualquer petição — a análise estratégica melhora drasticamente a qualidade da peça',
+          'Compartilhe o diagnóstico com o cliente para alinhar expectativas desde o início',
+          'Se o Claude indicar probabilidade baixa de êxito, considere seriamente alternativas (acordo, mediação)',
+          'Combine com o Skill de Jurisprudência para fundamentar cada tese do mapa',
+          'Reutilize o diagnóstico como base para proposta de honorários (caso complexo = valor maior)',
+        ],
+        steps: [
+          'Abra Claude → Personalizar → Skills → Criar Skill "Estratégia de Caso"',
+          'Cole o prompt completo acima e salve',
+          'Na conversa: descreva o caso do cliente com todos os fatos e documentos disponíveis',
+          'O Claude gera o diagnóstico completo com mapa de teses, riscos e cenários',
+          'Revise o diagnóstico → ajuste a estratégia → só então peça a petição',
+        ],
+        flowSteps: [
+          { title: 'Diagnóstico', description: 'Resumo fático, enquadramento jurídico e mapa completo de teses' },
+          { title: 'Análise de Risco', description: 'Pontos fortes, fracos, defesa antecipada e cenários com probabilidades' },
+          { title: 'Estratégia', description: 'Tipo de ação, provas, timeline e recomendação ao cliente' },
+          { title: 'Execução', description: 'Com estratégia aprovada, redige a peça processual adequada' },
         ],
       },
     ],
@@ -3409,6 +3930,186 @@ Cada conversa começa limpa, sem carregar o histórico das anteriores.
 
 **5. Instruções Globais Otimizadas:**
 Mantenha seu Personalizar conciso. Informações demais no perfil global são carregadas em CADA conversa. Mova detalhes específicos para Skills ou instruções de Projeto.`,
+      },
+      {
+        title: 'Ética e IA na Advocacia: OAB e CNJ',
+        subtitle: 'Regulamentação brasileira que todo advogado precisa conhecer',
+        level: 'iniciante',
+        icon: 'scale',
+        analogy: {
+          text: 'Usar IA sem conhecer as regras é como dirigir sem conhecer a legislação de trânsito — pode funcionar por um tempo, mas a **infração é questão de tempo**. A OAB e o CNJ já estabeleceram as regras do jogo. Conhecê-las é obrigação profissional.',
+        },
+        content: `O uso de IA na advocacia brasileira já possui regulamentação específica. Desconhecê-la é risco ético e disciplinar.
+
+**Recomendações da OAB para uso de IA:**
+
+| Princípio | Obrigação | Consequência |
+|-----------|-----------|-------------|
+| **Legislação Aplicável** | Cumprir LGPD e normas vigentes | Sanções administrativas e cíveis |
+| **Confidencialidade** | Manter sigilo profissional ao usar IA | Processo disciplinar por violação |
+| **Prática Ética** | Advogado é 100% responsável pelo conteúdo gerado por IA | Responsabilidade pessoal integral |
+| **Transparência** | Informar clientes sobre o uso de IA | Dever de comunicação |
+| **Supervisão** | Supervisionar todo o processo e garantir precisão | Responsabilidade por erros da IA |
+
+**Resolução 615/2025 do CNJ:**
+
+Estabelece diretrizes para o uso de IA no Poder Judiciário:
+- Transparência nos atos praticados com auxílio de IA
+- Responsabilidade humana sobre decisões judiciais
+- Proteção de dados pessoais
+- Não discriminação algorítmica
+- Supervisão humana obrigatória
+
+**Decisão de Nova York (Fevereiro 2026) — Alerta importante:**
+
+Um tribunal de Nova York decidiu que comunicações com Claude AI sobre estratégia jurídica **NÃO são protegidas pelo sigilo advogado-cliente** (na versão consumidor). Motivo: a política de privacidade permite coleta e compartilhamento de dados com terceiros.
+
+**Implicações para advogados brasileiros:**
+- Versões gratuitas/Pro podem não garantir sigilo pleno
+- Planos Enterprise oferecem provisões de confidencialidade
+- NUNCA insira dados sensíveis de clientes sem anonimização
+- Documente o uso de IA no caso para transparência processual
+
+**O que você DEVE fazer:**
+
+| Ação | Prioridade |
+|------|-----------|
+| Ler as recomendações da OAB | Imediata |
+| Anonimizar dados antes de usar IA | Sempre |
+| Informar clientes sobre uso de IA | Sempre |
+| Revisar 100% do conteúdo gerado | Sempre |
+| Verificar jurisprudência citada pela IA | Sempre |
+| Considerar plano Team/Enterprise para casos sensíveis | Recomendado |
+| Documentar uso de IA nos autos (quando exigido) | Conforme tribunal |`,
+        tips: [
+          'A responsabilidade por qualquer erro da IA é EXCLUSIVAMENTE do advogado — sempre revise',
+          'Verifique TODA jurisprudência citada pelo Claude — alucinações existem e podem custar caro',
+          'Para casos sensíveis: use plano Enterprise ou anonimize completamente os dados',
+          'Mantenha-se atualizado: OAB e CNJ estão em constante evolução regulatória sobre IA',
+        ],
+        links: [
+          { label: 'Recomendações OAB sobre IA', url: 'https://www.oab.org.br/noticia/62704/oab-aprova-recomendacoes-para-uso-de-ia-na-pratica-juridica' },
+        ],
+      },
+      {
+        title: 'Sigilo Profissional: Qual Plano Escolher?',
+        subtitle: 'A relação entre plano contratado e proteção de dados',
+        level: 'intermediario',
+        icon: 'file-key',
+        analogy: {
+          text: 'Usar o plano gratuito para casos confidenciais é como discutir estratégia do cliente no **saguão do fórum** — qualquer um pode ouvir. O plano Enterprise é a **sala de reunião fechada com isolamento acústico**. Escolha o ambiente certo para a sensibilidade da informação.',
+        },
+        content: `A escolha do plano impacta diretamente o nível de proteção dos dados do seu cliente. Entenda as diferenças:
+
+**Comparativo de segurança por plano:**
+
+| Proteção | **Gratuito** | **Pro** | **Team** | **Enterprise** |
+|----------|------------|--------|---------|---------------|
+| **Dados usados para treino?** | Exceções possíveis | Excluídos por padrão | Excluídos | Garantia contratual |
+| **Sigilo profissional** | Não garantido | Parcial | Adequado | Completo |
+| **Controle de dados** | Limitado | Moderado | Bom | Total |
+| **Retenção de dados** | Padrão Anthropic | Padrão Anthropic | Configurável | Customizável |
+| **SOC 2 / HIPAA** | Não | Não | Parcial | Completo |
+| **SSO / Admin central** | Não | Não | Sim | Sim |
+| **Adequado para dados sensíveis?** | Não | Com ressalvas | Sim | Sim |
+
+**Recomendação por tipo de uso:**
+
+| Situação | Plano Mínimo | Justificativa |
+|----------|-------------|---------------|
+| Pesquisa jurídica genérica | Gratuito/Pro | Sem dados de clientes envolvidos |
+| Redação com dados fictícios | Pro | Dados anonimizados, sem risco |
+| Análise de contratos reais | Team | Dados confidenciais de terceiros |
+| Estratégia de caso com nomes reais | Enterprise | Sigilo advogado-cliente em jogo |
+| Due diligence corporativa | Enterprise | Dados empresariais sensíveis |
+| Escritório com 5+ advogados | Team | Controle centralizado + colaboração |
+
+**Estratégia prática (custo-benefício):**
+
+A melhor abordagem para a maioria dos escritórios:
+1. **Pro** para uso pessoal com dados anonimizados
+2. **Team** para equipe com processos padronizados
+3. **Anonimização rigorosa** como camada extra em qualquer plano
+
+**Anonimização inteligente:**
+Substitua: nomes reais → "Parte Autora / Parte Ré", CPF → "XXX.XXX.XXX-XX", endereços → "[endereço omitido]", valores → mantenha (são necessários para análise).`,
+        tips: [
+          'Na dúvida, anonimize SEMPRE — é a camada de proteção mais simples e eficaz',
+          'Para escritórios: o plano Team ($25/usuário) é o melhor custo-benefício com segurança',
+          'Enterprise é obrigatório para due diligence, M&A e casos de alta confidencialidade',
+          'Mantenha uma política interna de uso de IA no escritório — documente regras',
+        ],
+      },
+      {
+        title: 'Roadmap: Implementando IA no Escritório',
+        subtitle: 'Plano de adoção progressiva de 30 a 90 dias',
+        level: 'expert',
+        icon: 'rocket',
+        analogy: {
+          text: 'Nenhum escritório se transforma da noite para o dia. A adoção de IA é como a **implantação de um novo sistema processual**: começa com piloto, expande gradualmente e se torna parte da rotina. Este roadmap é o seu **plano de implantação**.',
+        },
+        content: `Um plano estruturado para integrar o Claude na operação do escritório sem disrupção, com marcos claros e resultados mensuráveis.
+
+**Fase 1 — Fundação (Dias 1-15):**
+
+| Semana | Ação | Responsável | Resultado |
+|--------|------|------------|-----------|
+| **1** | Criar contas Pro para todos os advogados | Gestão | Acesso configurado |
+| **1** | Personalizar perfil de cada advogado | Individual | Instruções base salvas |
+| **1** | Definir política interna de uso de IA | Sócio + compliance | Documento aprovado |
+| **2** | Criar Projetos por cliente/caso ativo | Cada advogado | Contexto organizado |
+| **2** | Configurar Estilos de escrita do escritório | Sócio sênior | Padrão de escrita unificado |
+
+**Fase 2 — Adoção Inicial (Dias 16-45):**
+
+| Semana | Ação | Ferramenta | Resultado |
+|--------|------|-----------|-----------|
+| **3** | Instalar Cowork em todas as máquinas | Cowork | Desktop agent ativo |
+| **3** | Conectar Google Drive/Gmail | Conectores | Documentos acessíveis |
+| **4** | Criar Skills por área de atuação | Skills | Workflows padronizados |
+| **4** | Treinar equipe em prompts estruturados | Chat | Qualidade de output elevada |
+| **5-6** | Piloto: 1 petição + 1 contrato por semana com IA | Cowork | Métricas de economia de tempo |
+
+**Fase 3 — Expansão (Dias 46-75):**
+
+| Semana | Ação | Ferramenta | Resultado |
+|--------|------|-----------|-----------|
+| **7** | Ativar Plugin Legal para contratos | Plugins | Revisão automatizada |
+| **7** | Implementar Skills contenciosos (Réplica, Contrarrazões) | Skills | Workflow processual completo |
+| **8** | Configurar automações recorrentes | Cowork | Relatórios semanais automáticos |
+| **9** | Integrar Claude in Chrome para PJe/tribunais | Chrome | Pesquisa automatizada |
+| **10** | Medir resultados: tempo economizado, qualidade, satisfação | Gestão | Relatório de ROI |
+
+**Fase 4 — Maturidade (Dias 76-90+):**
+
+| Semana | Ação | Ferramenta | Resultado |
+|--------|------|-----------|-----------|
+| **11** | Avaliar upgrade para Team (se equipe > 3) | Planos | Colaboração + segurança |
+| **11** | Criar MCPs personalizados para APIs (DataJud, PJe) | MCP | Automação total |
+| **12** | Documentar processos otimizados em CLAUDE.md | Todos | Knowledge base do escritório |
+| **12+** | Expansão contínua: novos Skills, Plugins e automações | Todos | Escritório AI-first |
+
+**Métricas de sucesso:**
+
+| Métrica | Meta 30 dias | Meta 90 dias |
+|---------|-------------|-------------|
+| Tempo médio por petição | -30% | -50% |
+| Tempo de pesquisa jurisprudencial | -40% | -70% |
+| Erros em revisão de contratos | -20% | -40% |
+| Satisfação da equipe com IA | 7/10 | 9/10 |
+| Adoção (uso diário) | 60% da equipe | 90% da equipe |`,
+        tips: [
+          'Comece pelo advogado mais receptivo a tecnologia — ele será o "embaixador" do projeto',
+          'Documente economia de tempo desde o dia 1 — dados de ROI convencem sócios céticos',
+          'Não force adoção — mostre resultados e deixe a equipe se interessar naturalmente',
+          'Revise a política de uso de IA a cada 90 dias — a tecnologia evolui rápido',
+        ],
+        flowSteps: [
+          { title: 'Fundação (Dias 1-15)', description: 'Contas, perfis, política de uso, Projetos e Estilos configurados' },
+          { title: 'Adoção (Dias 16-45)', description: 'Cowork instalado, conectores ativos, Skills criados, equipe treinada' },
+          { title: 'Expansão (Dias 46-75)', description: 'Plugins, automações recorrentes, Chrome, medição de resultados' },
+          { title: 'Maturidade (Dias 76-90+)', description: 'Team/Enterprise, MCPs personalizados, escritório AI-first' },
+        ],
       },
     ],
   },
