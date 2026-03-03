@@ -50,7 +50,7 @@ export function Hero({ onStart }: HeroProps) {
         >
           {[
             { icon: Layers, value: '10', label: 'Seções' },
-            { icon: BookOpen, value: '61', label: 'Tutoriais' },
+            { icon: BookOpen, value: '70', label: 'Tutoriais' },
             { icon: Zap, value: '14', label: 'Prompts Prontos' },
             { icon: Scale, value: '4', label: 'Níveis' },
           ].map((m, i) => (

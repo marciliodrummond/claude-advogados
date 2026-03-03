@@ -999,6 +999,319 @@ Monte:
 Classifique os riscos como: BAIXO, MÉDIO, ALTO, CRÍTICO.`,
       },
       {
+        title: 'Organização de Documentos Processuais',
+        subtitle: 'Renomeie e classifique centenas de arquivos automaticamente',
+        level: 'intermediario',
+        icon: 'folder-open',
+        analogy: {
+          text: 'Sabe quando você baixa 47 documentos do PJe e vem tudo como "documento_1.pdf", "documento_2.pdf"? O Cowork é como ter um **estagiário organizador** que lê cada PDF, identifica o que é e renomeia com o padrão do escritório — em segundos.',
+        },
+        content: `Um dos maiores problemas da prática forense é a desorganização de documentos processuais. O Cowork resolve isso automaticamente.
+
+**O problema:**
+Ao baixar documentos de processos (PJe, e-SAJ, PROJUDI), os arquivos vêm com nomes genéricos como "doc_12345.pdf" ou "evento_678.pdf". Encontrar algo específico vira pesadelo.
+
+**A solução com Cowork:**
+Coloque todos os documentos numa pasta e peça ao Cowork para ler, identificar e renomear cada um seguindo o padrão do escritório.
+
+**Exemplo prático — Processo Trabalhista:**
+
+Antes:
+- documento_1.pdf
+- documento_2.pdf
+- evento_45.pdf
+- peca_processual_3.pdf
+
+Depois:
+- 001_PETICAO-INICIAL_2024-03-15.pdf
+- 002_PROCURACAO_RECLAMANTE_2024-03-15.pdf
+- 003_CTPS_JOSE-SILVA.pdf
+- 004_HOLERITES_JAN-DEZ-2023.pdf
+- 005_CONTESTACAO_RECLAMADA_2024-05-10.pdf
+- 006_ATA-AUDIENCIA_2024-07-22.pdf
+- 007_SENTENCA_2024-09-30.pdf
+
+**O que o Cowork faz automaticamente:**
+1. Lê cada PDF e identifica o tipo de documento
+2. Extrai a data do documento
+3. Identifica as partes envolvidas
+4. Renomeia seguindo o padrão: NUMERO_TIPO_DETALHES_DATA
+5. Move para subpastas organizadas (opcional)
+6. Gera um índice em Excel com todos os documentos`,
+        prompt: `Leia TODOS os documentos PDF desta pasta. Para cada um:
+
+1. Identifique o tipo: petição inicial, contestação, réplica, sentença, acórdão, procuração, substabelecimento, ata de audiência, laudo pericial, certidão, alvará, mandado, CTPS, holerite, contrato, comprovante, recurso, contrarrazões, decisão interlocutória, despacho, outro.
+
+2. Extraia: data do documento, partes mencionadas, número do processo.
+
+3. Renomeie cada arquivo seguindo este padrão:
+   [SEQUÊNCIA 3 dígitos]_[TIPO EM MAIÚSCULO]_[DETALHE RELEVANTE]_[DATA YYYY-MM-DD].pdf
+
+4. Crie as seguintes subpastas e mova os documentos:
+   - /Peticoes (iniciais, contestações, réplicas, recursos)
+   - /Decisoes (sentenças, acórdãos, despachos, decisões)
+   - /Documentos (CTPS, holerites, contratos, comprovantes)
+   - /Audiencias (atas, termos)
+   - /Procuracoes (procurações, substabelecimentos)
+   - /Pericias (laudos, quesitos)
+
+5. Gere um arquivo "INDICE_PROCESSUAL.xlsx" com: sequência, nome original, nome novo, tipo, data, subpasta, resumo em 1 linha.`,
+        tips: [
+          'Funciona com qualquer área: trabalhista, cível, criminal, tributário, familiar',
+          'Customize o padrão de nomes editando o prompt — use o padrão do seu escritório',
+          'Para processos grandes (100+ documentos), processe em lotes de 30-40 por vez',
+          'Salve este prompt como Skill para usar em todos os processos novos',
+        ],
+        steps: [
+          'Baixe todos os documentos do processo numa pasta (ex: "Processo_12345")',
+          'Abra o Cowork e aponte para essa pasta',
+          'Cole o prompt de organização acima',
+          'Aguarde o Cowork processar (2-5 minutos para ~50 documentos)',
+          'Confira o índice Excel gerado e os documentos renomeados',
+        ],
+      },
+      {
+        title: 'Preparação Completa para Audiências',
+        subtitle: 'Do processo à sala de audiência, tudo preparado',
+        level: 'avancado',
+        icon: 'briefcase',
+        analogy: {
+          text: 'Imagine chegar na audiência com um **dossiê completo**: cronologia dos fatos, roteiro de perguntas, teses e contra-teses, pontos fracos do adversário e um resumo de bolso. O Cowork prepara tudo isso a partir dos documentos do processo.',
+        },
+        content: `A preparação de audiências é uma das tarefas mais críticas e demoradas. O Cowork transforma horas de preparação em minutos.
+
+**O que o Cowork gera automaticamente:**
+
+**1. Cronologia dos Fatos**
+Timeline completa com datas, eventos e documentos que comprovam cada fato. Formato de tabela para consulta rápida.
+
+**2. Roteiro de Perguntas para Testemunhas**
+Perguntas organizadas por testemunha, com objetivo de cada pergunta e documento de suporte. Inclui perguntas de contradita.
+
+**3. Quadro de Teses**
+Teses do autor vs. teses do réu, lado a lado, com fundamentos legais e jurisprudência de apoio para cada uma.
+
+**4. Pontos de Atenção**
+Fragilidades do seu caso, argumentos fortes do adversário e sugestões de como contornar.
+
+**5. Resumo de Bolso**
+Uma página A4 com as informações essenciais para consulta rápida durante a audiência.
+
+**Exemplo prático — Audiência de Instrução Trabalhista:**
+O advogado coloca na pasta: petição inicial, contestação, réplica, atas de audiências anteriores, laudos e todos os documentos probatórios. Em 5 minutos, recebe os 5 documentos acima prontos.`,
+        prompt: `Analise TODOS os documentos desta pasta referentes ao processo judicial e prepare um dossiê completo para audiência:
+
+DOCUMENTO 1 — CRONOLOGIA DOS FATOS:
+- Tabela em Excel com colunas: Data, Fato, Documento Comprobatório, Relevância (Alta/Média/Baixa)
+- Ordem cronológica
+- Destaque os fatos controversos
+
+DOCUMENTO 2 — ROTEIRO DE PERGUNTAS:
+- Para cada testemunha listada no processo:
+  a) Perguntas de qualificação
+  b) Perguntas sobre os fatos (vincular a cada fato da cronologia)
+  c) Perguntas de contradita (se testemunha da parte adversa)
+  d) Objetivo de cada pergunta (o que se pretende provar)
+- Formato Word, organizado por testemunha
+
+DOCUMENTO 3 — QUADRO DE TESES:
+- Tabela comparativa: Tese do Autor | Tese do Réu
+- Para cada ponto: fundamento legal, jurisprudência citada, força do argumento (forte/médio/fraco)
+- Identifique os pontos pacíficos e os controversos
+
+DOCUMENTO 4 — PONTOS DE ATENÇÃO:
+- Lista das fragilidades do nosso caso
+- Argumentos mais fortes da parte adversa
+- Sugestão de como contornar cada ponto fraco
+- Possíveis perguntas que o juiz pode fazer
+
+DOCUMENTO 5 — RESUMO DE BOLSO (1 página):
+- Número do processo, vara, juiz
+- Partes e advogados
+- Objeto da ação em 2 linhas
+- 5 fatos-chave
+- 3 teses principais
+- 3 pontos de atenção
+- Pedidos
+
+Salve tudo em uma subpasta "AUDIENCIA_[DATA]".`,
+        tips: [
+          'Envie o máximo de documentos do processo — quanto mais contexto, melhor a preparação',
+          'Adapte o prompt para o tipo de audiência: instrução, conciliação, una, custódia',
+          'O "Resumo de Bolso" é ideal para imprimir e levar à audiência',
+          'Combine com o roteiro de perguntas para não esquecer nenhum ponto',
+        ],
+        flowSteps: [
+          { title: 'Documentos', description: 'Coloque todo o processo digitalizado na pasta' },
+          { title: 'Análise', description: 'O Cowork lê e cruza todas as informações' },
+          { title: 'Dossiê', description: '5 documentos gerados: cronologia, perguntas, teses, alertas, resumo' },
+          { title: 'Audiência', description: 'Vá preparado com o dossiê completo' },
+        ],
+      },
+      {
+        title: 'Gestão de Carteira de Processos',
+        subtitle: 'Controle todos os seus processos num único relatório',
+        level: 'intermediario',
+        icon: 'database',
+        analogy: {
+          text: 'Imagine que cada processo do escritório é um paciente num hospital. O Cowork funciona como o **painel de controle da UTI**: mostra status de cada um, alertas de urgência e o que precisa de atenção imediata.',
+        },
+        content: `Advogados que gerenciam dezenas ou centenas de processos precisam de uma visão consolidada. O Cowork cria dashboards completos a partir dos seus dados.
+
+**O que você obtém:**
+
+**Dashboard Geral:**
+Planilha consolidada com todos os processos do escritório, status atualizado, próximos prazos e ações pendentes.
+
+**Relatórios por Cliente:**
+Para cada cliente, um relatório individual com seus processos, andamentos recentes e valores envolvidos.
+
+**Alertas de Prioridade:**
+Classificação automática por urgência: prazos vencendo, audiências próximas, decisões pendentes de recurso.
+
+**Exemplo prático:**
+Um escritório com 80 processos ativos. Em vez de checar cada um individualmente, o advogado coloca os dados na pasta e recebe: 1 planilha master + 1 relatório por cliente + 1 lista de urgências.
+
+**Como funciona na prática:**
+1. Exporte os dados do seu sistema de gestão (ou monte uma planilha simples)
+2. Coloque na pasta do Cowork
+3. Peça a consolidação
+4. Receba o dashboard pronto`,
+        prompt: `Analise os dados processuais desta pasta e gere um dashboard completo de gestão:
+
+PLANILHA 1 — DASHBOARD GERAL (Excel):
+- Colunas: Nº Processo, Cliente, Parte Adversa, Tipo de Ação, Vara/Tribunal, Status, Fase Atual, Último Andamento, Data Último Andamento, Próximo Prazo, Dias Restantes, Valor da Causa, Honorários, Prioridade
+- Formatação condicional: vermelho (prazo < 5 dias), amarelo (5-15 dias), verde (> 15 dias)
+- Aba "Resumo" com: total de processos, processos por área, processos por fase, processos por prioridade
+
+PLANILHA 2 — ALERTAS DE URGÊNCIA (Excel):
+- Apenas processos com ações pendentes nos próximos 30 dias
+- Ordenar por urgência (prazo mais próximo primeiro)
+- Colunas: Processo, Cliente, Prazo, Tipo de Providência, Responsável, Status
+
+RELATÓRIOS INDIVIDUAIS — Um arquivo Word por cliente com:
+- Lista dos processos do cliente
+- Status resumido de cada processo
+- Últimos andamentos relevantes (30 dias)
+- Próximas ações previstas
+- Valores envolvidos (se disponíveis)
+
+Salve tudo em subpasta "GESTAO_[MÊS]".`,
+        tips: [
+          'Atualize mensalmente para manter o controle atualizado',
+          'Use a planilha de alertas como pauta da reunião semanal do escritório',
+          'Os relatórios por cliente são ótimos para enviar como prestação de contas',
+          'Combine com o Controle de Prazos para uma visão 360° do escritório',
+        ],
+      },
+      {
+        title: 'Cálculos Jurídicos e Tabelas',
+        subtitle: 'Correção monetária, juros, verbas trabalhistas e mais',
+        level: 'intermediario',
+        icon: 'spreadsheet',
+        analogy: {
+          text: 'Em vez de usar calculadoras online ou planilhas complexas, o Cowork funciona como um **departamento contábil particular**: você diz o que precisa calcular, ele faz as contas e entrega a planilha formatada.',
+        },
+        content: `O Cowork gera planilhas de cálculos jurídicos completas, com fórmulas e explicações. Basta descrever o que precisa.
+
+**Cálculos Trabalhistas:**
+Verbas rescisórias completas: saldo de salário, férias (vencidas, proporcionais, 1/3), 13° proporcional, aviso prévio, FGTS + 40%, multa do art. 477 CLT. Tudo com fórmulas visíveis.
+
+**Correção Monetária:**
+Atualização de valores por qualquer índice (IPCA-E, INPC, IGP-M, SELIC) com cálculo mês a mês e resultado final.
+
+**Liquidação de Sentença:**
+A partir do dispositivo da sentença, o Cowork identifica as verbas devidas e calcula cada uma com base nos parâmetros do processo.
+
+**Cálculo de Custas e Honorários:**
+Com base no valor da causa e na tabela da OAB, calcula custas processuais, honorários advocatícios (contratuais e sucumbenciais).
+
+**Exemplo prático — Rescisão Trabalhista:**
+"Calcule as verbas rescisórias de dispensa sem justa causa: salário R$ 4.500, admissão 15/03/2021, dispensa 10/01/2025, aviso prévio indenizado. Gere a planilha completa."`,
+        prompt: `Gere uma planilha Excel completa de cálculos jurídicos com base nos seguintes dados:
+
+[COLE AQUI OS DADOS DO CASO: tipo de cálculo, valores, datas, parâmetros]
+
+A planilha deve conter:
+1. ABA "CÁLCULOS" — Todos os cálculos detalhados com fórmulas visíveis (não valores fixos)
+2. ABA "MEMÓRIA" — Memória de cálculo descritiva explicando cada etapa
+3. ABA "RESUMO" — Quadro resumo com valores parciais e total
+4. ABA "PARÂMETROS" — Dados de entrada utilizados (para conferência)
+
+Regras:
+- Use as fórmulas corretas do Excel (não calcule manualmente)
+- Destaque o total geral em negrito
+- Inclua coluna de "Base Legal" indicando o fundamento de cada verba
+- Formate valores como moeda (R$) e datas como DD/MM/AAAA
+- Inclua linha de correção monetária e juros quando aplicável`,
+        tips: [
+          'Sempre confira os cálculos gerados — a IA pode errar em contas complexas',
+          'Especifique o índice de correção e a taxa de juros desejados',
+          'Para cálculos trabalhistas, informe: salário, datas de admissão e demissão, tipo de rescisão',
+          'Salve o prompt como Skill para reutilizar com diferentes processos',
+        ],
+      },
+      {
+        title: 'Petições e Peças Processuais',
+        subtitle: 'Do rascunho à peça formatada com fundamentação',
+        level: 'avancado',
+        icon: 'pen-tool',
+        analogy: {
+          text: 'O Cowork não escreve petições do zero — ele funciona como um **assistente de redação jurídica** que monta a estrutura, pesquisa fundamentação e formata segundo as normas do tribunal. Você revisa, ajusta e assina.',
+        },
+        content: `O Cowork pode gerar rascunhos completos de peças processuais a partir dos documentos do processo. O advogado sempre revisa e ajusta antes de protocolar.
+
+**Tipos de peças que o Cowork gera:**
+- Petição inicial (todas as áreas)
+- Contestação com impugnação ponto a ponto
+- Réplica à contestação
+- Recursos (apelação, agravo, embargos)
+- Contrarrazões de recurso
+- Petições intermediárias (juntada, manifestação, impugnação)
+- Memoriais de julgamento
+
+**Como funciona:**
+1. Coloque na pasta: documentos do caso + petição da parte adversa (se for contestação/recurso)
+2. O Cowork lê tudo e identifica os pontos relevantes
+3. Gera a peça com: qualificação, fatos, direito, pedidos e documentos
+4. Formata segundo as normas do tribunal
+
+**Exemplo prático — Contestação Trabalhista:**
+Advogado coloca na pasta: petição inicial do reclamante, contrato de trabalho, holerites, cartão de ponto e regulamento interno. O Cowork gera a contestação impugnando ponto a ponto cada pedido.
+
+**Qualidade da fundamentação:**
+O Cowork busca na base de conhecimento: legislação aplicável, súmulas, OJs e orientações jurisprudenciais. Você deve sempre verificar se as citações estão corretas e atualizadas.`,
+        prompt: `Analise os documentos desta pasta e gere uma [TIPO DE PEÇA: contestação/recurso/petição inicial] completa:
+
+ESTRUTURA:
+1. ENDEREÇAMENTO — Juízo competente (extrair dos autos)
+2. QUALIFICAÇÃO — Das partes (extrair dos documentos)
+3. TEMPESTIVIDADE — Demonstrar que está no prazo (se aplicável)
+4. BREVE RESUMO — Síntese do caso em 1 parágrafo
+5. DOS FATOS — Narrativa fática baseada nos documentos da pasta
+6. DO DIREITO — Fundamentação jurídica com:
+   - Legislação aplicável (artigos específicos)
+   - Jurisprudência (citar tribunal, número, relator, ano)
+   - Doutrina (quando relevante)
+7. DOS PEDIDOS — Pedidos específicos e subsidiários
+8. REQUERIMENTOS FINAIS — Provas, audiência, etc.
+9. VALOR DA CAUSA — Se petição inicial
+10. DOCUMENTOS — Lista de documentos anexados
+
+FORMATO:
+- Word (.docx)
+- Fonte: Times New Roman 12, espaçamento 1,5
+- Margens: superior e esquerda 3cm, inferior e direita 2cm
+- Parágrafos com recuo de primeira linha de 2cm
+- Títulos em negrito e MAIÚSCULO`,
+        tips: [
+          'NUNCA protocole uma peça sem revisão completa do advogado',
+          'Verifique TODAS as citações de legislação e jurisprudência',
+          'Quanto mais documentos do processo você fornecer, melhor o resultado',
+          'Para contestações, inclua a petição do adversário para impugnação ponto a ponto',
+        ],
+      },
+      {
         title: 'Automação de Escritório com Cowork',
         subtitle: 'Fluxos completos end-to-end',
         level: 'expert',
@@ -1632,6 +1945,196 @@ Para cada fluxo, documente no CLAUDE.md do Projeto: quais conectores usar, em qu
           { title: 'Dados Coletados', description: 'Informações brutas de múltiplas fontes' },
           { title: 'Cowork Processa', description: 'Organiza e formata em Word/Excel' },
           { title: 'Relatório Final', description: 'Documento pronto na sua pasta' },
+        ],
+      },
+      {
+        title: 'Download de Processos no PJe/e-SAJ',
+        subtitle: 'Baixe e organize todos os documentos automaticamente',
+        level: 'avancado',
+        icon: 'download',
+        analogy: {
+          text: 'Baixar documentos do PJe é como ir ao cartório: você espera, clica várias vezes, e os arquivos vêm com nomes sem sentido. O Chrome faz essa **ronda no cartório digital** — baixa tudo e ainda organiza os nomes para você.',
+        },
+        content: `Um dos fluxos mais úteis para advogados: acessar o PJe ou e-SAJ, baixar TODOS os documentos de um processo e receber tudo organizado.
+
+**O problema real:**
+Abrir o PJe, clicar em cada documento, baixar um por um, renomear manualmente... Para um processo com 50+ documentos, isso leva horas.
+
+**A solução com Chrome + Cowork:**
+
+**Passo 1 — Chrome acessa e baixa:**
+O Chrome navega no PJe (com sua sessão logada), acessa o processo e baixa todos os documentos disponíveis.
+
+**Passo 2 — Cowork organiza:**
+O Cowork lê cada PDF baixado, identifica o tipo (petição, sentença, ata, documento) e renomeia com o padrão do escritório.
+
+**Resultado final na sua pasta:**
+- /Processo_1234567-89.2024.8.26.0100/
+  - /Peticoes/
+    - 001_PETICAO-INICIAL_2024-01-15.pdf
+    - 005_CONTESTACAO_2024-03-20.pdf
+  - /Decisoes/
+    - 008_DESPACHO-CITACAO_2024-02-10.pdf
+    - 015_SENTENCA_2024-08-05.pdf
+  - /Documentos/
+    - 002_RG-AUTOR.pdf
+    - 003_CONTRATO-LOCACAO.pdf
+  - INDICE_PROCESSUAL.xlsx
+
+**Sites compatíveis:**
+- PJe (todos os tribunais)
+- e-SAJ (SP)
+- PROJUDI (vários estados)
+- e-Proc (Justiça Federal 4ª Região)
+- Qualquer portal de tribunal com acesso web`,
+        prompt: `Acesse o sistema [PJe/e-SAJ/PROJUDI] com minha sessão logada e:
+
+1. Navegue até o processo número [NÚMERO DO PROCESSO]
+2. Acesse a seção de documentos/autos digitais
+3. Baixe TODOS os documentos disponíveis no processo
+4. Para cada documento baixado, identifique:
+   - Tipo (petição, contestação, sentença, despacho, etc.)
+   - Data do documento
+   - Partes mencionadas
+5. Renomeie seguindo o padrão: [SEQUÊNCIA]_[TIPO]_[DATA].pdf
+6. Organize em subpastas: Peticoes, Decisoes, Documentos, Audiencias
+7. Gere um INDICE_PROCESSUAL.xlsx com todos os documentos listados
+
+Salve tudo na pasta "Processo_[NÚMERO]".`,
+        tips: [
+          'Certifique-se de estar logado no PJe/e-SAJ ANTES de iniciar o fluxo',
+          'Para processos com sigilo, verifique se sua permissão permite acesso',
+          'Combine este fluxo com a Análise de Contratos ou Auditoria Processual do Cowork',
+          'Funciona melhor em processos digitais — processos físicos digitalizados podem ter OCR limitado',
+        ],
+        flowSteps: [
+          { title: 'Login', description: 'Certifique-se de estar logado no sistema do tribunal' },
+          { title: 'Chrome Navega', description: 'Acessa o processo e baixa todos os documentos' },
+          { title: 'Cowork Organiza', description: 'Identifica, renomeia e classifica cada arquivo' },
+          { title: 'Pasta Pronta', description: 'Documentos organizados com índice em Excel' },
+        ],
+      },
+      {
+        title: 'Monitoramento de Diários Oficiais',
+        subtitle: 'Receba alertas de publicações sem abrir o DJe',
+        level: 'avancado',
+        icon: 'eye',
+        analogy: {
+          text: 'Ler o Diário de Justiça todo dia é como procurar agulha no palheiro. O Chrome funciona como um **clipping jurídico automático**: varre o DJe, encontra publicações do seu escritório e monta o resumo do dia.',
+        },
+        content: `O monitoramento diário de publicações é uma obrigação de todo escritório. O Chrome automatiza essa tarefa completamente.
+
+**O que o Chrome faz:**
+1. Acessa o Diário de Justiça Eletrônico (DJe) do tribunal
+2. Busca publicações por nome do escritório, advogado ou número de processo
+3. Extrai: data, processo, teor da publicação e prazo decorrente
+4. Organiza tudo numa planilha ou envia para o Cowork
+
+**Diários compatíveis:**
+- DJe de todos os TJs estaduais
+- Diários da Justiça Federal
+- Diários da Justiça do Trabalho
+- DOU (Diário Oficial da União)
+- Diários municipais
+
+**Exemplo prático — Monitoramento no TJ-SP:**
+"Acesse o DJe do TJ-SP, busque publicações nos últimos 3 dias com o nome 'Silva & Associados Advogados', e extraia: data da publicação, número do processo, tipo (intimação/citação/sentença), resumo do conteúdo e prazo decorrente."
+
+**Fluxo automatizado com Cowork:**
+Após a extração, o Cowork pode:
+- Classificar por urgência (prazo vencendo em 1-5 dias / 6-15 dias / 15+ dias)
+- Atualizar a planilha de controle de prazos
+- Gerar um e-mail resumo para a equipe
+- Disparar alertas para os advogados responsáveis`,
+        prompt: `Acesse o Diário de Justiça Eletrônico do [TRIBUNAL] e:
+
+1. Busque todas as publicações dos últimos [N] dias contendo:
+   - Nome do escritório: "[NOME DO ESCRITÓRIO]"
+   - Nome dos advogados: "[LISTA DE ADVOGADOS]"
+   - OU os números dos processos: [LISTA DE PROCESSOS]
+
+2. Para cada publicação encontrada, extraia:
+   - Data da publicação
+   - Número do processo
+   - Tipo: intimação, citação, sentença, despacho, edital
+   - Resumo do conteúdo (2-3 linhas)
+   - Prazo decorrente (se houver)
+   - Data limite do prazo (calculando dias úteis)
+
+3. Organize numa planilha Excel com:
+   - Aba "PUBLICAÇÕES" — todas as encontradas
+   - Aba "PRAZOS URGENTES" — apenas as com prazo < 15 dias úteis
+   - Formatação: vermelho (< 5 dias), amarelo (5-10 dias), verde (> 10 dias)
+
+4. Gere um resumo em texto (formato de e-mail) listando as publicações do dia por urgência.`,
+        tips: [
+          'Configure esse fluxo para rodar toda manhã como rotina do escritório',
+          'Inclua todos os nomes pelos quais o escritório pode ser encontrado (razão social, nome fantasia, advogados)',
+          'Combine com o card "Controle de Prazos" do Cowork para atualizar a planilha automaticamente',
+          'Para escritórios maiores, separe os resultados por equipe/advogado responsável',
+        ],
+      },
+      {
+        title: 'Consulta de Certidões e Cadastros',
+        subtitle: 'Receita Federal, CNPJ, certidões negativas em lote',
+        level: 'intermediario',
+        icon: 'shield',
+        analogy: {
+          text: 'Precisar de 10 certidões negativas para uma due diligence? O Chrome vai em **cada site oficial**, consulta o CNPJ/CPF e baixa as certidões — enquanto você toma café.',
+        },
+        content: `Consultas repetitivas em sites governamentais são perfeitas para automação com Chrome.
+
+**Consultas que o Chrome automatiza:**
+
+**Receita Federal (CNPJ/CPF):**
+- Consulta de situação cadastral
+- Download de comprovante de inscrição
+- Consulta de QSA (quadro societário)
+- Certidão de regularidade fiscal
+
+**Certidões Negativas em Lote:**
+- CND Federal (Receita + PGFN)
+- CND Estadual (SEFAZ)
+- CND Municipal (Prefeitura)
+- CND Trabalhista (TST)
+- Certidão do FGTS (CEF)
+- Certidão de distribuição cível e criminal
+
+**Consulta de Processos em Lote:**
+- Verificar existência de processos contra um CPF/CNPJ em múltiplos tribunais simultaneamente
+
+**Exemplo prático — Due Diligence de empresa:**
+"Consulte o CNPJ 12.345.678/0001-90 nos seguintes sites: Receita Federal (situação cadastral), PGFN (certidão negativa), TST (certidão trabalhista), TJ-SP (distribuição cível), TJ-SP (distribuição criminal). Baixe todas as certidões e salve com o nome do órgão emissor."
+
+**Consultas em lote:**
+Forneça uma lista de CNPJs/CPFs e o Chrome consulta todos sequencialmente, salvando os resultados organizados.`,
+        prompt: `Acesse os seguintes sites e faça consultas para o [CPF/CNPJ]:
+
+1. Receita Federal (solucoes.receita.fazenda.gov.br):
+   - Consulta de situação cadastral
+   - Baixe o comprovante de inscrição em PDF
+
+2. PGFN (servicos.receita.fazenda.gov.br):
+   - Emita Certidão Negativa de Débitos Federais
+   - Salve em PDF
+
+3. TST (cndt-certidao.tst.jus.br):
+   - Emita Certidão Negativa de Débitos Trabalhistas
+   - Salve em PDF
+
+4. TJ-[ESTADO] (portal do tribunal):
+   - Consulta de distribuição cível
+   - Consulta de distribuição criminal
+   - Salve os resultados
+
+5. Organize tudo numa pasta "[NOME/CNPJ]_CERTIDOES_[DATA]" com:
+   - Cada certidão nomeada: [ORGAO]_[TIPO]_[DATA].pdf
+   - Um resumo em texto: situação de cada certidão (positiva/negativa)`,
+        tips: [
+          'Alguns sites exigem captcha — o Chrome pode pausar para você resolver manualmente',
+          'Certidões têm validade: anote a data de emissão e de vencimento',
+          'Para due diligence completa, combine com a busca de processos nos tribunais',
+          'Salve o fluxo para reutilizar com outros CPFs/CNPJs',
         ],
       },
       {
