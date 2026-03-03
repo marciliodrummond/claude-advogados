@@ -1312,6 +1312,341 @@ FORMATO:
         ],
       },
       {
+        title: 'Petições com Visual Law / Legal Design',
+        subtitle: 'Peças processuais visualmente superiores',
+        level: 'avancado',
+        icon: 'palette',
+        analogy: {
+          text: 'Imagine entregar ao juiz uma petição que ele **entende em metade do tempo**: com quadro resumo no topo, timeline dos fatos, tabela de provas e checklist de requisitos legais. Isso é **Visual Law** — e o Claude gera tudo isso automaticamente.',
+        },
+        content: `Visual Law (ou Legal Design) é a aplicação de técnicas visuais em documentos jurídicos para torná-los mais claros e persuasivos. Tribunais brasileiros como TJ-SP, TRT-2, TJ-DFT e STJ já reconhecem e valorizam essa prática.
+
+**O que o Claude gera para você:**
+
+**1. Quadro Resumo (Summary Box):**
+Tabela no topo da petição com: tipo de ação, partes, valor da causa, objeto, pedido principal e tutela de urgência. O juiz entende o caso em 10 segundos.
+
+**2. Timeline dos Fatos:**
+Cronologia visual com datas, eventos e documentos comprobatórios. Substitui parágrafos longos por uma sequência clara.
+
+**3. Tabela Mapa de Provas:**
+Conecta cada fato alegado ao documento que o comprova. O juiz localiza a prova sem procurar nos autos.
+
+| # | Fato Alegado | Prova | Documento |
+|---|-------------|-------|-----------|
+| 1 | Relação contratual | Contrato assinado | Doc. 02 |
+| 2 | Inadimplemento | Faturas vencidas | Docs. 03-07 |
+| 3 | Notificação | AR de recebimento | Doc. 08 |
+
+**4. Checklist de Requisitos Legais:**
+Para tutelas de urgência, liminares ou recursos: tabela mostrando cada requisito legal e se está demonstrado.
+
+**5. Quadro Comparativo de Argumentos:**
+Teses do autor vs. teses do réu, lado a lado, com fundamentação e força do argumento.
+
+**6. Árvore Decisória:**
+Diagrama mostrando os cenários possíveis e suas consequências jurídicas.
+
+**Impacto comprovado:**
+Juízes relatam redução de **30-50% no tempo de análise** de petições com Visual Law bem aplicado.`,
+        prompt: `Analise os documentos desta pasta e gere uma [TIPO DE PEÇA] aplicando técnicas de Visual Law / Legal Design:
+
+ESTRUTURA VISUAL OBRIGATÓRIA:
+
+1. QUADRO RESUMO (no topo da peça):
+   | Campo | Informação |
+   |-------|-----------|
+   | Tipo de Ação | [identificar] |
+   | Autor | [nome completo e qualificação] |
+   | Réu | [nome completo e qualificação] |
+   | Valor da Causa | [R$ valor] |
+   | Objeto | [resumo em 1 linha] |
+   | Pedido Principal | [resumo] |
+   | Tutela de Urgência | [Sim/Não — tipo] |
+
+2. DOS FATOS — Use TIMELINE VISUAL:
+   Para cada fato relevante, organize como:
+   [DATA] → [EVENTO] → [Documento comprobatório (Doc. XX)]
+   Destaque fatos controversos com ⚠️
+
+3. MAPA DE PROVAS (tabela):
+   | # | Fato | Meio de Prova | Documento | Página |
+   Para cada alegação, vincule à prova específica.
+
+4. DO DIREITO — Use TABELA DE REQUISITOS:
+   | Requisito Legal | Demonstrado? | Fundamentação |
+   Com ✅ para requisitos preenchidos e ❌ para ausentes.
+
+5. QUADRO COMPARATIVO (se contestação/recurso):
+   | Ponto | Alegação Adversa | Nossa Resposta | Fundamento |
+
+6. DOS PEDIDOS — Lista numerada, hierárquica:
+   Pedido principal → Pedidos acessórios → Pedidos subsidiários
+   Cada pedido em item separado e claro.
+
+7. FORMATAÇÃO:
+   - Títulos: negrito, maiúsculo, com ícones de seção
+   - Destaques: negrito para termos-chave e valores
+   - Tabelas: com cabeçalho destacado
+   - Parágrafos curtos (máximo 5 linhas)
+
+Formato: Word (.docx), Times New Roman 12, espaçamento 1,5.`,
+        tips: [
+          'Comece usando Visual Law em petições iniciais e recursos — são as peças com maior impacto',
+          'O quadro resumo no topo é o elemento mais valorizado pelos juízes',
+          'Use tabelas de mapa de provas em TODAS as petições — facilita enormemente a análise',
+          'Não exagere nos elementos visuais: cada um deve ter função comunicativa clara',
+        ],
+        flowSteps: [
+          { title: 'Documentos', description: 'Coloque os documentos do caso na pasta' },
+          { title: 'Prompt Visual Law', description: 'Cole o prompt com a estrutura visual' },
+          { title: 'Geração', description: 'O Cowork cria a peça com todos os elementos visuais' },
+          { title: 'Revisão', description: 'Revise o conteúdo jurídico e ajuste os visuais' },
+        ],
+      },
+      {
+        title: 'Proposta de Honorários Profissional',
+        subtitle: 'Propostas visuais que convertem clientes',
+        level: 'intermediario',
+        icon: 'presentation',
+        analogy: {
+          text: 'Uma proposta de honorários bem apresentada é como um **cartão de visita premium**: comunica profissionalismo antes mesmo do cliente ler o conteúdo. O Cowork gera propostas com estrutura visual de escritório de primeira linha.',
+        },
+        content: `Propostas de honorários são o primeiro documento que o cliente recebe. A apresentação visual faz diferença direta na conversão.
+
+**O que o Cowork gera:**
+
+**1. Capa Institucional:**
+Nome do escritório, logomarca, dados do cliente, data e número da proposta.
+
+**2. Quadro Resumo do Caso:**
+Tabela com: natureza da demanda, partes envolvidas, valor estimado, complexidade e prognóstico inicial.
+
+**3. Escopo dos Serviços:**
+
+| Fase | O que inclui | O que não inclui |
+|------|-------------|-----------------|
+| Análise Preliminar | Estudo do caso, documentação | Parecer formal |
+| Fase Judicial | Petição até sentença | Recursos a tribunais superiores |
+| Fase Recursal | Apelação e recursos especiais | Recursos ao STF |
+
+**4. Tabela de Honorários:**
+
+| Fase | Escopo | Honorários | Prazo Estimado |
+|------|--------|-----------|---------------|
+| Análise | Estudo e viabilidade | R$ 3.000 (fixo) | 5 dias úteis |
+| Judicial | Até sentença | R$ 2.000/mês | 12-18 meses |
+| Êxito | Percentual sobre resultado | 20% do valor obtido | Ao final |
+
+**5. Condições de Pagamento:**
+Tabela com datas, parcelas e formas de pagamento.
+
+**6. Diferenciais do Escritório:**
+Lista visual com ícones dos diferenciais competitivos.
+
+**Resultado:** Uma proposta de 3-5 páginas, profissional e visual, pronta para enviar ao cliente em PDF.`,
+        prompt: `Gere uma PROPOSTA DE HONORÁRIOS completa e profissional para o seguinte caso:
+
+DADOS DO CASO:
+- Cliente: [NOME DO CLIENTE]
+- Tipo de Demanda: [DESCRIÇÃO]
+- Valor Envolvido: [R$ VALOR ESTIMADO]
+- Complexidade: [BAIXA/MÉDIA/ALTA]
+
+ESTRUTURA DA PROPOSTA (formato Word):
+
+1. CAPA:
+   - Nome do escritório: [NOME]
+   - "Proposta de Prestação de Serviços Jurídicos"
+   - Cliente: [nome]
+   - Data: [data atual]
+   - Nº Proposta: [ANO/SEQUENCIAL]
+
+2. APRESENTAÇÃO DO ESCRITÓRIO (1 parágrafo):
+   [Breve descrição da experiência na área]
+
+3. QUADRO RESUMO DO CASO:
+   Tabela com natureza, partes, valor, complexidade, prognóstico.
+
+4. ESCOPO DOS SERVIÇOS:
+   Tabela detalhada: O que INCLUI | O que NÃO inclui
+   Separado por fases (pré-judicial, judicial, recursal).
+
+5. HONORÁRIOS:
+   Tabela clara com: Fase | Tipo | Valor | Condição
+   Incluir honorários de êxito se aplicável.
+
+6. CONDIÇÕES:
+   - Forma de pagamento
+   - Reajuste anual
+   - Despesas processuais (custas, perícias)
+   - Vigência da proposta
+
+7. ACEITE:
+   Campo para assinatura do cliente com data.
+
+Formatação: profissional, com tabelas limpas, títulos claros e espaçamento adequado.`,
+        tips: [
+          'Sempre apresente pelo menos 2 opções de honorários (fixo vs. êxito vs. misto)',
+          'Inclua claramente o que NÃO está incluído — evita conflitos futuros',
+          'A proposta é seu primeiro "produto" para o cliente: invista na apresentação',
+          'Salve como Skill para padronizar todas as propostas do escritório',
+        ],
+      },
+      {
+        title: 'Pasta do Cliente Completa',
+        subtitle: 'Onboarding profissional em minutos',
+        level: 'intermediario',
+        icon: 'folder-open',
+        analogy: {
+          text: 'Quando um novo cliente chega, o escritório precisa montar toda a estrutura: pasta de documentos, ficha cadastral, procuração, contrato de honorários, carta de boas-vindas. O Cowork faz tudo isso de uma vez — como um **kit de boas-vindas automatizado**.',
+        },
+        content: `O Cowork monta toda a estrutura de pastas e documentos para um novo cliente em uma única execução.
+
+**O que sai pronto:**
+
+**1. Estrutura de Pastas:**
+- /Cliente_[NOME]/
+  - /01_Cadastro/ (ficha, documentos pessoais)
+  - /02_Procuracoes/ (procuração ad judicia)
+  - /03_Contratos/ (contrato de honorários)
+  - /04_Processo/ (peças, documentos, decisões)
+  - /05_Correspondencias/ (e-mails, cartas)
+  - /06_Financeiro/ (notas, recibos)
+
+**2. Ficha Cadastral do Cliente:**
+Documento Word com todos os dados do cliente organizados: pessoais, profissionais, endereço, documentos, dados bancários.
+
+**3. Procuração Ad Judicia:**
+Minuta de procuração com poderes adequados ao tipo de ação, pronta para assinatura.
+
+**4. Contrato de Honorários:**
+Contrato baseado na proposta aprovada, com todas as cláusulas necessárias.
+
+**5. Carta de Boas-Vindas:**
+Carta personalizada explicando: quem é o advogado responsável, canais de contato, próximos passos e prazos estimados.
+
+**6. Checklist de Documentos Pendentes:**
+Lista do que o cliente ainda precisa enviar, com prazos.`,
+        prompt: `Monte uma PASTA DE CLIENTE COMPLETA para o novo caso:
+
+DADOS:
+- Nome do Cliente: [NOME COMPLETO]
+- CPF/CNPJ: [NÚMERO]
+- Endereço: [ENDEREÇO]
+- Telefone: [NÚMERO]
+- E-mail: [E-MAIL]
+- Tipo de Demanda: [DESCRIÇÃO]
+- Advogado Responsável: [NOME] - OAB/[ESTADO] [NÚMERO]
+- Nome do Escritório: [NOME DO ESCRITÓRIO]
+
+GERE OS SEGUINTES DOCUMENTOS:
+
+1. FICHA CADASTRAL (Word):
+   Dados pessoais, profissionais, documentos, contato de emergência, dados bancários para restituições.
+
+2. PROCURAÇÃO AD JUDICIA (Word):
+   Com poderes da cláusula "ad judicia" + poderes especiais adequados ao tipo de ação.
+   Incluir: receber citação, confessar, transigir, desistir, dar quitação, firmar compromisso, substabelecer.
+
+3. CONTRATO DE HONORÁRIOS (Word):
+   Baseado nos seguintes termos: [INSERIR VALORES E CONDIÇÕES ACORDADOS]
+   Cláusulas mínimas: objeto, honorários, forma de pagamento, despesas processuais, vigência, rescisão, confidencialidade, foro.
+
+4. CARTA DE BOAS-VINDAS (Word):
+   Tom profissional e acolhedor. Incluir:
+   - Apresentação do advogado responsável
+   - Canais de comunicação e horários
+   - Próximos passos do caso
+   - Prazos estimados
+   - O que o cliente precisa providenciar
+
+5. CHECKLIST DE DOCUMENTOS (Word):
+   Lista de documentos necessários para o tipo de ação, com [ ] para marcar os recebidos e prazos.
+
+Crie uma estrutura de subpastas organizada e salve cada documento na pasta correspondente.`,
+        tips: [
+          'Crie um Skill "Onboarding de Cliente" com os dados padrão do escritório pré-preenchidos',
+          'Adapte a procuração para cada tipo de ação — poderes especiais variam',
+          'A carta de boas-vindas é o primeiro contato formal: capriche no tom',
+          'O checklist de documentos evita idas e vindas com o cliente',
+        ],
+        flowSteps: [
+          { title: 'Dados', description: 'Preencha os dados do cliente no prompt' },
+          { title: 'Geração', description: 'Cowork cria 5+ documentos de uma vez' },
+          { title: 'Revisão', description: 'Confira os documentos gerados' },
+          { title: 'Entrega', description: 'Envie ao cliente para assinatura' },
+        ],
+      },
+      {
+        title: 'E-mails Jurídicos Profissionais',
+        subtitle: 'Comunicação impecável com clientes, colegas e tribunais',
+        level: 'iniciante',
+        icon: 'mail',
+        analogy: {
+          text: 'E-mails mal escritos passam imagem de amadorismo. O Claude funciona como um **revisor e redator profissional**: ajusta o tom, organiza as informações e garante que cada e-mail represente a qualidade do escritório.',
+        },
+        content: `E-mails são a comunicação mais frequente de qualquer escritório. O Claude gera e-mails profissionais para qualquer situação.
+
+**Tipos de e-mails prontos:**
+
+**Para Clientes:**
+- Atualização de andamento processual
+- Solicitação de documentos
+- Explicação de decisão judicial (sem juridiquês)
+- Envio de proposta de honorários
+- Comunicação de resultado (favorável ou desfavorável)
+- Prestação de contas mensal
+
+**Para Colegas/Advogados:**
+- Substabelecimento com ou sem reservas
+- Solicitação de informações processuais
+- Comunicação de acordo
+- Convite para composição amigável
+
+**Para Tribunais/Órgãos:**
+- Solicitação de certidões
+- Comunicação de mudança de endereço
+- Pedido de informações administrativas
+
+**Exemplo — Atualização para cliente:**
+Tom profissional, linguagem clara, sem juridiquês. Explica o que aconteceu, o que significa na prática e quais são os próximos passos.`,
+        prompt: `Redija um e-mail profissional para a seguinte situação:
+
+CONTEXTO:
+- Remetente: [NOME DO ADVOGADO] — OAB/[ESTADO] [NÚMERO]
+- Destinatário: [NOME DO DESTINATÁRIO]
+- Relação: [Cliente / Advogado adverso / Tribunal / Colega]
+- Assunto: [DESCREVA A SITUAÇÃO]
+
+DIRETRIZES:
+1. Tom: profissional, respeitoso e objetivo
+2. Se for para cliente: evitar juridiquês, explicar em linguagem acessível
+3. Se for para advogado/tribunal: usar terminologia técnica adequada
+4. Estrutura:
+   - Cumprimento adequado ao destinatário
+   - Contexto breve (processo/assunto)
+   - Informação principal
+   - Próximos passos ou ação necessária
+   - Encerramento cordial
+   - Assinatura com dados do escritório
+5. Máximo 3 parágrafos (curtos e diretos)
+6. Incluir linha de assunto sugerida`,
+        tips: [
+          'Crie um Skill com a assinatura padrão do escritório para não precisar repetir',
+          'Para más notícias: sempre termine com os próximos passos e alternativas',
+          'E-mails para clientes devem explicar o "e agora?" — não só o que aconteceu',
+          'Revise o tom: profissional não é frio, e acessível não é informal',
+        ],
+        commandList: [
+          { command: 'Atualização', description: '"Redija e-mail de atualização processual para o cliente sobre [evento]"' },
+          { command: 'Documentos', description: '"Redija e-mail solicitando documentos ao cliente: [lista de docs]"' },
+          { command: 'Resultado', description: '"Redija e-mail comunicando resultado [favorável/desfavorável] ao cliente"' },
+          { command: 'Proposta', description: '"Redija e-mail de envio de proposta de honorários para [cliente]"' },
+          { command: 'Acordo', description: '"Redija e-mail propondo acordo para o advogado adverso"' },
+        ],
+      },
+      {
         title: 'Automação de Escritório com Cowork',
         subtitle: 'Fluxos completos end-to-end',
         level: 'expert',
@@ -1488,6 +1823,94 @@ Instruções específicas do cliente nas instruções do Projeto. Preferências,
           'Comece pela Camada 1 (base) e vá adicionando gradualmente',
           'Evite contradições entre Skills — sejam consistentes nas instruções',
           'Para equipes: padronize os Skills da Camada 1 e 2 entre todos os advogados',
+        ],
+      },
+      {
+        title: 'Skill de Visual Law / Legal Design',
+        subtitle: 'Aplique Visual Law automaticamente em qualquer documento',
+        level: 'avancado',
+        icon: 'palette',
+        analogy: {
+          text: 'Imagine que o Claude **sempre** aplica Visual Law nas suas peças — sem você precisar pedir. Um Skill de Visual Law é como programar o estilo visual do escritório: uma vez configurado, toda petição sai com quadro resumo, timeline e tabela de provas automaticamente.',
+        },
+        content: `Crie um Skill que ensina o Claude a aplicar Visual Law em qualquer documento jurídico. Uma vez ativado, TODAS as peças que o Claude gerar seguirão o padrão visual do escritório.
+
+**Como criar o Skill:**
+
+Vá em Claude → Personalizar → Skills → Criar Skill e cole o conteúdo abaixo.
+
+**O que o Skill faz automaticamente:**
+- Insere quadro resumo no topo de petições
+- Cria timelines nos fatos
+- Gera tabelas de mapa de provas
+- Formata checklist de requisitos legais
+- Monta quadros comparativos de argumentos
+- Estrutura pedidos de forma hierárquica e clara
+- Usa parágrafos curtos (máx. 5 linhas)
+- Aplica destaque visual em termos-chave
+
+**Skill combinado com outros:**
+Este Skill pode ser combinado com qualquer outro Skill do escritório. Por exemplo: "Skill de Petição Trabalhista" + "Skill de Visual Law" = petição trabalhista com todos os elementos visuais.
+
+**Personalização:**
+Adapte o Skill para o padrão do seu escritório: tipo de fonte, margens, estilo de tabelas, cores (se o tribunal aceitar).`,
+        prompt: `SKILL: Visual Law / Legal Design para Documentos Jurídicos
+
+Ao gerar qualquer documento jurídico (petição, parecer, recurso, contestação, contrato), aplique SEMPRE as seguintes técnicas de Visual Law:
+
+1. QUADRO RESUMO (obrigatório no topo de petições):
+   Tabela com: Tipo de Ação, Autor, Réu, Valor da Causa, Objeto (1 linha), Pedido Principal, Tutela de Urgência (Sim/Não).
+
+2. TIMELINE DOS FATOS:
+   Em vez de parágrafos longos, apresente os fatos como:
+   [DATA] → [EVENTO] — [Documento comprobatório]
+   Destaque fatos controversos com ⚠️
+
+3. MAPA DE PROVAS (tabela obrigatória):
+   | # | Fato Alegado | Meio de Prova | Documento |
+   Conecte CADA alegação a sua prova específica.
+
+4. TABELA DE REQUISITOS LEGAIS:
+   Quando houver requisitos cumulativos (tutela urgência, gratuidade, etc.):
+   | Requisito | Demonstrado? | Fundamentação |
+   Use ✅ para atendidos e ❌ para não atendidos.
+
+5. QUADRO COMPARATIVO (contestações e recursos):
+   | Ponto Controverso | Alegação Adversa | Nossa Resposta | Base Legal |
+
+6. ESTRUTURA HIERÁRQUICA DE PEDIDOS:
+   a) Pedidos principais (numerados)
+   b) Pedidos acessórios (sub-numerados)
+   c) Pedidos subsidiários (claramente identificados)
+
+7. FORMATAÇÃO:
+   - Parágrafos curtos (máximo 5 linhas)
+   - Termos-chave em negrito
+   - Valores monetários em negrito
+   - Títulos de seção: MAIÚSCULO e negrito
+   - Subtítulos: Negrito normal
+   - Listas numeradas para argumentos sequenciais
+   - Tabelas para comparações e dados estruturados
+
+8. LINGUAGEM:
+   - Objetiva e precisa
+   - Frases na ordem direta
+   - Evitar latinismos desnecessários
+   - Evitar parágrafos com mais de 1 ideia principal
+
+Aplique estas regras em TODOS os documentos jurídicos, salvo instrução contrária.`,
+        tips: [
+          'Cole este prompt em Personalizar → Skills para que funcione em TODAS as conversas',
+          'Combine com Skills de área específica (trabalhista, cível) para resultado máximo',
+          'Adapte os elementos visuais conforme o tribunal aceita — alguns são mais conservadores',
+          'O Skill funciona tanto no Chat quanto no Cowork',
+        ],
+        steps: [
+          'Abra o Claude → clique em "Personalizar" (canto inferior esquerdo)',
+          'Vá em "Skills" → clique em "Criar Skill"',
+          'Dê o nome "Visual Law / Legal Design"',
+          'Cole o prompt completo acima no campo de instruções',
+          'Salve — a partir de agora, TODA peça jurídica sairá com Visual Law',
         ],
       },
     ],
@@ -3048,6 +3471,134 @@ O Claude usa cada MCP como uma ferramenta: consulta o DataJud, pesquisa no Pange
             tech: 'Produção',
             description: 'Pareceres, riscos e cronologias',
             whenToUse: 'Gerar documentos jurídicos a partir dos dados',
+          },
+        ],
+      },
+      {
+        title: 'MCP Visual Law / Legal Design',
+        subtitle: 'Automação completa de documentos visuais',
+        level: 'expert',
+        icon: 'palette',
+        analogy: {
+          text: 'Imagine combinar todos os MCPs anteriores (DataJud, Pangea, Comunica PJE) com Visual Law: o Claude **busca os dados do processo, pesquisa jurisprudência e gera a peça processual com todos os elementos visuais** — tudo automaticamente.',
+        },
+        content: `Este MCP combina o poder das APIs jurídicas com as técnicas de Visual Law, gerando documentos completos e visualmente superiores.
+
+**O que este MCP faz:**
+Ao receber um número de processo, ele busca todos os dados, aplica Visual Law e gera peças prontas.
+
+**Peça ao Claude Code:**
+
+\`\`\`
+Crie um MCP Server chamado "mcp-visual-law" que combina
+dados processuais com técnicas de Visual Law.
+
+Ferramentas:
+
+1. peticao_visual(numero_cnj, tribunal, tipo_peca)
+   - Busca dados do processo via DataJud
+   - Gera peça processual com:
+     * Quadro resumo no topo
+     * Timeline dos fatos (extraída das movimentações)
+     * Mapa de provas (tabela fato → documento)
+     * Checklist de requisitos legais
+     * Pedidos hierarquicamente estruturados
+   - Formato: Markdown estruturado
+
+2. proposta_honorarios(dados_cliente, tipo_demanda, valores)
+   - Gera proposta de honorários completa
+   - Estrutura: capa, resumo, escopo, tabela de honorários,
+     condições de pagamento, aceite
+   - Aplica Visual Law: tabelas, ícones, hierarquia clara
+
+3. pasta_cliente(dados_cliente, tipo_demanda)
+   - Gera estrutura de pastas e documentos:
+     * Ficha cadastral
+     * Procuração ad judicia
+     * Contrato de honorários
+     * Carta de boas-vindas
+     * Checklist de documentos pendentes
+
+4. relatorio_visual(numero_cnj, tribunal, tipo_relatorio)
+   - tipo: "andamento" | "risco" | "parecer" | "cliente"
+   - Busca dados via DataJud
+   - Gera relatório com Visual Law:
+     * Quadro resumo executivo
+     * Timeline de andamentos
+     * Matriz de riscos (quando aplicável)
+     * Quadro de teses e argumentos
+     * Conclusão e recomendações
+
+5. email_profissional(contexto, destinatario, tipo)
+   - tipo: "atualizacao" | "documentos" | "resultado" |
+     "proposta" | "acordo"
+   - Gera e-mail profissional adaptado ao destinatário
+   - Tom adequado: cliente (acessível) vs advogado (técnico)
+
+Cada ferramenta deve retornar Markdown bem estruturado
+com tabelas, listas hierárquicas e formatação Visual Law.
+\`\`\`
+
+**Configuração:**
+
+\`\`\`json
+{
+  "mcpServers": {
+    "visual-law": {
+      "command": "node",
+      "args": ["C:/mcps/mcp-visual-law/dist/index.js"],
+      "env": {
+        "DATAJUD_API_KEY": "cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw=="
+      }
+    }
+  }
+}
+\`\`\`
+
+**Exemplos de uso no Claude Desktop:**
+
+| Você pede... | O que recebe... |
+|-------------|-----------------|
+| "Gere uma contestação visual do processo X no TJSP" | Contestação com quadro resumo, timeline, mapa de provas |
+| "Monte proposta de honorários para caso trabalhista de R$ 200k" | Proposta profissional com tabelas, escopo e aceite |
+| "Crie pasta de cliente para Maria Silva, caso de divórcio" | 5+ documentos + estrutura de pastas organizadas |
+| "Relatório visual de risco do processo X" | Relatório com matriz de riscos, timeline e recomendações |
+| "E-mail de atualização para cliente sobre sentença favorável" | E-mail profissional com próximos passos |`,
+        tips: [
+          'Este MCP é o mais completo: combine com DataJud e Pangea para resultado máximo',
+          'Os documentos saem em Markdown — copie para Word e ajuste a formatação final',
+          'Salve os prompts de cada tipo de documento como Skills para usar sem o MCP',
+          'Para escritórios: personalize o MCP com o logotipo e padrão visual do escritório',
+        ],
+        elementGrid: [
+          {
+            icon: 'file-text',
+            name: 'Petições',
+            tech: 'Visual Law',
+            description: 'Peças processuais com quadro resumo, timeline e mapa de provas',
+            whenToUse: 'Petições iniciais, contestações, recursos',
+            highlight: true,
+          },
+          {
+            icon: 'presentation',
+            name: 'Propostas',
+            tech: 'Honorários',
+            description: 'Propostas profissionais com tabelas, escopo e condições',
+            whenToUse: 'Novos clientes e novos casos',
+          },
+          {
+            icon: 'folder-open',
+            name: 'Pasta do Cliente',
+            tech: 'Onboarding',
+            description: 'Estrutura completa com 5+ documentos gerados',
+            whenToUse: 'Entrada de novo cliente no escritório',
+          },
+          {
+            icon: 'mail',
+            name: 'E-mails',
+            tech: 'Comunicação',
+            description: 'E-mails profissionais adaptados ao destinatário',
+            whenToUse: 'Comunicação diária com clientes e colegas',
           },
         ],
       },
