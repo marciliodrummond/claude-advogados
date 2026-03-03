@@ -50,8 +50,8 @@ export function Hero({ onStart }: HeroProps) {
         >
           {[
             { icon: Layers, value: '10', label: 'Seções' },
-            { icon: BookOpen, value: '97', label: 'Tutoriais' },
-            { icon: Zap, value: '22', label: 'Prompts Prontos' },
+            { icon: BookOpen, value: '107', label: 'Tutoriais' },
+            { icon: Zap, value: '28', label: 'Prompts Prontos' },
             { icon: Scale, value: '4', label: 'Níveis' },
           ].map((m, i) => (
             <div key={i} className="flex items-center gap-3">

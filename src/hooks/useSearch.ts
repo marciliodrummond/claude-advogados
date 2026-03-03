@@ -32,6 +32,8 @@ export const popularSuggestions: Suggestion[] = [
   { query: 'plugin', label: 'Plugins do Claude', icon: 'plug' },
   { query: 'cowork', label: 'Claude Cowork', icon: 'handshake' },
   { query: 'economizar tokens', label: 'Otimização de Uso', icon: 'trending-up' },
+  { query: 'prompt perfeito', label: 'Framework CONTEXTO', icon: 'target' },
+  { query: 'marketing', label: 'Marketing Jurídico', icon: 'trending-up' },
 ]
 
 // ── Normalization ───────────────────────────────────────────
@@ -182,7 +184,7 @@ const synonyms: Record<string, string[]> = {
   'mediacao': ['mediacao', 'negociacao', 'acordo', 'conciliacao'],
   'conciliacao': ['conciliacao', 'acordo', 'mediacao', 'negociacao', 'audiencia'],
   'estrategia': ['estrategia', 'caso', 'tese', 'risco', 'cenario', 'viabilidade', 'tatico'],
-  'viabilidade': ['viabilidade', 'estrategia', 'risco', 'parecer', 'analise'],
+  'viabilidade': ['viabilidade', 'estrategia', 'risco', 'parecer', 'analise', 'aceitar caso'],
 
   // Implementação
   'implementar': ['implementar', 'escritorio', 'adocao', 'roadmap', 'fase'],
@@ -211,6 +213,46 @@ const synonyms: Record<string, string[]> = {
   'datajud': ['datajud', 'cnj', 'api', 'processo', 'consulta', 'mcp'],
   'pje': ['pje', 'processo eletronico', 'download', 'comunica', 'mni'],
   'processo': ['processo', 'processual', 'numero', 'consulta', 'datajud', 'acompanhamento'],
+
+  // Framework CONTEXTO e técnicas de prompt
+  'contexto': ['contexto', 'framework', 'prompt', 'cargo', 'objetivo', 'narrativa', 'exclusoes'],
+  'framework': ['contexto', 'framework', 'prompt perfeito', 'estrutura', 'metodologia'],
+  'prompt': ['prompt', 'contexto', 'framework', 'tecnica', 'instrucao', 'pedido'],
+  'xml': ['xml', 'tags', 'tecnica', 'prompt avancado', 'estruturar'],
+  'chain of thought': ['cadeia pensamento', 'raciocinio', 'passo a passo', 'cot'],
+  'iteracao': ['iteracao', 'refinamento', 'rodada', 'melhorar', 'versao'],
+  'refinamento': ['refinamento', 'iteracao', 'melhorar', 'reforcar', 'revisar'],
+
+  // Anti-alucinação
+  'alucinacao': ['alucinacao', 'fabricacao', 'inventar', 'verificar', 'blindagem', 'conferir'],
+  'fabricacao': ['fabricacao', 'alucinacao', 'inventar', 'falso', 'verificacao'],
+  'verificar': ['verificar', 'conferir', 'checar', 'alucinacao', 'blindagem'],
+  'blindagem': ['blindagem', 'anti alucinacao', 'verificacao', 'protecao', 'conferir'],
+
+  // Marketing jurídico
+  'marketing': ['marketing', 'instagram', 'linkedin', 'reels', 'conteudo', 'rede social', 'carrossel'],
+  'instagram': ['instagram', 'carrossel', 'reels', 'stories', 'marketing', 'rede social'],
+  'linkedin': ['linkedin', 'thread', 'profissional', 'marketing', 'post'],
+  'carrossel': ['carrossel', 'instagram', 'slides', 'marketing', 'conteudo'],
+  'reels': ['reels', 'tiktok', 'video', 'roteiro', 'instagram'],
+  'rede social': ['rede social', 'marketing', 'instagram', 'linkedin', 'conteudo'],
+  'conteudo': ['conteudo', 'marketing', 'publicacao', 'post', 'artigo'],
+
+  // Comunicação com cliente
+  'whatsapp': ['whatsapp', 'mensagem', 'comunicacao', 'cliente', 'resposta'],
+  'comunicacao': ['comunicacao', 'email', 'whatsapp', 'mensagem', 'cliente', 'carta'],
+  'cliente': ['cliente', 'comunicacao', 'atendimento', 'reuniao', 'orientacao'],
+  'cobranca': ['cobranca', 'honorario', 'pagamento', 'inadimplencia', 'comunicacao'],
+
+  // Fluxo de trabalho
+  'fluxo': ['fluxo', 'workflow', 'processo', 'etapa', 'passo a passo'],
+  'workflow': ['workflow', 'fluxo', 'automacao', 'processo', 'etapa'],
+  'atendimento': ['atendimento', 'reuniao', 'cliente', 'caso', 'consulta'],
+
+  // Prompts prontos / biblioteca
+  'biblioteca': ['biblioteca', 'colecao', 'prompts prontos', 'template', 'modelo'],
+  'template': ['template', 'modelo', 'pronto', 'biblioteca', 'formulario'],
+  'modelo': ['modelo', 'template', 'pronto', 'exemplo', 'referencia'],
 }
 
 // ── Intent map (expanded for 103 cards) ─────────────────────
@@ -315,6 +357,55 @@ const intentMap: Record<string, string[]> = {
   'sub agente': ['Sub agentes'],
   'visual law': ['Visual Law', 'Skill de Visual Law', 'MCP Visual Law'],
   'apresentacao': ['Excel e PowerPoint', 'Slides'],
+
+  // Framework CONTEXTO e prompts
+  'como fazer prompt': ['Framework CONTEXTO', 'Tecnicas Expert de Prompt'],
+  'prompt perfeito': ['Framework CONTEXTO'],
+  'prompt juridico': ['Framework CONTEXTO', 'Biblioteca de Prompts'],
+  'como pedir ao claude': ['Framework CONTEXTO', 'Tecnicas Expert de Prompt'],
+  'tags xml': ['Tecnicas Expert de Prompt'],
+  'chain of thought': ['Tecnicas Expert de Prompt'],
+  'melhorar resultado': ['Tecnicas Expert de Prompt', 'Framework CONTEXTO'],
+  'refinar peticao': ['Tecnicas Expert de Prompt'],
+  'prompts prontos': ['Biblioteca de Prompts Juridicos'],
+  'modelo de prompt': ['Biblioteca de Prompts Juridicos'],
+  'template prompt': ['Biblioteca de Prompts Juridicos'],
+
+  // Anti-alucinação
+  'jurisprudencia falsa': ['Anti Alucinacao'],
+  'verificar jurisprudencia': ['Anti Alucinacao'],
+  'alucinacao': ['Anti Alucinacao'],
+  'inventar': ['Anti Alucinacao'],
+  'fabricar': ['Anti Alucinacao'],
+  'conferir citacao': ['Anti Alucinacao'],
+  'como evitar erro': ['Anti Alucinacao'],
+
+  // Fluxo de trabalho
+  'fluxo peticao': ['Fluxo Do Cliente a Peticao'],
+  'passo a passo peticao': ['Fluxo Do Cliente a Peticao'],
+  'workflow peticao': ['Fluxo Do Cliente a Peticao'],
+  'reuniao cliente': ['Fluxo Do Cliente a Peticao'],
+  'atendimento inicial': ['Fluxo Do Cliente a Peticao'],
+  'aceitar caso': ['Analise de Viabilidade de Tese'],
+  'caso viavel': ['Analise de Viabilidade de Tese'],
+  'risco do caso': ['Analise de Viabilidade de Tese'],
+
+  // Marketing
+  'marketing juridico': ['Marketing Juridico Etico', 'Skill de Marketing Juridico'],
+  'conteudo instagram': ['Marketing Juridico Etico', 'Skill de Marketing Juridico'],
+  'carrossel instagram': ['Marketing Juridico Etico', 'Skill de Marketing Juridico'],
+  'rede social advogado': ['Marketing Juridico Etico', 'Skill de Marketing Juridico'],
+  'publicar conteudo': ['Marketing Juridico Etico'],
+  'criar carrossel': ['Marketing Juridico Etico', 'Skill de Marketing Juridico'],
+
+  // Skills de criação
+  'criar skill peticao': ['Skill de Peticao Universal'],
+  'skill para peticao': ['Skill de Peticao Universal'],
+  'skill comunicacao': ['Skill de Comunicacao com Cliente'],
+  'email cliente': ['Skill de Comunicacao com Cliente', 'E mails Juridicos'],
+  'whatsapp cliente': ['Skill de Comunicacao com Cliente'],
+  'cobranca honorario': ['Skill de Comunicacao com Cliente'],
+  'skill marketing': ['Skill de Marketing Juridico'],
 }
 
 // ── Multi-field weighted scoring ────────────────────────────
@@ -555,6 +646,16 @@ const relatedMap: Record<string, string[]> = {
   'Ética e IA na Advocacia: OAB e CNJ': ['Sigilo Profissional', 'Proteção de Dados e LGPD'],
   'Sigilo Profissional: Qual Plano Escolher?': ['Ética e IA na Advocacia', 'Escolhendo seu Plano'],
   'Roadmap: Implementando IA no Escritório': ['Automação Recorrente', 'Automação de Escritório'],
+  'Framework CONTEXTO: Prompt Jurídico Perfeito': ['Técnicas Expert de Prompt Jurídico', 'Biblioteca de Prompts Jurídicos'],
+  'Técnicas Expert de Prompt Jurídico': ['Framework CONTEXTO: Prompt Jurídico Perfeito', 'Raciocínio Estendido'],
+  'Biblioteca de Prompts Jurídicos': ['Framework CONTEXTO: Prompt Jurídico Perfeito', 'Skill de Petição Universal'],
+  'Fluxo: Do Cliente à Petição em 10 Passos': ['Framework CONTEXTO: Prompt Jurídico Perfeito', 'Petições e Peças Processuais'],
+  'Análise de Viabilidade de Tese': ['Skill de Estratégia de Caso', 'Parecer Jurídico'],
+  'Marketing Jurídico Ético com Claude': ['Skill de Marketing Jurídico', 'Artefatos'],
+  'Skill de Petição Universal': ['Criando Skills Jurídicos', 'Petições e Peças Processuais', 'Framework CONTEXTO'],
+  'Skill de Comunicação com Cliente': ['E-mails Jurídicos Profissionais', 'Criando Skills Jurídicos'],
+  'Skill de Marketing Jurídico': ['Marketing Jurídico Ético com Claude', 'Criando Skills Jurídicos'],
+  'Anti-Alucinação: Blindagem do Advogado': ['Ética e IA na Advocacia', 'Pesquisa Jurídica Avançada'],
 }
 
 export function getRelatedCards(cardTitle: string): string[] {

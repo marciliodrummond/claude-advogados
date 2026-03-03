@@ -7,7 +7,7 @@ import {
   Network, BookMarked, GraduationCap, AlertTriangle, CheckCircle2, Copy,
   Users, LayoutGrid, Workflow, Database, Mail, FileKey, Hash, MousePointer,
   Bot, Sparkles, Target, ScrollText, ArrowRightLeft, Cpu, KeyRound,
-  Package, Phone, SlidersHorizontal, LayoutDashboard,
+  Package, Phone, SlidersHorizontal, LayoutDashboard, MessageCircle,
   type LucideIcon
 } from 'lucide-react'
 
@@ -81,6 +81,8 @@ const iconMap: Record<string, LucideIcon> = {
   'phone': Phone,
   'sliders': SlidersHorizontal,
   'layout': LayoutDashboard,
+  'message-circle': MessageCircle,
+  'dollar-sign': CreditCard,
 }
 
 interface IconProps {

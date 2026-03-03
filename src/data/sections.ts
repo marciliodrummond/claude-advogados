@@ -778,6 +778,218 @@ O Claude agora permite importar memórias do ChatGPT e outros assistentes. Se vo
         ],
       },
       {
+        title: 'Framework CONTEXTO: Prompt Jurídico Perfeito',
+        subtitle: 'A fórmula em 7 letras que transforma resultados mediocres em peças profissionais',
+        level: 'intermediario',
+        icon: 'target',
+        analogy: {
+          tag: 'A Diferença',
+          text: 'A diferença entre perguntar "faça uma petição" e usar o Framework CONTEXTO é a mesma diferença entre entregar uma **folha em branco** e um **briefing completo** a um colega advogado. A qualidade do resultado depende 100% da qualidade do pedido.',
+        },
+        content: `A qualidade do resultado do Claude depende inteiramente da qualidade do seu prompt. O Framework CONTEXTO é uma estrutura em 7 elementos que garante prompts jurídicos completos.
+
+**C — Cargo (papel):**
+Defina quem o Claude deve ser. Não apenas "um advogado", mas com especialidade, experiência e contexto: *"Você é um advogado previdenciarista com 15 anos de experiência no TRF-1."*
+
+**O — Objetivo (tarefa):**
+Diga exatamente o que quer. Quanto mais específico, melhor: *"Elabore uma petição inicial de aposentadoria por invalidez."*
+
+**N — Narrativa (fatos):**
+Forneça todos os fatos relevantes — o Claude não é vidente: *"Cliente: João, 52 anos, pedreiro, hérnia de disco L4-L5, CID M51.1, 25 anos CLT."*
+
+**T — Tom e formato:**
+Especifique estilo, estrutura e formatação: *"Formal e direto. Parágrafos de 5 linhas. Inclua tutela antecipada."*
+
+**E — Exclusões:**
+Diga o que NÃO quer — evita erros comuns: *"Não invente jurisprudência. Marque com [VERIFICAR] quando tiver dúvida."*
+
+**X — Exemplo (quando tiver):**
+Anexe um modelo de referência: *"Siga o estilo da petição que estou anexando como referência."*
+
+**T — Transformação iterativa:**
+Refine após a primeira resposta: *"Reforce o argumento sobre impossibilidade de reabilitação. Adicione pedido alternativo de auxílio-doença."*`,
+        prompt: `Você é um advogado [ESPECIALIDADE] com 15 anos de experiência, atuando no [TRIBUNAL/REGIÃO].
+
+<caso>
+[DESCREVA TODOS OS FATOS: partes, datas, valores, documentos relevantes]
+</caso>
+
+<tarefa>
+Elabore [TIPO DE PEÇA] com a seguinte estrutura:
+1. Endereçamento e qualificação
+2. Dos fatos (cronológico)
+3. Do direito (fundamente com legislação e jurisprudência)
+4. Da tutela de urgência (se aplicável)
+5. Dos pedidos (principal + alternativos)
+6. Do valor da causa
+</tarefa>
+
+<formato>
+- Linguagem formal e direta, sem rebuscamento
+- Parágrafos de no máximo 5 linhas
+- Priorize argumentos mais fortes primeiro
+- Máximo [X] páginas
+</formato>
+
+<restricoes>
+- Cite apenas jurisprudência que tenha certeza que existe
+- Marque com [VERIFICAR] qualquer precedente duvidoso
+- Não use latinismos desnecessários
+</restricoes>`,
+        steps: [
+          'Defina o CARGO: especialidade e experiência do advogado virtual',
+          'Especifique o OBJETIVO: tipo exato de peça ou análise',
+          'Forneça a NARRATIVA: todos os fatos, datas, valores e documentos',
+          'Determine o TOM: estilo de escrita e formatação desejada',
+          'Liste as EXCLUSÕES: o que não quer no resultado',
+          'Anexe EXEMPLO: modelo de referência (quando tiver)',
+          'Planeje a TRANSFORMAÇÃO: como vai refinar o resultado',
+        ],
+        tips: [
+          'Use tags XML (<caso>, <tarefa>, <formato>) para organizar prompts complexos',
+          'Quanto mais fatos você fornecer, menos o Claude precisa inferir',
+          'O CONTEXTO completo transforma rascunhos genéricos em peças quase prontas para protocolar',
+          'Adapte o framework: nem toda tarefa precisa de todos os 7 elementos',
+        ],
+        flowSteps: [
+          { title: 'Pedido Raso', description: '"Faça uma petição de aposentadoria por invalidez" → Resultado genérico e medíocre' },
+          { title: 'Com CONTEXTO', description: 'Todos os 7 elementos → Resultado profissional quase pronto para protocolar' },
+          { title: 'Diferença Prática', description: 'Sem CONTEXTO: 6-8h de trabalho | Com CONTEXTO: 1,5-2,5h (incluindo revisão)' },
+        ],
+      },
+      {
+        title: 'Técnicas Expert de Prompt Jurídico',
+        subtitle: 'XML, Chain of Thought, iteração e refinamento profissional',
+        level: 'avancado',
+        icon: 'layers',
+        analogy: {
+          tag: 'Nível Profissional',
+          text: 'Se o Framework CONTEXTO é o **briefing do caso**, as técnicas avançadas são as **habilidades de argumentação** — chain of thought é a exposição lógica, XML é a formatação processual, iteração é a revisão de pares. Juntas, elevam qualquer prompt ao nível de um escritório de ponta.',
+        },
+        content: `Quatro técnicas avançadas que os melhores escritórios usam para extrair resultados extraordinários do Claude:
+
+**Técnica 1 — Tags XML para Pedidos Complexos:**
+Quando o prompt tem muitas partes, use tags XML para separar seções. O Claude foi treinado para responder excepcionalmente bem a essa estruturação:
+
+\`<caso>\` → Fatos do cliente e do processo
+\`<tarefa>\` → O que você quer que ele faça
+\`<formato>\` → Estilo, estrutura e formatação
+\`<restricoes>\` → Limites e proibições
+
+**Técnica 2 — Cadeia de Pensamento (Chain of Thought):**
+Para análises complexas, force o Claude a raciocinar ANTES de escrever: *"Antes de redigir, analise: (1) fatos juridicamente relevantes, (2) teses aplicáveis, (3) riscos e contra-argumentos, (4) estratégia processual. Só depois redija."*
+
+**Técnica 3 — Iteração Inteligente (4 Rodadas):**
+O primeiro resultado raramente é o melhor. Use refinamento progressivo:
+→ Rodada 1: Gere o rascunho completo
+→ Rodada 2: Reforce argumentos fracos
+→ Rodada 3: Revise como advogado da parte contrária
+→ Rodada 4: Versão final com gramática e coesão
+
+**Técnica 4 — Análise de Vulnerabilidades:**
+Peça ao Claude: *"Releia toda a petição como se fosse o advogado da parte contrária. Identifique os 3 pontos mais vulneráveis e sugira como fortalecê-los."*`,
+        prompt: `[TÉCNICA: ITERAÇÃO EM 4 RODADAS]
+
+RODADA 1 — Rascunho:
+"Elabore a petição com base nos fatos fornecidos."
+
+RODADA 2 — Reforço:
+"O argumento do tópico 3 está fraco. Reforce com fundamentação constitucional e adicione precedente do STJ."
+
+RODADA 3 — Stress-test:
+"Releia como advogado da parte contrária. Identifique os 3 pontos mais vulneráveis e sugira como fortalecê-los."
+
+RODADA 4 — Finalização:
+"Faça a versão final incorporando todas as melhorias. Revise gramática, coesão e formatação."`,
+        tips: [
+          'Tags XML funcionam melhor que markdown para prompts com múltiplas seções',
+          'Chain of Thought melhora drasticamente análises de viabilidade e pareceres',
+          'A rodada 3 (advogado contrário) é a mais valiosa — revela falhas invisíveis',
+          'Combine as 4 técnicas: XML + CoT + Iteração para peças de alta complexidade',
+        ],
+        commandList: [
+          { command: '<caso>...</caso>', description: 'Delimita os fatos e contexto do processo' },
+          { command: '<tarefa>...</tarefa>', description: 'Define exatamente o que o Claude deve fazer' },
+          { command: '<formato>...</formato>', description: 'Especifica estilo, estrutura e restrições visuais' },
+          { command: '<restricoes>...</restricoes>', description: 'Lista o que NÃO deve aparecer no resultado' },
+          { command: '<exemplo>...</exemplo>', description: 'Fornece modelo de referência para o Claude seguir' },
+          { command: '<contexto>...</contexto>', description: 'Informações de background e legislação aplicável' },
+        ],
+      },
+      {
+        title: 'Biblioteca de Prompts Jurídicos',
+        subtitle: '6 prompts profissionais prontos para copiar e usar',
+        level: 'intermediario',
+        icon: 'book-open',
+        analogy: {
+          tag: 'Formulários Inteligentes',
+          text: 'Assim como todo escritório tem **modelos de petição** no armário, sua Biblioteca de Prompts é o armário digital — templates testados que você adapta em segundos. A diferença: estes prompts já incluem o Framework CONTEXTO, então os resultados são consistentemente profissionais.',
+        },
+        content: `Coleção de prompts profissionais testados e otimizados para as tarefas mais comuns na advocacia. Cada prompt já segue o Framework CONTEXTO e pode ser adaptado em segundos.
+
+**1. Petição Inicial Universal:**
+Use para qualquer área do direito. Estrutura completa com endereçamento, qualificação, fatos, direito, tutela, pedidos e valor da causa. Marque com [VERIFICAR] jurisprudência duvidosa.
+
+**2. Análise de Contrato:**
+Parecer consultivo completo com resumo executivo, cláusulas de risco (alto/médio/baixo), cláusulas abusivas (CDC/CC), pontos omissos e recomendações de renegociação.
+
+**3. Recurso (qualquer tipo):**
+Identifica pontos atacáveis, desenvolve fundamentação, cita precedentes e antecipa contra-argumentos. Formato: cabimento, tempestividade, preparo e razões.
+
+**4. E-mail ao Cliente:**
+Comunicação profissional e acolhedora. Sem jargão (ou com explicação). Máximo 3 parágrafos. Sempre termina com próximos passos.
+
+**5. Análise de Viabilidade:**
+Parecer objetivo: viável/parcialmente/inviável. Fundamentos, jurisprudência, contra-argumentos, riscos, estimativa de valor e recomendação estratégica.
+
+**6. Carrossel para Instagram:**
+Conteúdo educativo seguindo diretrizes OAB. Gancho provocativo, desenvolvimento prático, CTA natural. 8-10 slides com título + 3-4 linhas cada.`,
+        prompt: `[PROMPT 2 — ANÁLISE DE CONTRATO]
+
+Analise o contrato anexo e entregue um parecer consultivo com:
+
+1. RESUMO EXECUTIVO (5 linhas máximo)
+2. PARTES E OBJETO
+3. CLÁUSULAS DE RISCO
+   - Risco Alto (detalhe e explique por que)
+   - Risco Médio
+   - Risco Baixo
+4. CLÁUSULAS ABUSIVAS (fundamente com CDC/CC)
+5. PONTOS OMISSOS (cláusulas que deveriam constar)
+6. RECOMENDAÇÕES PRÁTICAS (o que renegociar e como)
+
+Tom: consultivo, acessível para o cliente leigo.
+
+[PROMPT 5 — VIABILIDADE DE TESE]
+
+Analise a viabilidade da seguinte tese: [descreva]
+
+Entregue:
+1. PARECER (favorável/parcialmente favorável/desfavorável)
+2. FUNDAMENTOS LEGAIS mais fortes
+3. JURISPRUDÊNCIA favorável (com ressalva [VERIFICAR])
+4. CONTRA-ARGUMENTOS e como respondê-los
+5. RISCOS PROCESSUAIS (incluindo sucumbência)
+6. ESTIMATIVA DE VALOR
+7. RECOMENDAÇÃO ESTRATÉGICA
+
+Seja honesto. Se a tese for fraca, diga claramente.`,
+        tips: [
+          'Adapte os prompts para sua área — mude a especialidade, legislação e tribunais',
+          'Salve seus prompts adaptados como Skills para uso automático',
+          'Combine prompts: use o de viabilidade ANTES do de petição para casos novos',
+          'Itere: o primeiro resultado é rascunho — refine com as técnicas de iteração',
+        ],
+        elementGrid: [
+          { icon: 'file-text', name: 'Petição Universal', description: 'Qualquer área do direito', whenToUse: 'Petições iniciais, contestações, réplicas' },
+          { icon: 'file-check', name: 'Análise Contratual', description: 'Parecer consultivo completo', whenToUse: 'Revisão de contratos, due diligence' },
+          { icon: 'scale', name: 'Recurso', description: 'Pontos atacáveis + fundamentação', whenToUse: 'Apelações, agravos, REsp' },
+          { icon: 'mail', name: 'E-mail ao Cliente', description: 'Profissional e acolhedor', whenToUse: 'Atualizações, orientações, cobranças' },
+          { icon: 'target', name: 'Viabilidade', description: 'Parecer objetivo e honesto', whenToUse: 'Antes de aceitar novo caso' },
+          { icon: 'trending-up', name: 'Instagram', description: 'Carrossel educativo OAB', whenToUse: 'Marketing de conteúdo semanal' },
+        ],
+      },
+      {
         title: 'Projetos',
         subtitle: 'Pastas de trabalho inteligentes',
         level: 'intermediario',
@@ -2047,6 +2259,200 @@ GERE OS SEGUINTES DOCUMENTOS:
         ],
       },
       {
+        title: 'Fluxo: Do Cliente à Petição em 10 Passos',
+        subtitle: 'Workflow completo: da reunião inicial ao protocolo no PJe',
+        level: 'intermediario',
+        icon: 'git-branch',
+        analogy: {
+          tag: 'Linha de Produção Jurídica',
+          text: 'Pense numa **linha de montagem** onde cada etapa agrega valor: a reunião vira transcrição, a transcrição vira fatos organizados, os fatos viram tese, a tese vira petição, a petição vira peça revisada e protocolar. O Claude é o operário eficiente em cada estação.',
+        },
+        content: `Workflow completo que transforma uma reunião com cliente em petição pronta para protocolar. Cada etapa usa o Claude de forma otimizada.
+
+**Tempo sem Claude:** 6-8 horas
+**Tempo com Claude:** 1,5-2,5 horas (incluindo revisão humana obrigatória)
+
+**Etapa 1 — Reunião com Cliente:**
+Grave a reunião (Fathom, gravador do celular ou notas). Capture tudo: fatos, datas, valores, documentos mencionados.
+
+**Etapa 2 — Transcrição:**
+Cole áudio/notas no Claude: *"Transcreva e organize os pontos principais da reunião."*
+
+**Etapa 3 — Organização dos Fatos:**
+*"Organize em tópicos os fatos juridicamente relevantes, separando: fatos incontroversos, fatos a provar e documentos necessários."*
+
+**Etapa 4 — Análise Estratégica:**
+*"Qual a melhor tese? Quais os fundamentos legais mais fortes? Quais os riscos?"*
+
+**Etapa 5 — Rascunho da Petição:**
+Use o Framework CONTEXTO para gerar a primeira versão completa.
+
+**Etapa 6 — Refinamento:**
+*"Reforce o argumento X. Adicione pedido alternativo Y. Melhore a fundamentação do tópico Z."*
+
+**Etapa 7 — Stress-test:**
+*"Releia como advogado da parte contrária. Identifique vulnerabilidades e sugira correções."*
+
+**Etapa 8 — Verificação de Jurisprudência:**
+Confirme TODA jurisprudência citada nos sites oficiais (STJ, TST, TRFs). Esta etapa é **inegociável**.
+
+**Etapa 9 — Formatação Final:**
+Ajuste no Word: cabeçalho, rodapé, procuração, documentos anexos. Revisão ortográfica final.
+
+**Etapa 10 — Protocolo:**
+Protocole no PJe/eSAJ/PROJUDI. Confira classe, competência e documentos.`,
+        flowSteps: [
+          { title: '1. Reunião', description: 'Grave e capture todos os fatos do cliente' },
+          { title: '2. Transcrição', description: 'Claude organiza áudio/notas em texto estruturado' },
+          { title: '3. Fatos', description: 'Separa fatos relevantes, a provar e documentos' },
+          { title: '4. Estratégia', description: 'Análise de tese, fundamentos e riscos' },
+          { title: '5. Rascunho', description: 'Petição completa via Framework CONTEXTO' },
+          { title: '6. Refinar', description: 'Reforce argumentos e adicione pedidos' },
+          { title: '7. Stress-test', description: 'Revisão como advogado contrário' },
+          { title: '8. Verificar', description: 'Confirme jurisprudência nos sites oficiais' },
+          { title: '9. Formatar', description: 'Ajuste final no Word + documentos' },
+          { title: '10. Protocolar', description: 'PJe/eSAJ com conferência final' },
+        ],
+        tips: [
+          'A etapa 8 (verificação) é OBRIGATÓRIA — nunca pule essa etapa',
+          'Use Projetos: crie um projeto por caso com todos os documentos',
+          'As etapas 3 a 7 podem ser feitas na mesma conversa do Claude',
+          'Salve o prompt da etapa 5 como Skill para reutilizar em casos similares',
+        ],
+      },
+      {
+        title: 'Análise de Viabilidade de Tese',
+        subtitle: 'Avaliação estratégica antes de aceitar o caso',
+        level: 'avancado',
+        icon: 'target',
+        analogy: {
+          tag: 'Due Diligence do Caso',
+          text: 'Assim como um investidor faz due diligence antes de investir, o advogado estratégico faz **análise de viabilidade** antes de aceitar um caso. O Claude é o analista que monta o relatório de risco em minutos, não em dias.',
+        },
+        content: `Antes de aceitar qualquer caso, faça uma análise de viabilidade completa com o Claude. Isso evita investir horas em teses frágeis e permite cobrar honorários proporcionais ao risco real.
+
+**O que a análise entrega:**
+
+| Elemento | O que avalia |
+|----------|-------------|
+| **Parecer de viabilidade** | Favorável, parcialmente favorável ou desfavorável |
+| **Fundamentos legais** | Legislação aplicável + força de cada fundamento |
+| **Jurisprudência** | Precedentes favoráveis e contrários (com [VERIFICAR]) |
+| **Contra-argumentos** | O que a parte contrária vai alegar + como responder |
+| **Riscos processuais** | Sucumbência, honorários, prescrição, decadência |
+| **Estimativa de valor** | Proveito econômico estimado para o cliente |
+| **Recomendação** | Estratégia processual completa ou recusa fundamentada |
+
+**Quando usar:**
+→ Novo cliente com caso complexo
+→ Tese inovadora ou controversa
+→ Caso com alto risco financeiro
+→ Litígios de grande valor
+→ Antes de propor honorários
+
+**Fluxo prático:**
+1. Descreva o caso resumidamente ao Claude
+2. Peça análise completa com 7 elementos
+3. Se favorável: peça estratégia processual
+4. Se desfavorável: explique ao cliente com fundamentos`,
+        prompt: `Você é um consultor jurídico estratégico com vasta experiência.
+
+Analise a viabilidade da seguinte tese:
+[DESCREVA O CASO: fatos, partes, valores, documentos disponíveis]
+
+Entregue uma análise completa com:
+
+1. PARECER DE VIABILIDADE (favorável / parcialmente favorável / desfavorável)
+2. FUNDAMENTOS LEGAIS mais fortes (com artigos específicos)
+3. JURISPRUDÊNCIA favorável (marque com [VERIFICAR] se não tiver certeza)
+4. CONTRA-ARGUMENTOS previsíveis e como respondê-los
+5. RISCOS PROCESSUAIS (sucumbência, prescrição, provas)
+6. ESTIMATIVA DE VALOR (proveito econômico do cliente)
+7. RECOMENDAÇÃO ESTRATÉGICA (aceitar ou não, e por quê)
+
+Seja absolutamente honesto. Se a tese for fraca, diga claramente e explique por quê. Prefiro saber agora do que descobrir na sentença.`,
+        tips: [
+          'Faça SEMPRE antes de aceitar casos de alto valor — pode evitar prejuízos',
+          'Peça honestidade: "Se a tese for fraca, diga claramente" melhora a qualidade',
+          'Use como base para definir honorários: teses mais arriscadas justificam valores maiores',
+          'Combine com Skill de Estratégia de Caso para análise ainda mais profunda',
+        ],
+      },
+      {
+        title: 'Marketing Jurídico Ético com Claude',
+        subtitle: 'Conteúdo profissional para redes sociais dentro das regras da OAB',
+        level: 'intermediario',
+        icon: 'trending-up',
+        analogy: {
+          tag: 'Assessoria de Imprensa Digital',
+          text: 'O Claude funciona como uma **assessoria de imprensa digital** do seu escritório — produz conteúdo educativo, respeitando as diretrizes da OAB, no tom certo para cada plataforma. Você revisa e publica. Produção semanal que antes levaria 4 horas sai em 30 minutos.',
+        },
+        content: `Produção de conteúdo jurídico para redes sociais usando o Claude, respeitando rigorosamente as diretrizes de publicidade da OAB (Provimento 205/2021).
+
+**Regras de ouro:**
+→ Foco em **educar sobre direitos**, nunca em captar clientes diretamente
+→ Tom **educativo e acessível**, sem ser informal demais
+→ Nunca prometa resultados ou use linguagem mercantil
+→ Sempre inclua ressalva: "Consulte um advogado para seu caso específico"
+
+**Fluxo de produção semanal:**
+
+| Dia | Atividade | Prompt |
+|-----|-----------|--------|
+| **Segunda** | Definir tema da semana | "Sugira 5 temas de [área] que geram engajamento e educam" |
+| **Terça** | Carrossel Instagram | "Crie carrossel de 8 slides sobre [tema]. Gancho no slide 1" |
+| **Quarta** | Roteiro Reels | "Adapte para roteiro de Reels de 45 segundos" |
+| **Quinta** | Post LinkedIn | "Crie thread profissional de 5 posts sobre o mesmo tema" |
+| **Sexta** | Legenda + Stories | "Crie legenda para feed + 3 stories com enquete" |
+
+**Formatos disponíveis:**
+→ **Carrossel Instagram** (8-10 slides): gancho + desenvolvimento + CTA
+→ **Roteiro Reels/TikTok** (30-60s): hook + explicação + chamada
+→ **Thread LinkedIn** (5-7 posts): insight + dados + conclusão
+→ **Legenda para Feed**: texto educativo + hashtags relevantes
+→ **Stories com Enquete**: interação + educação + engajamento`,
+        prompt: `Você é um especialista em marketing de conteúdo para advogados brasileiros.
+
+Crie um carrossel de 8 slides sobre [TEMA JURÍDICO] para Instagram.
+
+ESTRUTURA:
+- Slide 1: Gancho provocativo (pergunta ou afirmação impactante)
+- Slides 2-7: Desenvolvimento prático e educativo
+- Slide 8: Resumo + CTA natural
+
+REGRAS OBRIGATÓRIAS:
+- Tom educativo e acessível, sem ser informal
+- Cada slide: título curto (máx 6 palavras) + texto de 3-4 linhas
+- Foco em direitos que as pessoas não sabem que têm
+- Respeitar diretrizes OAB (sem captação direta, sem promessas)
+- Incluir no slide 8: "Consulte um advogado para seu caso específico"
+
+APÓS O CARROSSEL, crie também:
+1. Legenda completa com hashtags (máx 200 palavras)
+2. Roteiro de Reels de 45 segundos sobre o mesmo tema
+3. 3 sugestões de stories com enquete para engajamento`,
+        tips: [
+          'Crie um Project "Marketing Jurídico" com as regras OAB nas instruções',
+          'Produza conteúdo em lote: 1 hora de Claude = conteúdo para a semana toda',
+          'Peça variações: "Agora adapte para público empresarial" ou "para pessoas físicas"',
+          'Use Artifacts para gerar tabelas e infográficos diretamente no Claude',
+        ],
+        checklist: [
+          {
+            title: 'Antes de Publicar — Checklist OAB',
+            items: [
+              'Conteúdo é educativo, não mercantil',
+              'Não promete resultados nem captação direta',
+              'Tom profissional e acessível',
+              'Inclui ressalva sobre consulta individual',
+              'Não expõe dados de clientes ou processos',
+              'Não critica colegas ou instituições',
+              'Hashtags relevantes e profissionais',
+            ],
+          },
+        ],
+      },
+      {
         title: 'Automação Recorrente e Agendada',
         subtitle: 'Tarefas que o Claude executa sozinho, toda semana',
         level: 'avancado',
@@ -2224,6 +2630,257 @@ Instruções: "Sempre use a estrutura: I) Dos Fatos, II) Do Direito, III) Dos Pe
           'Copie e adapte esses templates para suas necessidades',
           'Combine Skills: tenha um geral (formato) + um por área (legislação)',
           'Mantenha os Skills atualizados com novas legislações e súmulas',
+        ],
+      },
+      {
+        title: 'Skill de Petição Universal',
+        subtitle: 'Template de Skill que funciona para qualquer área do direito',
+        level: 'intermediario',
+        icon: 'file-text',
+        analogy: {
+          tag: 'Formulário Mestre',
+          text: 'Imagine um **formulário inteligente** que se adapta sozinho: você preenche os dados do caso e ele gera a petição na estrutura correta, com a legislação certa, no formato do tribunal. O Skill de Petição Universal faz exatamente isso — é o modelo que gera todos os outros.',
+        },
+        content: `Skill pronto para usar que transforma qualquer briefing de caso em petição profissional. Funciona para todas as áreas do direito — basta fornecer os dados.
+
+**Por que criar este Skill:**
+→ Toda petição sua sai no mesmo padrão de qualidade
+→ Estagiários e associados produzem no seu nível
+→ Elimina o "branco" diante da página vazia
+→ Jurisprudência é marcada com nível de confiança
+
+**Como usar:** Crie um arquivo \`.md\` com o conteúdo abaixo e adicione como Skill no Claude. Toda vez que pedir uma petição, o Claude seguirá automaticamente.
+
+**Estrutura do Skill:**
+
+\`\`\`
+IDENTIDADE:
+Advogado [especialidade] com 15 anos de experiência no [tribunal].
+
+ESTRUTURA OBRIGATÓRIA:
+1. Endereçamento (juízo competente)
+2. Qualificação completa das partes
+3. Dos Fatos (cronológico, com referência a docs)
+4. Do Direito (legislação + jurisprudência)
+5. Da Tutela de Urgência (quando aplicável)
+6. Dos Pedidos (principal + alternativos)
+7. Do Valor da Causa
+8. Provas a produzir
+9. Encerramento
+
+REGRAS DE ESCRITA:
+- Parágrafos de no máximo 5 linhas
+- Priorize argumentos mais fortes primeiro
+- Conectivos lógicos entre seções
+- Linguagem formal e direta
+
+REGRA DE JURISPRUDÊNCIA:
+- Cite apenas decisões com alta confiança
+- Marque com [VERIFICAR] quando houver dúvida
+- Nunca invente números de processo ou relator
+- Prefira Súmulas e teses repetitivas
+\`\`\``,
+        prompt: `[SKILL DE PETIÇÃO UNIVERSAL — COPIE E SALVE COMO .md]
+
+IDENTIDADE:
+Você é um advogado [SUA ÁREA] com 15 anos de experiência, atuando no [SEU TRIBUNAL/REGIÃO].
+
+REGRAS DE ESCRITA:
+- Formato ABNT, Times New Roman 12, espaçamento 1,5
+- Parágrafos curtos (máximo 5 linhas)
+- Priorize argumentos mais fortes primeiro
+- Use conectivos lógicos para transição
+- Linguagem formal, mas direta
+
+REGRAS DE CONTEÚDO:
+- Toda petição: qualificação, fatos, direito, pedidos, valor da causa
+- Cite apenas jurisprudência com alta confiança
+- Quando não tiver certeza: "[VERIFICAR: possível precedente sobre X no STJ/TRF]"
+- Sempre inclua pedidos alternativos quando aplicável
+- Inclua tutela antecipada quando houver fundamento de urgência
+
+LEGISLAÇÃO BASE:
+[LISTE AS LEIS QUE VOCÊ MAIS USA]
+
+ESTILO DE REFERÊNCIA:
+[DESCREVA OU ANEXE UM MODELO DA SUA PETIÇÃO IDEAL]`,
+        steps: [
+          'Copie o template do prompt acima',
+          'Personalize: substitua [SUA ÁREA], [SEU TRIBUNAL], [LEGISLAÇÃO]',
+          'Salve como arquivo .md (ex: skill-peticao-universal.md)',
+          'No Claude: Configurações → Skills → Adicionar → Envie o arquivo',
+          'Teste: peça uma petição e veja o Claude seguir todas as regras',
+          'Ajuste: refine as instruções com base nos resultados',
+        ],
+        tips: [
+          'Crie variações por área: skill-peticao-trabalhista.md, skill-peticao-civel.md',
+          'Adicione seus modelos favoritos como exemplo de referência',
+          'Mantenha o Skill atualizado quando houver mudanças legislativas',
+          'Combine com o Skill de Visual Law para petições com design diferenciado',
+        ],
+      },
+      {
+        title: 'Skill de Comunicação com Cliente',
+        subtitle: 'E-mails, WhatsApp e atualizações profissionais automatizados',
+        level: 'intermediario',
+        icon: 'mail',
+        analogy: {
+          tag: 'Secretária Executiva Digital',
+          text: 'Este Skill transforma o Claude em uma **secretária executiva** que conhece o tom do escritório: profissional com clientes corporativos, acolhedora com pessoas físicas, técnica com colegas. Cada mensagem sai no tom certo, sem você pensar.',
+        },
+        content: `Skill que padroniza toda comunicação do escritório — e-mails, WhatsApp, atualizações de caso e orientações ao cliente. O Claude adapta automaticamente o tom conforme o contexto.
+
+**Quando usar:**
+→ E-mail de atualização do processo ao cliente
+→ Resposta de WhatsApp sobre dúvida do cliente
+→ Comunicação entre escritórios sobre caso conjunto
+→ Orientação ao cliente sobre documentos necessários
+→ Cobrança elegante de honorários
+
+**Canais e formatos:**
+
+| Canal | Tom | Limite |
+|-------|-----|--------|
+| **E-mail formal** | Profissional, técnico | Máximo 3 parágrafos |
+| **WhatsApp** | Acolhedor, direto | Máximo 5 linhas |
+| **Carta ao cliente** | Consultivo, explicativo | Máximo 1 página |
+| **E-mail entre advogados** | Técnico, objetivo | Sem limite definido |
+| **Cobrança** | Firme, mas cordial | Máximo 2 parágrafos |
+
+**Regras universais:**
+→ Nunca use jargão sem explicar ao cliente leigo
+→ Sempre termine com próximos passos claros
+→ Demonstre empatia com a situação do cliente
+→ Confirme prazos e datas relevantes
+→ Reforce que está acompanhando de perto`,
+        prompt: `[SKILL DE COMUNICAÇÃO — COPIE E SALVE COMO .md]
+
+IDENTIDADE:
+Você é o assistente de comunicação do escritório [NOME DO ESCRITÓRIO].
+
+REGRAS GERAIS:
+- Tom profissional, mas acolhedor e acessível
+- Nunca use jargão jurídico sem explicar
+- Sempre termine com próximos passos claros
+- Demonstre empatia com a situação do cliente
+- Confirme prazos e datas quando relevante
+
+FORMATOS POR CANAL:
+
+E-MAIL AO CLIENTE:
+- Máximo 3 parágrafos
+- Saudação pessoal (Prezado/a Sr/a [Nome])
+- Corpo: atualização + explicação em linguagem acessível
+- Encerramento: próximos passos + disponibilidade
+
+WHATSAPP:
+- Máximo 5 linhas
+- Saudação breve + informação direta
+- Confirme se o cliente entendeu
+
+COBRANÇA DE HONORÁRIOS:
+- Tom firme mas cordial
+- Relembre o serviço prestado
+- Apresente opções de pagamento
+- Nunca ameace — ofereça solução`,
+        tips: [
+          'Crie um Project por cliente e combine com este Skill para mensagens personalizadas',
+          'Para clientes corporativos, ajuste o tom para mais formal e técnico',
+          'Salve templates de e-mails recorrentes (atualização mensal, cobrança, orientação)',
+          'Peça ao Claude: "Adapte esta mensagem para WhatsApp" para converter entre canais',
+        ],
+        elementGrid: [
+          { icon: 'mail', name: 'E-mail Formal', description: 'Profissional e estruturado', whenToUse: 'Atualizações, pareceres, orientações' },
+          { icon: 'message-circle', name: 'WhatsApp', description: 'Direto e acolhedor', whenToUse: 'Respostas rápidas, lembretes' },
+          { icon: 'file-text', name: 'Carta ao Cliente', description: 'Consultivo e completo', whenToUse: 'Orientações detalhadas, termos' },
+          { icon: 'dollar-sign', name: 'Cobrança', description: 'Firme mas cordial', whenToUse: 'Honorários em atraso, parcelas' },
+        ],
+      },
+      {
+        title: 'Skill de Marketing Jurídico',
+        subtitle: 'Produção de conteúdo para redes sociais no padrão OAB',
+        level: 'intermediario',
+        icon: 'trending-up',
+        analogy: {
+          tag: 'Agência de Conteúdo Interna',
+          text: 'Ter este Skill é como ter uma **agência de marketing jurídico** dentro do Claude — ela conhece as regras da OAB, sabe o tom certo para cada rede social, e produz conteúdo da semana inteira em 30 minutos. Você só revisa e publica.',
+        },
+        content: `Skill que transforma o Claude em um produtor de conteúdo jurídico especializado. Toda produção respeita automaticamente as diretrizes de publicidade da OAB.
+
+**O que o Skill produz automaticamente:**
+→ Carrosseis para Instagram (8-10 slides)
+→ Roteiros para Reels/TikTok (30-60 segundos)
+→ Threads para LinkedIn (5-7 posts profissionais)
+→ Legendas para feed com hashtags otimizadas
+→ Stories com enquetes para engajamento
+
+**Regras embutidas no Skill:**
+→ Todo conteúdo respeita Provimento 205/2021 da OAB
+→ Foco educativo: ensinar direitos, não captar
+→ Sem promessas de resultados ou linguagem mercantil
+→ CTA natural: "Consulte um advogado para seu caso"
+→ Sem exposição de dados de clientes ou processos
+
+**Como configurar:**
+Crie o Skill com suas áreas de atuação, público-alvo preferencial e tom de comunicação. O Claude vai gerar conteúdo consistente toda semana.
+
+**Fluxo semanal:**
+Segunda: escolha o tema → Terça: carrossel → Quarta: reels → Quinta: LinkedIn → Sexta: stories`,
+        prompt: `[SKILL DE MARKETING JURÍDICO — COPIE E SALVE COMO .md]
+
+IDENTIDADE:
+Você é um especialista em marketing de conteúdo para advogados brasileiros.
+
+REGRAS OBRIGATÓRIAS:
+- Todo conteúdo respeita diretrizes de publicidade da OAB (Provimento 205/2021)
+- Tom: educativo, acessível, sem ser informal demais
+- Foco em educar sobre direitos, não captar clientes
+- Use ganchos que despertem curiosidade
+- Inclua CTA natural no final
+
+ÁREAS DE ATUAÇÃO:
+[LISTE SUAS ÁREAS: trabalhista, cível, família, etc.]
+
+PÚBLICO-ALVO:
+[DEFINA: empresários, trabalhadores, consumidores, etc.]
+
+FORMATOS DISPONÍVEIS:
+1. Carrossel Instagram (8-10 slides)
+   - Slide 1: gancho provocativo
+   - Slides 2-7: desenvolvimento prático
+   - Slide final: resumo + CTA
+
+2. Roteiro Reels (30-60 segundos)
+   - Hook nos 3 primeiros segundos
+   - Explicação clara e prática
+   - CTA: "Siga para mais dicas"
+
+3. Thread LinkedIn (5-7 posts)
+   - Post 1: insight ou dado impactante
+   - Posts 2-6: desenvolvimento profissional
+   - Post final: conclusão + engajamento
+
+4. Legenda Feed (máx 200 palavras)
+   - Texto educativo + hashtags relevantes
+
+PROIBIDO:
+- Promessas de resultados
+- Linguagem mercantil
+- Exposição de dados de clientes
+- Críticas a colegas ou instituições`,
+        tips: [
+          'Produza em lote: 1 hora com Claude = conteúdo da semana inteira',
+          'Peça "5 temas que geram engajamento em [sua área]" para nunca faltar pauta',
+          'Adapte: "Transforme este carrossel em roteiro de Reels de 45 segundos"',
+          'Use Artifacts para gerar tabelas e infográficos diretamente no Claude',
+        ],
+        steps: [
+          'Copie o template do Skill acima',
+          'Personalize com suas áreas e público-alvo',
+          'Salve como skill-marketing-juridico.md',
+          'Adicione como Skill no Claude',
+          'Teste: "Crie um carrossel sobre [tema]"',
+          'Ajuste o tom com base nos resultados até ficar no seu estilo',
         ],
       },
       {
@@ -3930,6 +4587,88 @@ Cada conversa começa limpa, sem carregar o histórico das anteriores.
 
 **5. Instruções Globais Otimizadas:**
 Mantenha seu Personalizar conciso. Informações demais no perfil global são carregadas em CADA conversa. Mova detalhes específicos para Skills ou instruções de Projeto.`,
+      },
+      {
+        title: 'Anti-Alucinação: Blindagem do Advogado',
+        subtitle: 'Técnicas para eliminar jurisprudência fabricada e informações inventadas',
+        level: 'intermediario',
+        icon: 'shield',
+        analogy: {
+          tag: 'Controle de Qualidade',
+          text: 'Toda fábrica tem controle de qualidade na saída da linha de produção. Na advocacia com IA, o controle de qualidade é a **verificação anti-alucinação** — um conjunto de técnicas que impede que jurisprudência fabricada, artigos inexistentes ou dados inventados cheguem à sua petição.',
+        },
+        content: `O maior risco no uso de IA para advocacia é a fabricação de informações — especialmente jurisprudência que parece real mas não existe. Advogados já foram sancionados por apresentar citações fabricadas por IA. Estas técnicas eliminam esse risco.
+
+**Nível 1 — Instrução Preventiva (coloque no Skill/Project):**
+
+\`\`\`
+REGRA ABSOLUTA SOBRE JURISPRUDÊNCIA:
+- Cite apenas decisões com alta confiança
+- Para cada citação, indique: [ALTA], [MÉDIA] ou [VERIFICAR]
+- Nunca invente números de processo, relatores ou datas
+- Se não encontrar precedente: "Não localizei precedente específico. Recomendo busca nos sistemas oficiais."
+- Prefira Súmulas e teses repetitivas a decisões monocráticas
+\`\`\`
+
+**Nível 2 — Verificação Pós-Geração:**
+Após gerar a peça, peça: *"Liste todas as jurisprudências e referências legais citadas. Para cada uma, indique se tem certeza de que existe ou se é inferência."*
+
+**Nível 3 — Conferência nos Sistemas Oficiais:**
+SEMPRE verifique nos sites do STJ, TST, TRFs antes de protocolar. A verificação final é responsabilidade intransferível do advogado.
+
+**Nível 4 — Auditoria de Legislação:**
+Peça ao Claude: *"Verifique se todos os artigos de lei citados estão vigentes e com a redação atual. Algum foi revogado ou alterado?"*
+
+**O que o Claude pode fabricar (e você deve conferir):**
+→ Números de processo e REsp/RE
+→ Nomes de relatores e datas de julgamento
+→ Artigos de lei com redação incorreta
+→ Súmulas que "parecem" existir mas não existem
+→ Dados estatísticos e percentuais`,
+        prompt: `[INSTRUÇÃO ANTI-ALUCINAÇÃO — ADICIONE AO SEU SKILL OU PROJECT]
+
+REGRA ABSOLUTA SOBRE JURISPRUDÊNCIA:
+- Cite apenas decisões que tenha alta confiança de que existem
+- Para cada jurisprudência, classifique:
+  [ALTA] = Súmulas, teses repetitivas, decisões notórias
+  [MÉDIA] = Padrão jurisprudencial provável
+  [VERIFICAR] = Não tenho certeza — recomendo busca nos sistemas oficiais
+- Nunca invente números de processos, relatores ou datas de julgamento
+- Se não encontrar jurisprudência específica, diga: "Não localizei precedente específico. Recomendo busca no [tribunal]."
+- Prefira citar Súmulas e teses firmadas em repetitivos/IRDR a decisões monocráticas
+
+[APÓS GERAR QUALQUER PEÇA, EXECUTE:]
+"Liste todas as jurisprudências e referências legais citadas. Para cada uma, indique seu nível de confiança e se recomenda verificação."`,
+        tips: [
+          'Coloque a instrução anti-alucinação em TODOS os seus Projects e Skills',
+          'A regra "prefira Súmulas" reduz drasticamente o risco de fabricação',
+          'Peça confiança explícita: "[ALTA], [MÉDIA] ou [VERIFICAR]" para cada citação',
+          'Nunca pule a conferência nos sites oficiais — é sua responsabilidade profissional',
+          'O Claude é excelente para rascunhos e argumentação, mas a verificação é SUA',
+        ],
+        checklist: [
+          {
+            title: 'Antes de Protocolar — Verificação Obrigatória',
+            items: [
+              'Toda jurisprudência conferida nos sites oficiais (STJ/TST/TRFs)',
+              'Artigos de lei verificados quanto à vigência e redação atual',
+              'Números de processo e REsp/RE confirmados',
+              'Nomes de relatores e datas de julgamento conferidos',
+              'Dados estatísticos verificados em fontes oficiais',
+              'Súmulas e teses repetitivas confirmadas',
+              'Legislação revogada ou alterada identificada e corrigida',
+            ],
+          },
+        ],
+        relationship: {
+          title: 'Hierarquia de Confiança — O que Confiar vs Verificar',
+          items: [
+            { label: 'Estrutura e Argumentação', value: 'Alta Confiança', sub: 'O Claude é excelente em construir argumentos lógicos', highlight: true },
+            { label: 'Legislação Conhecida', value: 'Média-Alta', sub: 'Leis mais conhecidas geralmente estão corretas' },
+            { label: 'Jurisprudência Específica', value: 'Baixa — SEMPRE VERIFICAR', sub: 'Números, relatores e datas podem ser fabricados', highlight: true },
+            { label: 'Dados Estatísticos', value: 'Baixa', sub: 'Percentuais e valores devem ser conferidos em fontes oficiais' },
+          ],
+        },
       },
       {
         title: 'Ética e IA na Advocacia: OAB e CNJ',
