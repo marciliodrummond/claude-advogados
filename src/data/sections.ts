@@ -109,7 +109,7 @@ Cada ferramenta do Claude traduzida para a linguagem do seu escritório. Sem ter
         ],
         links: [
           { label: 'Acessar Claude.ai', url: 'https://claude.ai' },
-          { label: 'Página de Preços', url: 'https://claude.ai/pricing' },
+          { label: 'Página de Preços', url: 'https://claude.com/pricing' },
         ],
       },
       {
@@ -136,7 +136,7 @@ Cada ferramenta do Claude traduzida para a linguagem do seu escritório. Sem ter
           'Para escritórios: Team tem administração centralizada e controles de segurança',
         ],
         links: [
-          { label: 'Ver Planos e Preços', url: 'https://claude.ai/pricing' },
+          { label: 'Ver Planos e Preços', url: 'https://claude.com/pricing' },
         ],
       },
       {
@@ -2048,34 +2048,504 @@ DocuSign acessa contrato pendente → Cowork analisa cláusula por cláusula →
       },
       {
         title: 'Criando Automações com MCP',
-        subtitle: 'Para quem tem suporte técnico',
+        subtitle: 'Visão geral e arquitetura',
         level: 'expert',
         icon: 'key-round',
         analogy: {
-          text: 'Imagine conectar o Claude **diretamente ao PJe, ao sistema do escritório e aos diários oficiais**. MCPs personalizados são como construir uma passarela privada entre o Claude e seus sistemas internos.',
+          text: 'Um MCP é como instalar um **ramal telefônico direto** entre o Claude e os sistemas do Judiciário. Em vez de copiar e colar dados do PJe, o Claude consulta diretamente — como se tivesse um funcionário dedicado fazendo buscas para você em tempo real.',
         },
-        content: `Se você tem suporte de TI ou é tech-savvy, MCPs personalizados abrem possibilidades únicas:
+        content: `MCPs (Model Context Protocol) permitem que o Claude acesse APIs externas como se fossem ferramentas nativas. Para advogados, isso significa conectar o Claude diretamente aos sistemas do Judiciário brasileiro.
 
-**MCP para Sistema Jurídico:**
-Conecte o Claude diretamente ao seu sistema de gestão de processos (ProjuriS, Astrea, GOJUR, SAJ). O Claude consulta andamentos, prazos e dados processuais sem sair da conversa.
+**O que você vai construir:**
 
-**MCP para Base de Jurisprudência:**
-Crie um MCP que acessa uma base local de jurisprudência curada pelo escritório. O Claude pesquisa nessa base privada com mais precisão que em fontes públicas.
+| Categoria | Ferramentas | API Utilizada |
+|-----------|------------|---------------|
+| 🔍 **Consulta** | buscar_processo, buscar_por_parte, listar_documentos, listar_movimentacoes | DataJud (CNJ) + MNI PJE |
+| 📊 **Análise** | analisar_processo, analisar_decisao, cronologia_detalhada, argumentos_por_polo | DataJud + IA do Claude |
+| 📋 **Produção** | parecer_juridico, analise_risco, extrair_pedidos, identificar_prazos | Processamento com IA |
 
-**MCP para Diários Oficiais:**
-Configure monitoramento automático de publicações. O Claude verifica diariamente e gera alertas para intimações e publicações relevantes.
+**APIs Públicas que vamos usar:**
 
-**Como começar:**
-1. Use o Claude Code para criar o MCP
-2. Descreva: "Preciso de um MCP que conecte ao sistema X"
-3. O Claude gera o código e configuração
-4. Teste e ajuste conforme necessário
+| API | Acesso | O que faz |
+|-----|--------|-----------|
+| **DataJud (CNJ)** | Público (API Key gratuita) | Metadados de processos de todos os tribunais |
+| **Comunica PJE** | Institucional (via tribunal) | Comunicações processuais (intimações, citações) |
+| **MNI PJE** | Institucional (via tribunal) | Consulta e peticionamento em processos |
+| **Pangea/BNP** | Institucional (via CNJ) | Jurisprudência qualificada (precedentes, repetitivos) |
 
-**Atenção:** MCPs acessam sistemas — sempre avalie segurança e confidencialidade.`,
+**Pré-requisitos:**
+- Claude Code instalado (npm, Node.js 18+)
+- Conta no plano Pro ou superior
+- Conhecimento básico de terminal (copiar e colar comandos)
+- Para APIs institucionais: credenciais obtidas via tribunal
+
+**Estrutura de um MCP jurídico:**
+Todo MCP que vamos criar segue a mesma arquitetura simples: um servidor Node.js que recebe pedidos do Claude, consulta a API do tribunal e devolve os dados formatados.`,
         tips: [
-          'MCPs são a fronteira mais avançada do ecossistema Claude',
-          'Para a maioria dos advogados, conectores + plugins são suficientes',
-          'Se investir em MCPs, comece pelo que dá mais retorno: sistema de gestão processual',
+          'Comece pelo MCP do DataJud — é 100% público e gratuito, sem burocracia',
+          'Você não precisa saber programar: o Claude Code gera todo o código para você',
+          'MCPs rodam localmente no seu computador — seus dados não passam por terceiros',
+          'Sempre teste com um processo público antes de usar com processos de clientes',
+        ],
+        flowSteps: [
+          { title: '1. Descrever', description: 'Você diz ao Claude Code o que quer conectar' },
+          { title: '2. Gerar', description: 'O Claude cria o código do MCP automaticamente' },
+          { title: '3. Configurar', description: 'Adicionar o MCP ao Claude Desktop' },
+          { title: '4. Usar', description: 'O Claude agora tem acesso direto à API' },
+        ],
+      },
+      {
+        title: 'MCP DataJud — Consulta Processual',
+        subtitle: 'Passo a passo completo com API pública do CNJ',
+        level: 'expert',
+        icon: 'search',
+        analogy: {
+          text: 'O DataJud é como ter acesso à **recepção de todos os 90+ tribunais do Brasil ao mesmo tempo**. Você pergunta sobre um processo e recebe a resposta instantaneamente — sem precisar entrar em cada site separadamente.',
+        },
+        content: `O DataJud é a API mais acessível para advogados: é **100% pública, gratuita e não precisa de cadastro**. Veja como criar seu MCP passo a passo:
+
+**Passo 1 — Abra o Claude Code e peça para criar o MCP:**
+
+No terminal, abra o Claude Code e cole este prompt:
+
+\`\`\`
+Crie um MCP Server em Node.js/TypeScript chamado "mcp-datajud"
+que conecta à API pública do DataJud do CNJ.
+
+Base URL: https://api-publica.datajud.cnj.jus.br/
+Auth: Header "Authorization: APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw=="
+
+Crie estas ferramentas:
+
+1. buscar_processo(numero_cnj, tribunal)
+   - POST em /{tribunal_alias}/_search
+   - Query: { "query": { "match": { "numeroProcesso": "{numero_sem_pontuacao}" } } }
+   - tribunal_alias exemplo: "api_publica_tjsp", "api_publica_trf1"
+   - Retornar: classe, assuntos, órgão julgador, últimas movimentações
+
+2. buscar_por_parte(nome_parte, tribunal)
+   - POST em /{tribunal_alias}/_search
+   - Query usando match em campo de partes
+   - Retornar lista de processos encontrados
+
+3. listar_movimentacoes(numero_cnj, tribunal)
+   - Mesma consulta do buscar_processo
+   - Retornar apenas o array de movimentos, formatado como timeline
+
+4. analisar_processo(numero_cnj, tribunal)
+   - Busca os dados via buscar_processo
+   - Retorna análise estruturada: resumo, status atual,
+     próximos passos prováveis, pontos de atenção
+
+Use o SDK @modelcontextprotocol/sdk para criar o server.
+Formato de saída: JSON formatado e legível.
+\`\`\`
+
+**Passo 2 — O Claude Code vai gerar os arquivos:**
+
+Ele criará automaticamente:
+- \`package.json\` com dependências
+- \`src/index.ts\` com o servidor MCP
+- Ferramentas de consulta ao DataJud
+
+**Passo 3 — Instale e compile:**
+
+\`\`\`bash
+cd mcp-datajud
+npm install
+npm run build
+\`\`\`
+
+**Passo 4 — Configure no Claude Desktop:**
+
+Abra as configurações do Claude Desktop → MCP Servers e adicione:
+
+\`\`\`json
+{
+  "mcpServers": {
+    "datajud": {
+      "command": "node",
+      "args": ["C:/caminho/para/mcp-datajud/dist/index.js"]
+    }
+  }
+}
+\`\`\`
+
+**Passo 5 — Teste com um processo público:**
+
+Reinicie o Claude Desktop e pergunte:
+- *"Busque o processo 0000832-35.2018.4.01.3202 no TRF1"*
+- *"Quais as últimas movimentações desse processo?"*
+- *"Faça uma análise completa deste processo"*
+
+**Tribunais disponíveis (88+):**
+
+| Sigla | Alias da API | Exemplo |
+|-------|-------------|---------|
+| TJSP | api_publica_tjsp | Tribunal de Justiça de São Paulo |
+| TJRJ | api_publica_tjrj | Tribunal de Justiça do Rio de Janeiro |
+| TRF1 | api_publica_trf1 | Tribunal Regional Federal 1ª Região |
+| TST | api_publica_tst | Tribunal Superior do Trabalho |
+| TRT2 | api_publica_trt2 | TRT da 2ª Região (SP) |
+| STJ | api_publica_stj | Superior Tribunal de Justiça |`,
+        tips: [
+          'A API Key do DataJud é pública e fornecida pelo próprio CNJ — não é senha pessoal',
+          'Use search_after para paginar resultados quando houver muitos processos',
+          'Comece testando com processos públicos conhecidos antes de usar em produção',
+          'O Claude Code gera 100% do código — você só precisa copiar o prompt acima',
+        ],
+        steps: [
+          'Abra o Claude Code no terminal (digite "claude" no terminal)',
+          'Cole o prompt do Passo 1 e aguarde o Claude gerar o projeto',
+          'Execute "npm install && npm run build" na pasta criada',
+          'Adicione a configuração JSON no Claude Desktop → Configurações → MCP',
+          'Reinicie o Claude Desktop e teste: "Busque o processo X no TJSP"',
+        ],
+        links: [
+          { label: 'Wiki DataJud — API Pública', url: 'https://datajud-wiki.cnj.jus.br/api-publica/' },
+          { label: 'Lista de Endpoints (Tribunais)', url: 'https://datajud-wiki.cnj.jus.br/api-publica/endpoints/' },
+        ],
+      },
+      {
+        title: 'MCP Jurisprudência — Pangea/BNP',
+        subtitle: 'Pesquisa de precedentes e jurisprudência qualificada',
+        level: 'expert',
+        icon: 'book-open',
+        analogy: {
+          text: 'O Pangea/BNP é como ter um **bibliotecário especializado em jurisprudência** disponível 24h. Ele conhece todos os precedentes vinculantes, recursos repetitivos e repercussões gerais — e entrega a pesquisa pronta para seu caso.',
+        },
+        content: `O Pangea/BNP (Banco Nacional de Precedentes) do CNJ centraliza jurisprudência qualificada de todos os tribunais. Com um MCP, o Claude pesquisa precedentes diretamente.
+
+**Acesso:** Requer credenciais institucionais (solicitar via integracaopdpj@cnj.jus.br). Se você trabalha em tribunal ou escritório conveniado, provavelmente já pode solicitar.
+
+**Passo 1 — Solicite acesso:**
+
+Envie e-mail para \`integracaopdpj@cnj.jus.br\` com:
+- Nome do escritório/instituição
+- Justificativa de uso (pesquisa jurisprudencial)
+- CPF do responsável técnico
+
+Você receberá um \`client_id\` e \`client_secret\`.
+
+**Passo 2 — Peça ao Claude Code para criar o MCP:**
+
+\`\`\`
+Crie um MCP Server em Node.js/TypeScript chamado "mcp-pangea-bnp"
+para pesquisa de jurisprudência no Pangea/BNP do CNJ.
+
+Autenticação OAuth2 (Keycloak):
+- Token URL: https://sso.cloud.pje.jus.br/auth/realms/pje/protocol/openid-connect/token
+- grant_type: client_credentials
+- client_id e client_secret serão variáveis de ambiente
+
+Base URL da API: https://bnp-sempj.cloud.pje.jus.br
+
+Crie estas ferramentas:
+
+1. buscar_precedentes(tema, tipo_recurso)
+   - GET /v1/recurso-repetitivo?pageNumber=1&pageSize=20
+   - Filtrar por tema
+   - tipo_recurso: "repetitivo" | "repercussao_geral"
+
+2. buscar_repercussao_geral(tema)
+   - GET /v1/repercussao-geral
+   - Retornar: número do tema, tese firmada, situação
+
+3. analisar_decisao(texto_decisao)
+   - Recebe texto de uma decisão
+   - Usa o Claude para identificar: tipo, dispositivo,
+     fundamentação principal, precedentes citados
+
+4. argumentos_por_polo(numero_cnj)
+   - Analisa dados do processo
+   - Separa teses do autor vs réu (ou acusação vs defesa)
+
+O MCP deve ler client_id e client_secret de variáveis
+de ambiente PANGEA_CLIENT_ID e PANGEA_CLIENT_SECRET.
+Renovar o token automaticamente quando expirar.
+\`\`\`
+
+**Passo 3 — Configure com suas credenciais:**
+
+\`\`\`json
+{
+  "mcpServers": {
+    "pangea-bnp": {
+      "command": "node",
+      "args": ["C:/caminho/para/mcp-pangea-bnp/dist/index.js"],
+      "env": {
+        "PANGEA_CLIENT_ID": "seu_client_id_aqui",
+        "PANGEA_CLIENT_SECRET": "seu_client_secret_aqui"
+      }
+    }
+  }
+}
+\`\`\`
+
+**Passo 4 — Use no Claude Desktop:**
+
+- *"Pesquise precedentes sobre responsabilidade civil por erro médico"*
+- *"Quais recursos repetitivos existem sobre dano moral em relações de consumo?"*
+- *"Analise esta decisão e identifique os precedentes citados: [cole o texto]"*
+
+**Alternativa sem credenciais — Web Scraping do portal público:**
+
+Se não conseguir credenciais da API, o Claude Code pode criar um MCP que consulta o portal público do Pangea:
+
+\`\`\`
+Crie um MCP que faz web scraping do portal
+https://pangeabnp.pdpj.jus.br/ para pesquisar
+jurisprudência. Use puppeteer/playwright para
+automatizar a busca no site e retornar os resultados.
+\`\`\``,
+        tips: [
+          'Enquanto aguarda credenciais do Pangea, use o DataJud para buscar movimentações que incluem decisões',
+          'Combine o MCP Pangea + DataJud para pesquisa completa: precedentes + dados processuais',
+          'Salve pesquisas frequentes como Skills do Claude para reutilizar',
+          'O portal público pangeabnp.pdpj.jus.br pode ser consultado manualmente enquanto configura o MCP',
+        ],
+        links: [
+          { label: 'Portal Pangea/BNP', url: 'https://pangeabnp.pdpj.jus.br/' },
+          { label: 'Manual do Usuário (PDF)', url: 'https://www.cnj.jus.br/wp-content/uploads/2023/11/manual-de-usuario-pangea-bnp.pdf' },
+        ],
+      },
+      {
+        title: 'MCP Comunicações — PJE e MNI',
+        subtitle: 'Intimações, citações e peticionamento',
+        level: 'expert',
+        icon: 'mail',
+        analogy: {
+          text: 'Imagine que o Claude monitora sua **caixa postal jurídica** automaticamente. Toda intimação, citação ou notificação é lida, analisada e resumida antes mesmo de você abrir o PJe pela manhã.',
+        },
+        content: `O Comunica PJE e o MNI PJE permitem acessar comunicações processuais e peticionar. Ambos requerem credenciais institucionais.
+
+**Comunica PJE — Monitoramento de intimações:**
+
+API: \`https://comunicaapi.pje.jus.br/api/v1\`
+Acesso: Solicitar ao administrador regional do seu tribunal via CNJ Corporativo.
+
+\`\`\`
+Crie um MCP Server chamado "mcp-comunica-pje"
+para monitorar comunicações processuais.
+
+API Base: https://comunicaapi.pje.jus.br/api/v1
+Auth: POST /api/v1/autenticacao com username e password
+
+Ferramentas:
+
+1. listar_comunicacoes(data_inicio, data_fim, numero_processo?)
+   - GET /api/v1/comunicacao com filtros
+   - Parâmetros: dataInicio, dataFim, numeroProcesso,
+     tipoComunicacao, statusCiente
+   - Retornar lista formatada com tipo, processo, prazo
+
+2. detalhar_comunicacao(id_comunicacao)
+   - GET /api/v1/comunicacao/{id}
+   - Retornar conteúdo completo da comunicação
+
+3. identificar_prazos(data_inicio, data_fim)
+   - Busca comunicações no período
+   - Classifica: prazos vencidos, em curso, futuros
+   - Calcula dias restantes considerando dias úteis
+
+4. resumo_diario()
+   - Busca comunicações das últimas 24h
+   - Gera resumo executivo: novas intimações,
+     prazos próximos, ações necessárias
+
+Credenciais via variáveis de ambiente:
+COMUNICA_USERNAME e COMUNICA_PASSWORD
+\`\`\`
+
+**MNI PJE — Consulta avançada e peticionamento:**
+
+API: \`https://mni-client.prd.cnj.cloud\`
+Acesso: Via Keycloak SSO do PJe (credenciais institucionais).
+
+\`\`\`
+Crie um MCP Server chamado "mcp-mni-pje"
+para consulta e peticionamento via MNI.
+
+API Base: https://mni-client.prd.cnj.cloud
+Auth: Keycloak SSO com headers X-API-KEY, X-MNI-CPF, X-MNI-SENHA
+
+Ferramentas:
+
+1. consultar_processo_completo(numero_cnj)
+   - GET /api/v1/processo/{numero}
+   - Retorna dados completos do processo
+
+2. listar_documentos(numero_cnj)
+   - GET /api/v1/processo/{numero}/documentos/ids
+   - Lista todos os documentos com IDs
+
+3. baixar_documento(numero_cnj, documento_id)
+   - GET /api/v1/processo/{numero}/documento/{id}
+   - Baixa o documento para análise
+
+4. consultar_peticao_inicial(numero_cnj)
+   - GET /api/v1/processo/{numero}/peticao-inicial
+   - Retorna a petição inicial para análise
+
+Credenciais via variáveis de ambiente:
+MNI_API_KEY, MNI_CPF, MNI_SENHA
+\`\`\`
+
+**Configuração combinada (todos os MCPs juntos):**
+
+\`\`\`json
+{
+  "mcpServers": {
+    "datajud": {
+      "command": "node",
+      "args": ["C:/mcps/mcp-datajud/dist/index.js"]
+    },
+    "comunica-pje": {
+      "command": "node",
+      "args": ["C:/mcps/mcp-comunica-pje/dist/index.js"],
+      "env": {
+        "COMUNICA_USERNAME": "seu_usuario",
+        "COMUNICA_PASSWORD": "sua_senha"
+      }
+    },
+    "mni-pje": {
+      "command": "node",
+      "args": ["C:/mcps/mcp-mni-pje/dist/index.js"],
+      "env": {
+        "MNI_API_KEY": "sua_api_key",
+        "MNI_CPF": "seu_cpf",
+        "MNI_SENHA": "sua_senha"
+      }
+    }
+  }
+}
+\`\`\``,
+        tips: [
+          'Comece pelo Comunica PJE se receber muitas intimações — o resumo diário economiza horas',
+          'O MNI permite baixar documentos: combine com a análise de IA do Claude para extrair informações',
+          'Nunca configure peticionamento automático sem revisão humana — use apenas para consulta inicialmente',
+          'Mantenha suas credenciais em variáveis de ambiente, nunca no código-fonte',
+        ],
+        links: [
+          { label: 'Documentação MNI PJE', url: 'https://docs.pje.jus.br/servicos-auxiliares/servico-mni-client/' },
+          { label: 'Swagger Comunica PJE', url: 'https://app.swaggerhub.com/apis-docs/cnj/pcp/1.0.0' },
+        ],
+      },
+      {
+        title: 'MCP Análise e Produção com IA',
+        subtitle: 'Ferramentas que combinam dados + inteligência artificial',
+        level: 'expert',
+        icon: 'brain',
+        analogy: {
+          text: 'Os MCPs anteriores trazem os **dados brutos**. Este MCP adiciona a **inteligência**: analisa decisões, gera pareceres, avalia riscos e extrai prazos. É como ter um estagiário que pesquisa E analisa ao mesmo tempo.',
+        },
+        content: `Este MCP combina os dados obtidos das APIs (DataJud, MNI, Comunica) com o poder de análise do Claude para gerar produtos jurídicos prontos.
+
+**Peça ao Claude Code:**
+
+\`\`\`
+Crie um MCP Server chamado "mcp-analise-juridica" com
+ferramentas de análise que usam os dados dos outros MCPs.
+
+Ferramentas:
+
+1. analisar_processo(numero_cnj, tribunal)
+   - Busca dados via DataJud
+   - Gera análise completa: resumo, partes, status,
+     classe, assuntos, histórico de movimentações,
+     pontos de atenção, próximos passos prováveis
+
+2. analisar_decisao(texto_decisao)
+   - Recebe texto de sentença, acórdão ou despacho
+   - Identifica: tipo de decisão, dispositivo,
+     fundamentação, precedentes citados,
+     consequências práticas
+
+3. cronologia_detalhada(numero_cnj, tribunal, tipo)
+   - tipo: "cpc" (cível) ou "cpp" (criminal)
+   - Busca movimentações via DataJud
+   - Gera timeline estruturada com marcos processuais
+     relevantes para o tipo de procedimento
+
+4. parecer_juridico(numero_cnj, tribunal, questao)
+   - Busca dados processuais + jurisprudência
+   - Gera parecer estruturado: ementa, relatório,
+     fundamentação jurídica, conclusão
+   - questao: o ponto específico a ser analisado
+
+5. analise_risco(numero_cnj, tribunal)
+   - Avalia probabilidade de êxito
+   - Lista riscos e fatores favoráveis/desfavoráveis
+   - Sugere estratégias alternativas
+
+6. extrair_pedidos(texto_peticao)
+   - Recebe texto da petição inicial
+   - Lista pedidos principais e subsidiários
+   - Identifica valores envolvidos
+
+7. identificar_prazos(numero_cnj, tribunal)
+   - Analisa movimentações recentes
+   - Mapeia prazos: vencidos, em curso, futuros
+   - Calcula dias úteis restantes
+   - Alerta sobre prazos críticos
+
+Cada ferramenta deve retornar output formatado
+em Markdown para fácil leitura no Claude.
+\`\`\`
+
+**Exemplos de uso no Claude Desktop (após instalar os MCPs):**
+
+| Você pergunta... | O Claude faz... |
+|-------------------|-----------------|
+| "Analise o processo 1234567-89.2024.8.26.0100 do TJSP" | Busca no DataJud → Gera análise completa |
+| "Faça um parecer sobre a prescrição neste caso" | Busca dados + jurisprudência → Gera parecer estruturado |
+| "Quais os riscos de recorrer desta decisão?" | Analisa decisão + histórico → Avalia probabilidade |
+| "Monte a cronologia deste processo criminal" | Busca movimentações → Timeline no formato CPP |
+| "Tenho prazos vencendo esta semana?" | Consulta comunicações → Lista prazos por urgência |
+
+**Fluxo completo integrado:**
+
+Com todos os MCPs instalados, você pode fazer pedidos complexos:
+
+*"Busque o processo 1234567-89.2024.8.26.0100 no TJSP, analise a última decisão, pesquise jurisprudência sobre o tema no Pangea, e me dê um parecer sobre as chances de êxito em recurso — tudo com sugestão de tese recursal."*
+
+O Claude usa cada MCP como uma ferramenta: consulta o DataJud, pesquisa no Pangea, analisa com IA e gera o parecer completo.`,
+        tips: [
+          'Sempre revise pareceres e análises gerados — a IA é ferramenta, não substituta do advogado',
+          'Combine múltiplos MCPs em um único pedido para análises completas',
+          'Salve análises frequentes como Skills para padronizar a qualidade',
+          'Para prazos críticos, configure o resumo diário do Comunica PJE como rotina matinal',
+        ],
+        elementGrid: [
+          {
+            icon: 'search',
+            name: 'DataJud',
+            tech: 'Consulta',
+            description: 'Busca processual em 88+ tribunais',
+            whenToUse: 'Localizar processos por número ou parte',
+            highlight: true,
+          },
+          {
+            icon: 'book-open',
+            name: 'Pangea/BNP',
+            tech: 'Jurisprudência',
+            description: 'Precedentes vinculantes e repetitivos',
+            whenToUse: 'Fundamentar peças com jurisprudência qualificada',
+          },
+          {
+            icon: 'mail',
+            name: 'Comunica PJE',
+            tech: 'Comunicações',
+            description: 'Intimações, citações e notificações',
+            whenToUse: 'Monitorar prazos e comunicações diárias',
+          },
+          {
+            icon: 'brain',
+            name: 'Análise IA',
+            tech: 'Produção',
+            description: 'Pareceres, riscos e cronologias',
+            whenToUse: 'Gerar documentos jurídicos a partir dos dados',
+          },
         ],
       },
       {
