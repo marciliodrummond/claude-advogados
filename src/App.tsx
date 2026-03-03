@@ -13,7 +13,7 @@ import { useSearch } from './hooks/useSearch'
 function App() {
   const { theme, toggle } = useTheme()
   const { isAuthenticated, authenticate } = useAuth()
-  const { query, setQuery, results } = useSearch()
+  const { query, setQuery, results, isFocused, handleFocus, handleBlur } = useSearch()
   const [activeTab, setActiveTab] = useState('primeiros-passos')
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null)
   const [levelFilter, setLevelFilter] = useState('todos')
@@ -73,6 +73,9 @@ function App() {
               onQueryChange={setQuery}
               results={results}
               onSelectResult={handleSelectResult}
+              isFocused={isFocused}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </div>
 
