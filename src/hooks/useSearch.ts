@@ -207,7 +207,9 @@ const synonyms: Record<string, string[]> = {
   'ai studio': ['google ai studio', 'gemini', 'testar', 'prompt', 'gratuitas'],
   'ilovepdf': ['ilovepdf', 'pdf', 'converter', 'txt', 'gratuitas'],
   'gratuita': ['gratuitas', 'gratis', 'free', 'notebooklm', 'perplexity', 'deepseek', 'ilovepdf'],
-  'gratuitas': ['gratuitas', 'gratis', 'free', 'notebooklm', 'perplexity', 'deepseek', 'ilovepdf'],
+  'gratuitas': ['gratuitas', 'gratis', 'free', 'notebooklm', 'perplexity', 'deepseek', 'ilovepdf', 'copilot', 'gamma'],
+  'copilot': ['copilot', 'microsoft', 'bing', 'pesquisa', 'gratuitas', 'alternativa'],
+  'gamma': ['gamma', 'apresentacao', 'slides', 'gratuitas', 'alternativa'],
 
   // DataJud e APIs
   'datajud': ['datajud', 'cnj', 'api', 'processo', 'consulta', 'mcp'],
