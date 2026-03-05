@@ -7,7 +7,7 @@ import {
   Network, BookMarked, GraduationCap, AlertTriangle, CheckCircle2, Copy,
   Users, LayoutGrid, Workflow, Database, Mail, FileKey, Hash, MousePointer,
   Bot, Sparkles, Target, ScrollText, ArrowRightLeft, Cpu, KeyRound,
-  Package, Phone, SlidersHorizontal, LayoutDashboard, MessageCircle,
+  Package, Phone, SlidersHorizontal, LayoutDashboard, MessageCircle, Upload,
   type LucideIcon
 } from 'lucide-react'
 
@@ -83,6 +83,7 @@ const iconMap: Record<string, LucideIcon> = {
   'layout': LayoutDashboard,
   'message-circle': MessageCircle,
   'dollar-sign': CreditCard,
+  'upload': Upload,
 }
 
 interface IconProps {

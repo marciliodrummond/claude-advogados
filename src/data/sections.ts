@@ -1,3 +1,20 @@
+import {
+  markdownPeticaoUniversal,
+  markdownComunicacaoCliente,
+  markdownMarketingJuridico,
+  markdownReplicaEstrategica,
+  markdownContrarrazoes,
+  markdownJurisprudencia,
+  markdownEstrategiaCaso,
+  markdownAnaliseTrilateral,
+  markdownParecerJuridico,
+  markdownDueDiligence,
+  markdownMinutasContratuais,
+  markdownResumoAudiencia,
+  markdownCalculoJuridico,
+  markdownComplianceLGPD,
+} from './skillMarkdowns'
+
 export interface CardLink {
   label: string
   url: string
@@ -65,6 +82,7 @@ export interface Card {
   commandList?: CommandItem[]
   checklist?: ChecklistGroup[]
   refTable?: RefTableRow[]
+  markdown?: string
 }
 
 export interface Section {
@@ -2710,39 +2728,58 @@ Salve cada documento em uma subpasta "Onboarding" dentro desta pasta.`,
 No ChatGPT, você troca de "assistente" para cada tarefa. No Claude, você trabalha em uma conversa só e o Claude ativa os Skills corretos automaticamente.`,
       },
       {
-        title: 'Criando Skills Jurídicos',
-        subtitle: 'Personalize para sua área',
+        title: 'Criando uma Skill: 3 Formas',
+        subtitle: 'Com o Claude, manualmente ou por upload de arquivo',
         level: 'intermediario',
         icon: 'pen-tool',
         analogy: {
-          text: 'Escrever um Skill é como criar um **checklist para estagiário**: "Quando fizer petição trabalhista: 1) cite CLT, 2) use jurisprudência TST, 3) inclua pedido de gratuidade." O estagiário segue e acerta.',
+          tag: 'Receita de Bolo',
+          text: 'Criar uma Skill é como conseguir uma receita de bolo: você pode **pedir ao chef** (o Claude cria para você), **escrever a receita você mesmo** (instruções manuais), ou **copiar uma receita de livro** (upload de arquivo .md pronto). O resultado é o mesmo — um conjunto de instruções que o Claude segue automaticamente.',
         },
-        content: `Crie Skills personalizados para automatizar seu fluxo de trabalho jurídico.
+        content: `Existem 3 formas de criar uma Skill no Claude. Escolha a que faz mais sentido para você:
 
-**Exemplo — Skill "Petições Trabalhistas":**
-Instruções: "Sempre use a estrutura: I) Dos Fatos, II) Do Direito, III) Dos Pedidos. Cite a CLT e jurisprudência do TST. Tom formal. Inclua pedido de justiça gratuita quando aplicável."
+**1. Peça ao Claude** — Abra uma conversa e diga: "Crie uma Skill de [área] que [objetivo]". Ele gera as instruções completas. Revise, ajuste e salve.
 
-**Exemplo — Skill "Contratos Empresariais":**
-"Toda análise de contrato deve verificar: cláusula penal, limitação de responsabilidade, foro de eleição, confidencialidade, propriedade intelectual. Use linguagem do Código Civil e classificação verde/amarelo/vermelho."
+**2. Escreva você mesmo** — Vá em Personalizar → Skills → Criar Skill e redija suas instruções do zero: identidade, regras, formato de saída, exemplos.
 
-**Skills embutidos no Cowork:**
-- Criação de **Word (.docx)** com formatação profissional
-- Criação de **Excel (.xlsx)** com fórmulas e formatação condicional
-- Criação de **PowerPoint (.pptx)** com slides profissionais
-- Leitura e análise de **PDFs**
-- Acesso direto a **arquivos locais**`,
+**3. Upload de arquivo .md** — Prepare (ou baixe) um arquivo Markdown com as instruções. Vá em Personalizar → Skills → Criar Skill e faça upload direto.
+
+Todas as três formas produzem o mesmo resultado: uma Skill ativa em todas as suas conversas.`,
+        elementGrid: [
+          {
+            icon: 'message-circle',
+            name: 'Criar com o Claude',
+            description: 'Abra uma conversa e peça: "Crie uma Skill de [área] que [objetivo]". O Claude gera as instruções. Revise e salve.',
+            whenToUse: 'Não sabe por onde começar',
+          },
+          {
+            icon: 'pen-tool',
+            name: 'Escrever Instruções',
+            description: 'Vá em Personalizar → Skills → Criar Skill. Escreva suas instruções detalhadas: identidade, regras, formato, exemplos.',
+            whenToUse: 'Sabe exatamente o que quer',
+          },
+          {
+            icon: 'upload',
+            name: 'Upload de Markdown',
+            description: 'Prepare um arquivo .md com as instruções. Vá em Personalizar → Skills → Criar Skill → faça upload do arquivo.',
+            whenToUse: 'Tem uma skill pronta ou baixou deste guia',
+          },
+        ],
         steps: [
-          'Vá em Personalizar → Skills',
-          'Clique em "Criar Skill"',
-          'Dê um nome descritivo (ex: "peticoes-trabalhistas")',
-          'Escreva instruções detalhadas sobre formato, tom, estrutura, referências',
-          'Salve — o Skill fica ativo automaticamente em todas as conversas',
+          'Escolha a forma: peça ao Claude, escreva você mesmo ou use um .md pronto',
+          'Se pediu ao Claude: revise as instruções geradas e ajuste ao seu estilo',
+          'Vá em Personalizar (canto inferior esquerdo) → Skills → Criar Skill',
+          'Cole as instruções ou faça upload do arquivo .md',
+          'Dê um nome descritivo (ex: peticoes-trabalhistas)',
+          'Salve — a Skill fica ativa automaticamente em todas as conversas',
+          'Teste e refine conforme os resultados',
         ],
         tips: [
-          'Seja específico nas instruções: formato, tom, estrutura, legislação',
-          'Crie Skills separados para cada tipo de tarefa (petições, pareceres, contratos)',
-          'Teste e refine — ajuste as instruções conforme os resultados',
-          'Inclua exemplos de output esperado no Skill para melhores resultados',
+          'A forma mais rápida é pedir ao Claude: "Crie uma Skill de contratos que sempre verifique cláusula penal e limitação de responsabilidade"',
+          'Todas as Skills deste guia estão prontas para download em Markdown — basta baixar e fazer upload',
+          'Skills criadas pelo Claude podem ser refinadas: "Melhore esta Skill adicionando verificação de prazos"',
+          'Combine Skills: uma base (formato do escritório) + uma por área (legislação específica)',
+          'Não existe limite prático de Skills — o Claude combina todas automaticamente',
         ],
       },
       {
@@ -2847,8 +2884,9 @@ LEGISLAÇÃO BASE:
 
 ESTILO DE REFERÊNCIA:
 [DESCREVA OU ANEXE UM MODELO DA SUA PETIÇÃO IDEAL]`,
+        markdown: markdownPeticaoUniversal,
         steps: [
-          'Copie o template do prompt acima',
+          'Copie o template do prompt acima ou baixe o Markdown completo',
           'Personalize: substitua [SUA ÁREA], [SEU TRIBUNAL], [LEGISLAÇÃO]',
           'Salve como arquivo .md (ex: skill-peticao-universal.md)',
           'No Claude: Configurações → Skills → Adicionar → Envie o arquivo',
@@ -2926,11 +2964,13 @@ COBRANÇA DE HONORÁRIOS:
 - Relembre o serviço prestado
 - Apresente opções de pagamento
 - Nunca ameace — ofereça solução`,
+        markdown: markdownComunicacaoCliente,
         tips: [
           'Crie um Project por cliente e combine com este Skill para mensagens personalizadas',
           'Para clientes corporativos, ajuste o tom para mais formal e técnico',
           'Salve templates de e-mails recorrentes (atualização mensal, cobrança, orientação)',
           'Peça ao Claude: "Adapte esta mensagem para WhatsApp" para converter entre canais',
+          'Baixe o Markdown completo para ter uma versão mais detalhada com todos os canais',
         ],
         elementGrid: [
           { icon: 'mail', name: 'E-mail Formal', description: 'Profissional e estruturado', whenToUse: 'Atualizações, pareceres, orientações' },
@@ -3011,14 +3051,16 @@ PROIBIDO:
 - Linguagem mercantil
 - Exposição de dados de clientes
 - Críticas a colegas ou instituições`,
+        markdown: markdownMarketingJuridico,
         tips: [
           'Produza em lote: 1 hora com Claude = conteúdo da semana inteira',
           'Peça "5 temas que geram engajamento em [sua área]" para nunca faltar pauta',
           'Adapte: "Transforme este carrossel em roteiro de Reels de 45 segundos"',
           'Use Artifacts para gerar tabelas e infográficos diretamente no Claude',
+          'Baixe o Markdown completo para uma versão com calendário editorial incluso',
         ],
         steps: [
-          'Copie o template do Skill acima',
+          'Copie o template do Skill acima ou baixe o Markdown',
           'Personalize com suas áreas e público-alvo',
           'Salve como skill-marketing-juridico.md',
           'Adicione como Skill no Claude',
@@ -3070,27 +3112,28 @@ Instruções específicas do cliente nas instruções do Projeto. Preferências,
         analogy: {
           text: 'Imagine que o Claude **sempre** aplica Visual Law nas suas peças — sem você precisar pedir. Um Skill de Visual Law é como programar o estilo visual do escritório: uma vez configurado, toda petição sai com quadro resumo, timeline e tabela de provas automaticamente.',
         },
-        content: `Crie um Skill que ensina o Claude a aplicar Visual Law em qualquer documento jurídico. Uma vez ativado, TODAS as peças que o Claude gerar seguirão o padrão visual do escritório.
+        content: `Crie um Skill que ensina o Claude a aplicar Visual Law em qualquer documento juridico. Uma vez ativado, TODAS as pecas seguirao o padrao visual do escritorio — inclusive com saida em **PDF e DOCX via Cowork**.
 
 **Como criar o Skill:**
 
-Vá em Claude → Personalizar → Skills → Criar Skill e cole o conteúdo abaixo.
+Va em Claude → Personalizar → Skills → Criar Skill e cole o conteudo abaixo.
 
 **O que o Skill faz automaticamente:**
-- Insere quadro resumo no topo de petições
+- Insere quadro resumo no topo de peticoes
 - Cria timelines nos fatos
 - Gera tabelas de mapa de provas
 - Formata checklist de requisitos legais
 - Monta quadros comparativos de argumentos
-- Estrutura pedidos de forma hierárquica e clara
-- Usa parágrafos curtos (máx. 5 linhas)
+- Estrutura pedidos de forma hierarquica e clara
+- Usa paragrafos curtos (max. 5 linhas)
 - Aplica destaque visual em termos-chave
+- **Gera documentos em PDF e DOCX** pelo Cowork com formatação profissional (Times New Roman, margens ABNT, estilos aplicados)
 
 **Skill combinado com outros:**
-Este Skill pode ser combinado com qualquer outro Skill do escritório. Por exemplo: "Skill de Petição Trabalhista" + "Skill de Visual Law" = petição trabalhista com todos os elementos visuais.
+Este Skill pode ser combinado com qualquer outro. Ex: "Petição Trabalhista" + "Visual Law" = petição com todos os elementos visuais, pronta para download em Word ou PDF.
 
 **Personalização:**
-Adapte o Skill para o padrão do seu escritório: tipo de fonte, margens, estilo de tabelas, cores (se o tribunal aceitar).`,
+Adapte para o padrão do seu escritório: fonte, margens, estilo de tabelas, cores (se o tribunal aceitar).`,
         prompt: `SKILL: Visual Law / Legal Design para Documentos Jurídicos
 
 Ao gerar qualquer documento jurídico (petição, parecer, recurso, contestação, contrato), aplique SEMPRE as seguintes técnicas de Visual Law:
@@ -3135,13 +3178,93 @@ Ao gerar qualquer documento jurídico (petição, parecer, recurso, contestaçã
    - Evitar latinismos desnecessários
    - Evitar parágrafos com mais de 1 ideia principal
 
+9. FORMATO DE SAÍDA:
+   Quando o usuário pedir documento em formato profissional:
+   - DOCX: Use o Cowork para gerar arquivo Word com estilos aplicados (Título 1, Título 2, Normal, Tabela com bordas). Aplique fonte Times New Roman 12pt, espaçamento 1,5, margens 3cm (esq) e 2cm (demais).
+   - PDF: Gere via Cowork com formatação idêntica ao DOCX. Inclua cabeçalho com dados do processo e rodapé com paginação.
+   - Em ambos os formatos, mantenha TODOS os elementos de Visual Law (quadros, timelines, tabelas, destaques).
+   - Quando não especificado formato, gere em Markdown com formatação Visual Law completa.
+
 Aplique estas regras em TODOS os documentos jurídicos, salvo instrução contrária.`,
         tips: [
           'Cole este prompt em Personalizar → Skills para que funcione em TODAS as conversas',
           'Combine com Skills de área específica (trabalhista, cível) para resultado máximo',
           'Adapte os elementos visuais conforme o tribunal aceita — alguns são mais conservadores',
           'O Skill funciona tanto no Chat quanto no Cowork',
+          'Use no Cowork para gerar automaticamente em Word (.docx) ou PDF com toda a formatação Visual Law aplicada',
+          'Para PDF: peça "Gere esta petição em PDF com Visual Law" — o Claude aplica todos os elementos visuais',
         ],
+        markdown: `# Skill: Visual Law / Legal Design
+
+> Skill para Claude que aplica automaticamente tecnicas de Visual Law e Legal Design em documentos juridicos. Gera saida em Markdown, DOCX ou PDF.
+
+---
+
+SKILL: Visual Law / Legal Design para Documentos Juridicos
+
+Ao gerar qualquer documento juridico (peticao, parecer, recurso, contestacao, contrato), aplique SEMPRE as seguintes tecnicas de Visual Law:
+
+1. QUADRO RESUMO (obrigatorio no topo de peticoes):
+   Tabela com: Tipo de Acao, Autor, Reu, Valor da Causa, Objeto (1 linha), Pedido Principal, Tutela de Urgencia (Sim/Nao).
+
+2. TIMELINE DOS FATOS:
+   Em vez de paragrafos longos, apresente os fatos como:
+   [DATA] → [EVENTO] — [Documento comprobatorio]
+   Destaque fatos controversos com ⚠️
+
+3. MAPA DE PROVAS (tabela obrigatoria):
+   | # | Fato Alegado | Meio de Prova | Documento |
+   Conecte CADA alegacao a sua prova especifica.
+
+4. TABELA DE REQUISITOS LEGAIS:
+   Quando houver requisitos cumulativos (tutela urgencia, gratuidade, etc.):
+   | Requisito | Demonstrado? | Fundamentacao |
+   Use ✅ para atendidos e ❌ para nao atendidos.
+
+5. QUADRO COMPARATIVO (contestacoes e recursos):
+   | Ponto Controverso | Alegacao Adversa | Nossa Resposta | Base Legal |
+
+6. ESTRUTURA HIERARQUICA DE PEDIDOS:
+   a) Pedidos principais (numerados)
+   b) Pedidos acessorios (sub-numerados)
+   c) Pedidos subsidiarios (claramente identificados)
+
+7. FORMATACAO:
+   - Paragrafos curtos (maximo 5 linhas)
+   - Termos-chave em negrito
+   - Valores monetarios em negrito
+   - Titulos de secao: MAIUSCULO e negrito
+   - Subtitulos: Negrito normal
+   - Listas numeradas para argumentos sequenciais
+   - Tabelas para comparacoes e dados estruturados
+
+8. LINGUAGEM:
+   - Objetiva e precisa
+   - Frases na ordem direta
+   - Evitar latinismos desnecessarios
+   - Evitar paragrafos com mais de 1 ideia principal
+
+9. FORMATO DE SAÍDA:
+   Quando o usuário pedir documento em formato profissional:
+   - DOCX: Use o Cowork para gerar arquivo Word com estilos aplicados (Título 1, Título 2, Normal, Tabela com bordas). Aplique fonte Times New Roman 12pt, espaçamento 1,5, margens 3cm (esq) e 2cm (demais).
+   - PDF: Gere via Cowork com formatação idêntica ao DOCX. Inclua cabeçalho com dados do processo e rodapé com paginação.
+   - Em ambos os formatos, mantenha TODOS os elementos de Visual Law (quadros, timelines, tabelas, destaques).
+   - Quando não especificado formato, gere em Markdown com formatação Visual Law completa.
+
+Aplique estas regras em TODOS os documentos juridicos, salvo instrucao contraria.
+
+---
+
+## Como Usar
+1. Salve este arquivo como \`skill-visual-law.md\`
+2. Va em Claude > Personalizar > Skills > Criar Skill
+3. Faca upload deste arquivo ou cole o conteudo
+4. Toda peca juridica passara a ter Visual Law automaticamente
+
+## Combinacoes Recomendadas
+- Visual Law + Peticao Universal = peticoes com design profissional
+- Visual Law + Replica Estrategica = quadros comparativos automaticos
+- Visual Law + Contrarrazoes = blindagem visual da sentenca`,
         steps: [
           'Abra o Claude → clique em "Personalizar" (canto inferior esquerdo)',
           'Vá em "Skills" → clique em "Criar Skill"',
@@ -3244,12 +3367,14 @@ Estruture o roteiro completo da réplica:
 5. PEDIDOS — Rejeição das preliminares + procedência integral com eventuais ajustes.
 
 NÃO redija a peça — estruture o roteiro detalhado com argumentos, provas e fundamentação de cada seção. Só redija quando o usuário aprovar o roteiro.`,
+        markdown: markdownReplicaEstrategica,
         tips: [
           'Forneça a petição inicial E a contestação completas — quanto mais contexto, melhor a análise',
           'Mantenha as 3 etapas na mesma conversa para o Claude acumular o contexto de cada fase',
           'Revise o diagnóstico antes de pedir a etapa seguinte — ajuste prioridades se necessário',
           'Combine com o Skill de Visual Law para réplicas com quadros comparativos e tabelas de provas',
           'Fato não impugnado = fato incontroverso (art. 341 CPC) — o Skill identifica isso automaticamente',
+          'Baixe o Markdown completo para uma versão expandida com mais detalhes em cada etapa',
         ],
         steps: [
           'Abra Claude → Personalizar → Skills → Criar Skill "Réplica Estratégica"',
@@ -3361,6 +3486,7 @@ Estruture o roteiro completo:
 5. PEDIDOS: conhecimento e total desprovimento + honorários recursais (quando cabível)
 
 NÃO redija — estruture o roteiro detalhado com argumentos, provas e jurisprudência de cada seção. Só redija quando o usuário aprovar.`,
+        markdown: markdownContrarrazoes,
         tips: [
           'Forneça o texto integral da sentença e do recurso — não apenas resumos',
           'Revise o roteiro (Etapa 3) antes de pedir a redação final — é o produto mais valioso',
@@ -3460,6 +3586,7 @@ Integre as jurisprudências contextualizadas à tese jurídica, criando um bloco
 4. Conclua conectando tudo diretamente ao pedido
 
 Use linguagem objetiva, adequada para petição, sem redundâncias ou adjetivações desnecessárias. O bloco final deve ser copiável diretamente para a peça processual.`,
+        markdown: markdownJurisprudencia,
         tips: [
           'Sempre forneça contexto fático detalhado — quanto mais preciso, mais relevante a contextualização',
           'Antes de usar qualquer jurisprudência, confirme que o entendimento permanece vigente e não foi superado',
@@ -3545,6 +3672,7 @@ Inclua TODAS as teses possíveis — principais e subsidiárias.
 11. RECOMENDAÇÃO AO CLIENTE: Resumo objetivo para apresentar ao cliente, incluindo riscos e custos estimados.
 
 REGRA: Seja criticamente honesto. Se o caso é fraco, diga. Se há risco alto de perda, quantifique. O advogado precisa de diagnóstico real, não de confirmação de viés.`,
+        markdown: markdownEstrategiaCaso,
         tips: [
           'Use ANTES de iniciar qualquer petição — a análise estratégica melhora drasticamente a qualidade da peça',
           'Compartilhe o diagnóstico com o cliente para alinhar expectativas desde o início',
@@ -3564,6 +3692,413 @@ REGRA: Seja criticamente honesto. Se o caso é fraco, diga. Se há risco alto de
           { title: 'Análise de Risco', description: 'Pontos fortes, fracos, defesa antecipada e cenários com probabilidades' },
           { title: 'Estratégia', description: 'Tipo de ação, provas, timeline e recomendação ao cliente' },
           { title: 'Execução', description: 'Com estratégia aprovada, redige a peça processual adequada' },
+        ],
+      },
+      {
+        title: 'Skill Multi-Agente: Análise Trilateral do Caso',
+        subtitle: '3 perspectivas: Mentor, Parte Contrária e Magistrado',
+        level: 'expert',
+        icon: 'users',
+        analogy: {
+          tag: 'Tribunal Simulado',
+          text: 'Imagine um **tribunal simulado** onde três advogados analisam seu caso: um **a favor** (encontra os melhores argumentos), um **contra** (testa as fraquezas), e um **juiz imparcial** (avalia quem tem razão). O Claude assume os três papéis em sequência — o resultado é uma análise que nenhuma perspectiva isolada consegue oferecer.',
+        },
+        content: `Skill avançada que usa a técnica de **multi-agente**: o Claude assume 3 papéis diferentes em sequência para analisar o caso de todos os ângulos antes de qualquer ação.
+
+**O que é Multi-Agente?**
+É uma técnica onde o Claude "veste" diferentes personas na mesma conversa, cada uma com objetivos opostos. O atrito entre as perspectivas revela forças, fraquezas e riscos que uma análise unilateral não enxerga.
+
+**As 3 Perspectivas:**
+
+| Agente | Papel | Objetivo |
+|--------|-------|----------|
+| **Mentor** | Advogado sênior do seu lado | Encontrar os melhores argumentos e provas a favor |
+| **Parte Contrária** | Advogado adversário | Destruir seus argumentos e encontrar fraquezas |
+| **Magistrado** | Juiz imparcial | Avaliar peso das provas e probabilidade de procedência |`,
+        elementGrid: [
+          { icon: 'shield', name: 'Mentor', description: 'Advogado sênior do seu lado — avalia provas e argumentos a favor, busca todos os ângulos favoráveis', whenToUse: 'Fase 1: construir a tese mais forte possível' },
+          { icon: 'target', name: 'Parte Contrária', description: 'Advogado adversário — busca fragilidades, contra-argumentos e contradições na sua tese', whenToUse: 'Fase 2: testar resistência dos argumentos' },
+          { icon: 'scale', name: 'Magistrado', description: 'Juiz imparcial — avalia peso das provas, aplica a lei e estima probabilidade de procedência', whenToUse: 'Fase 3: diagnóstico realista do resultado' },
+        ],
+        prompt: `SKILL MULTI-AGENTE: Análise Trilateral do Caso
+
+CONCEITO: Esta skill usa técnica multi-agente — o Claude assume 3 papéis diferentes em sequência. Cada papel tem objetivos e vieses próprios.
+
+Quando o usuário pedir análise trilateral ou apresentar caso para avaliação completa, execute as 4 fases em sequência. Apresente cada fase antes de avançar.
+
+═══ FASE 1 — MENTOR (Advogado do Mesmo Lado) ═══
+Assuma papel de advogado sênior DO LADO DO CLIENTE.
+1. 5 melhores argumentos a favor (ordem de impacto)
+2. Provas favoráveis (documentais, testemunhais, periciais)
+3. Jurisprudência a favor (hierarquizada)
+4. Estratégia ofensiva contra pontos fracos adversários
+5. Recomendações para maximizar êxito
+Tom: Combativo mas fundamentado.
+
+═══ FASE 2 — PARTE CONTRÁRIA (Advogado Adversário) ═══
+Assuma papel de advogado DA OUTRA PARTE.
+1. Fragilidades do adversário
+2. 5 melhores contra-argumentos fundamentados
+3. Provas e fatos que enfraquecem a posição do autor
+4. Jurisprudência contrária
+5. Preliminares possíveis
+6. Possibilidade de reconvenção
+Tom: Agressivo e técnico. Encontre TODAS as fraquezas.
+
+═══ FASE 3 — MAGISTRADO (Juiz Imparcial) ═══
+Assuma papel de JUIZ que julgará o caso.
+1. Fatos incontroversos
+2. Pontos que dependem de prova
+3. Peso das provas de cada lado (tabela comparativa)
+4. Jurisprudência determinante
+5. Tendência de julgamento
+6. O que mudaria o resultado
+7. Estimativa: procedência total / parcial / improcedência com probabilidades
+Tom: Imparcial, técnico. Sem viés.
+
+═══ FASE 4 — SÍNTESE ESTRATÉGICA ═══
+Consolide as 3 perspectivas:
+1. Pontos fortes confirmados (Mentor + Magistrado concordam)
+2. Vulnerabilidades reais (Contrária + Magistrado concordam)
+3. Mapa de provas críticas com ações necessárias
+4. Probabilidade ajustada de êxito
+5. Recomendação final: o que fazer antes de agir`,
+        markdown: markdownAnaliseTrilateral,
+        steps: [
+          'Abra Claude → Personalizar → Skills → Criar Skill "Análise Trilateral"',
+          'Cole o prompt acima ou baixe e faça upload do Markdown completo',
+          'Na conversa: descreva o caso com todos os fatos e provas disponíveis',
+          'Peça: "Faça a análise trilateral deste caso"',
+          'Revise a Fase 1 (Mentor) → peça: "Agora a perspectiva da parte contrária"',
+          'Revise a Fase 2 → peça: "Agora a perspectiva do magistrado"',
+          'Revise a Fase 3 → peça: "Monte a síntese estratégica"',
+          'Use a síntese para decidir: peticionar, negociar ou buscar acordo',
+        ],
+        tips: [
+          'Esta é a skill mais poderosa do guia — use antes de qualquer caso importante',
+          'O conceito "multi-agente" significa o Claude assumindo diferentes papéis na mesma conversa',
+          'Você pode criar suas próprias skills multi-agente: defina os papéis, objetivos e sequência',
+          'Combine com Estratégia de Caso para um diagnóstico ainda mais profundo',
+          'A Fase 2 (Parte Contrária) é a mais valiosa: revela fragilidades que você não enxerga',
+          'Se a análise trilateral indica risco alto, considere acordo antes de litigar',
+        ],
+        flowSteps: [
+          { title: 'Mentor (Seu Lado)', description: 'Advogado sênior busca os melhores argumentos, provas e jurisprudência a favor' },
+          { title: 'Parte Contrária', description: 'Advogado adversário testa resistência: encontra fragilidades e contra-argumentos' },
+          { title: 'Magistrado', description: 'Juiz imparcial avalia peso das provas e estima probabilidade de procedência' },
+          { title: 'Síntese Estratégica', description: 'Consolida as 3 visões: diagnóstico ajustado, provas críticas e recomendação final' },
+        ],
+      },
+      {
+        title: 'Skill de Parecer Jurídico',
+        subtitle: 'Pareceres estruturados com fundamentação e recomendação',
+        level: 'avancado',
+        icon: 'file-text',
+        analogy: {
+          tag: 'Laudo Técnico',
+          text: 'Assim como um médico emite um **laudo técnico** com diagnóstico, fundamentação e recomendação de tratamento, o advogado emite um parecer com análise jurídica, fundamentação legal e recomendação prática. Este Skill garante que todo parecer saia com a estrutura completa.',
+        },
+        content: `Skill que gera pareceres jurídicos estruturados com fundamentação técnica, análise de correntes doutrinárias, conclusão objetiva e recomendação prática.
+
+**Estrutura automática:**
+- Cabeçalho (consulente, assunto, data)
+- Ementa (resumo em 3-5 linhas)
+- Fundamentação jurídica (legislação + doutrina + jurisprudência)
+- Análise do caso concreto
+- Conclusão objetiva e direta
+- Recomendação prática com próximos passos
+
+**Diferencial:** Quando há correntes doutrinárias divergentes, o Skill apresenta todas antes de se posicionar — tom imparcial e técnico, não combativo.`,
+        prompt: `SKILL: Parecer Jurídico Estruturado
+
+IDENTIDADE: Jurista consultor. Tom imparcial e técnico — parecer não é petição.
+
+ESTRUTURA OBRIGATÓRIA:
+1. CABEÇALHO: PARECER JURÍDICO Nº [nº/ano], Consulente, Assunto, Data
+2. EMENTA: Resumo 3-5 linhas (tema + questão + conclusão)
+3. DA CONSULTA: Questão formulada pelo consulente
+4. DOS FATOS: Narração cronológica e imparcial
+5. FUNDAMENTAÇÃO: Legislação + doutrina + jurisprudência hierarquizada. Quando houver divergência: apresente todas as correntes antes de posicionar-se
+6. ANÁLISE DO CASO: Aplicação ao caso concreto
+7. CONCLUSÃO: Resposta direta e objetiva
+8. RECOMENDAÇÃO: Ações práticas (o que fazer, riscos, prazos)
+9. RESSALVA: "Este parecer reflete análise do ordenamento vigente na data de emissão."
+
+REGRAS: Imparcial. Apresente correntes divergentes. Seja honesto sobre limitações.`,
+        markdown: markdownParecerJuridico,
+        steps: [
+          'Abra Claude → Personalizar → Skills → Criar Skill "Parecer Jurídico"',
+          'Cole o prompt ou baixe e faça upload do Markdown',
+          'Na conversa: descreva a situação e peça "Elabore parecer sobre [tema]"',
+          'O Claude gera o parecer completo na estrutura padrão',
+          'Revise, ajuste a fundamentação e personalize com sua análise',
+        ],
+        tips: [
+          'Ideal para departamentos jurídicos e consultorias',
+          'O Markdown completo tem a estrutura expandida com 9 seções detalhadas',
+          'Combine com Jurisprudência Estratégica para fundamentação mais robusta',
+          'Para pareceres urgentes: forneça o tema e peça "parecer resumido em 1 página"',
+        ],
+      },
+      {
+        title: 'Skill de Due Diligence',
+        subtitle: 'Checklist automatizado para auditoria jurídica',
+        level: 'expert',
+        icon: 'search',
+        analogy: {
+          tag: 'Raio-X Completo',
+          text: 'Due diligence é o **raio-X completo** antes de uma grande decisão: comprar empresa, adquirir imóvel, contratar fornecedor. Este Skill transforma o Claude em um auditor paranóico que não deixa passar nenhum risco — certidões, contratos, passivos, tudo.',
+        },
+        content: `Skill que executa checklist automatizado de due diligence. O Claude verifica sistematicamente cada item, classifica riscos e gera relatório executivo com recomendações.
+
+**Tipos disponíveis:**
+- Societária/M&A (composição, fiscal, contencioso, contratos, regulatório)
+- Imobiliária (matrícula, cadeia dominial, certidões, zoneamento)
+- Trabalhista (passivos, contingências, conformidade)
+- Compliance/LGPD (dados, bases legais, gaps, documentos)
+
+**Classificação de risco automática:**
+
+| Status | Significado |
+|--------|------------|
+| **OK** | Item verificado, sem problemas |
+| **PENDENTE** | Documento ou informação faltante |
+| **PROBLEMA** | Risco identificado — requer ação |
+| **CRÍTICO** | Risco grave — pode impedir operação |`,
+        prompt: `SKILL: Due Diligence Jurídica
+
+Pergunte primeiro: "Qual tipo? (1) Societária/M&A (2) Imobiliária (3) Trabalhista (4) Compliance/LGPD (5) Completa"
+
+Para cada item verificado, classifique:
+| Item | Status (OK/PENDENTE/PROBLEMA/CRÍTICO) | Risco | Observação | Ação Necessária |
+
+SOCIETÁRIA: contrato social, composição, atas, acordos, CNDs federal/estadual/municipal, FGTS, processos (cíveis, trabalhistas, criminais), contratos materiais, licenças.
+
+IMOBILIÁRIA: matrícula atualizada, cadeia dominial 20 anos, ônus reais, IPTU, habite-se, certidões do vendedor, penhoras, zoneamento.
+
+RELATÓRIO FINAL: Executive summary (1 pág) + achados críticos + recomendações + condições suspensivas sugeridas.
+
+REGRA: Due diligence é sobre encontrar PROBLEMAS. Seja exaustivo e paranóico.`,
+        markdown: markdownDueDiligence,
+        steps: [
+          'Baixe o Markdown e faça upload como Skill no Claude',
+          'Informe o tipo de due diligence e forneça os documentos disponíveis',
+          'O Claude verifica item por item com classificação de risco',
+          'Revise o relatório e solicite aprofundamento nos itens críticos',
+        ],
+        tips: [
+          'O Markdown completo tem checklists detalhados por tipo de due diligence',
+          'Forneça o máximo de documentos possível — o Claude analisa cada um',
+          'Para M&A: peça "due diligence completa" para cobrir todas as frentes',
+          'Use o relatório como anexo à proposta de aquisição ou parecer ao cliente',
+        ],
+      },
+      {
+        title: 'Skill de Minutas Contratuais',
+        subtitle: 'Geração e revisão de contratos com semáforo de risco',
+        level: 'intermediario',
+        icon: 'file-text',
+        analogy: {
+          tag: 'Molde Inteligente',
+          text: 'Este Skill é um **molde inteligente de contratos**: você informa as partes, o objeto e as condições — o Claude gera a minuta completa com todas as cláusulas protetivas (confidencialidade, LGPD, limitação de responsabilidade). Na revisão, classifica cada cláusula com **semáforo**: verde (ok), amarelo (atenção) e vermelho (risco alto).',
+        },
+        content: `Skill que gera minutas contratuais completas e revisa contratos existentes com classificação semafórica de risco.
+
+**Na geração:** Produz minutas com todas as cláusulas essenciais — objeto, financeiras, prazo, obrigações, confidencialidade, LGPD, responsabilidade, rescisão e foro.
+
+**Na revisão (semáforo):**
+
+| Cor | Significado | Ação |
+|-----|------------|------|
+| **Verde** | Cláusula padrão de mercado | Manter |
+| **Amarelo** | Merece atenção ou negociação | Avaliar |
+| **Vermelho** | Risco alto para o cliente | Alterar ou excluir |
+
+**Cláusulas protetivas sempre incluídas:** confidencialidade, propriedade intelectual, proteção de dados (LGPD), limitação de responsabilidade, não-concorrência.`,
+        prompt: `SKILL: Minutas Contratuais
+
+Antes de redigir, pergunte:
+1. Tipo de contrato
+2. Quem é seu cliente (contratante ou contratado)
+3. Pontos inegociáveis
+4. Valor e prazo
+
+ESTRUTURA: Qualificação, Objeto (inclui + não inclui), Financeiras, Prazo, Obrigações, Protetivas (confidencialidade, PI, LGPD, não-concorrência), Responsabilidade, Rescisão, Gerais, Foro.
+
+REVISÃO — Classifique cada cláusula:
+- VERDE: padrão de mercado
+- AMARELO: atenção/negociação
+- VERMELHO: risco alto — alterar
+
+REGRAS: Linguagem contratual precisa. Toda obrigação tem consequência. Inclua LGPD em TODO contrato.`,
+        markdown: markdownMinutasContratuais,
+        steps: [
+          'Baixe o Markdown e faça upload como Skill no Claude',
+          'Para gerar: "Elabore contrato de [tipo] entre [partes]"',
+          'Para revisar: cole o contrato e peça "Revise com semáforo de risco"',
+          'O Claude gera/revisa com todas as cláusulas protetivas',
+        ],
+        tips: [
+          'Na revisão, o semáforo vermelho exige atenção imediata — não ignore',
+          'Sempre peça: "Inclua cláusula de LGPD" mesmo que não esteja no modelo',
+          'Para contratos complexos, forneça os pontos inegociáveis antes de gerar',
+          'Combine com Due Diligence para verificar a contraparte antes de assinar',
+        ],
+      },
+      {
+        title: 'Skill de Resumo de Audiência',
+        subtitle: 'Transforme anotações brutas em ata estratégica',
+        level: 'intermediario',
+        icon: 'file-text',
+        analogy: {
+          tag: 'Gravador Inteligente',
+          text: 'Sabe quando você sai da audiência com **anotações bagunçadas** e não lembra direito o que cada testemunha disse? Este Skill transforma suas anotações brutas em uma **ata estruturada** com destaques estratégicos: o que foi bom, o que foi ruim, o que o juiz sinalizou e o que fazer agora.',
+        },
+        content: `Skill que transforma anotações brutas, transcrições ou relatos de audiência em resumos estruturados com análise estratégica.
+
+**Aceita qualquer formato de entrada:** notas rápidas, transcrição de áudio, relato verbal, texto corrido.
+
+**O que o resumo inclui:**
+- Cabeçalho (processo, vara, data, tipo, presentes)
+- Resumo executivo (5 linhas do mais importante)
+- Cronologia da audiência
+- Depoimentos com pontos favoráveis/desfavoráveis
+- Decisões e prazos fixados
+- Análise estratégica (bom/ruim/impressão do juiz)
+- Checklist de ações imediatas com prazos`,
+        prompt: `SKILL: Resumo de Audiência
+
+Aceite qualquer formato: notas brutas, transcrição, relato verbal.
+
+ESTRUTURA DO RESUMO:
+1. CABEÇALHO: Processo, Vara, Data, Tipo, Juiz, Presentes
+2. RESUMO EXECUTIVO: 5 linhas do mais importante
+3. CRONOLOGIA: [HH:MM] → [Evento]
+4. DEPOIMENTOS: Para cada um → pontos favoráveis, desfavoráveis, contradições, frases literais entre aspas
+5. DECISÕES: O que o juiz decidou, prazos, próximas datas
+6. ANÁLISE ESTRATÉGICA: O que saiu bem, o que saiu mal, impressão sobre posição do juiz, ajustes recomendados
+7. AÇÕES IMEDIATAS: [ ] Tarefas com prazo, documentos, comunicação ao cliente
+
+REGRAS: Nunca omita informação desfavorável. Destaque frases literais. Use [?] para informações incertas.`,
+        markdown: markdownResumoAudiencia,
+        steps: [
+          'Baixe o Markdown e faça upload como Skill no Claude',
+          'Após a audiência: cole suas anotações na conversa',
+          'Peça: "Organize o resumo desta audiência"',
+          'O Claude gera o resumo completo com análise estratégica',
+          'Use o checklist de ações imediatas para não perder prazos',
+        ],
+        tips: [
+          'Quanto mais detalhadas suas anotações, melhor o resumo — anote tudo na hora',
+          'O Claude destaca automaticamente frases literais importantes de testemunhas',
+          'Use a análise estratégica para decidir os próximos passos do processo',
+          'Ideal para compartilhar com o cliente: resumo claro sem juridiquês',
+        ],
+      },
+      {
+        title: 'Skill de Cálculo Jurídico',
+        subtitle: 'Atualização monetária, verbas trabalhistas e previdenciárias',
+        level: 'avancado',
+        icon: 'bar-chart',
+        analogy: {
+          tag: 'Calculadora do Advogado',
+          text: 'Todo advogado precisa de uma **calculadora especializada**: atualizar valores com índice correto, calcular verbas rescisórias, estimar dano moral com base em jurisprudência. Este Skill não substitui o contador judicial, mas resolve 90% dos cálculos do dia a dia.',
+        },
+        content: `Skill que auxilia em cálculos de atualização monetária, verbas trabalhistas, previdenciárias e cíveis. Apresenta resultados em tabela e sempre alerta para verificação com contador judicial.
+
+**Cálculos disponíveis:**
+- Verbas rescisórias completas (saldo, aviso, 13º, férias, FGTS, multa)
+- Horas extras com reflexos
+- Atualização monetária (INPC, IPCA-E, SELIC, IGP-M)
+- Tempo de contribuição previdenciário
+- Estimativa de dano moral (faixa jurisprudencial)
+- Valor da causa
+
+**Sempre inclui:** índice utilizado, data-base, memória de cálculo e ressalva para verificação.`,
+        prompt: `SKILL: Cálculo Jurídico
+
+REGRA: Ferramenta de APOIO — sempre inclua: "[VERIFICAR: confirme com contador judicial]"
+
+TRABALHISTA:
+- Rescisórias: saldo salário, aviso prévio (30d + 3/ano, máx 90), 13º prop, férias+1/3, FGTS 8%, multa 40%
+- Horas extras: salário/divisor × adicional (50% úteis, 100% feriados) + reflexos
+- Adicionais: insalubridade (10/20/40% s/ SM), periculosidade (30% s/ base), noturno (+20%)
+
+CÍVEL:
+- Atualização: INPC/IPCA-E/IGP-M/SELIC conforme contexto + juros 1% a.m. ou SELIC
+- Dano moral: faixa jurisprudencial (não há fórmula legal)
+
+PREVIDENCIÁRIO:
+- Tempo contribuição: data final - inicial + 1 dia
+- Especial: multiplicador 1,4 (H) ou 1,2 (M) pré-EC 103/2019
+- Regras transição: pedágio 50%, pedágio 100%, pontos, idade progressiva
+
+FORMATO: Sempre em tabela | Item | Base | Cálculo | Valor | com total e data-base.`,
+        markdown: markdownCalculoJuridico,
+        steps: [
+          'Baixe o Markdown e faça upload como Skill no Claude',
+          'Peça: "Calcule as verbas rescisórias de [situação]"',
+          'Ou: "Atualize R$ X desde [data] até hoje"',
+          'O Claude apresenta em tabela com memória de cálculo',
+          'Sempre confira valores com contador judicial antes de usar em petição',
+        ],
+        tips: [
+          'O Claude é excelente para cálculos estimativos e propostas de acordo',
+          'Para cálculos de liquidação: use como conferência, não como fonte primária',
+          'Informe sempre: salário, data de admissão, data de demissão e tipo de rescisão',
+          'Para atualização: especifique o índice correto para o seu caso',
+        ],
+      },
+      {
+        title: 'Skill de Compliance e LGPD',
+        subtitle: 'Análise de conformidade e documentos de proteção de dados',
+        level: 'avancado',
+        icon: 'shield',
+        analogy: {
+          tag: 'Auditor de Dados',
+          text: 'Toda empresa trata dados pessoais — de clientes, funcionários, fornecedores. Este Skill transforma o Claude em um **auditor de LGPD**: mapeia dados, identifica bases legais, encontra gaps de conformidade e gera os documentos necessários (RIPD, política de privacidade, termos de uso).',
+        },
+        content: `Skill que analisa conformidade com a LGPD (Lei 13.709/2018) e gera documentos de proteção de dados automaticamente.
+
+**Análise de conformidade:**
+- Mapeamento de dados pessoais tratados
+- Identificação de bases legais (art. 7º)
+- Gap analysis (DPO, canal do titular, registro de operações, segurança)
+- Classificação de risco por tratamento
+
+**Documentos gerados:**
+- RIPD (Relatório de Impacto à Proteção de Dados)
+- Política de Privacidade completa
+- Termos de Uso
+- Parecer de conformidade LGPD
+
+**Sempre referencia:** artigos da LGPD, orientações da ANPD e sanções aplicáveis (art. 52).`,
+        prompt: `SKILL: Compliance e LGPD
+
+ANÁLISE DE CONFORMIDADE:
+1. Mapeamento: | Dado | Categoria | Base Legal (art. 7º) | Finalidade | Compartilhamento | Retenção |
+2. Bases legais: consentimento, obrigação legal, contrato, legítimo interesse, crédito, saúde
+3. Gap analysis: | Requisito LGPD | Status | Gap | Risco | Recomendação |
+   Verificar: DPO (art. 41), canal titular, direitos art. 18, registro art. 37, segurança art. 46, incidentes art. 48
+
+DOCUMENTOS:
+- RIPD: controlador, tratamento, necessidade, riscos, mitigação, conclusão
+- Política de Privacidade: controlador, dados, bases, compartilhamento, direitos, cookies, segurança, DPO
+- Termos de Uso: serviço, condições, obrigações, PI, responsabilidade, foro
+
+REGRAS: Sempre cite artigos da LGPD. Alerte sobre sanções (multa até 2% faturamento, máx R$50M).`,
+        markdown: markdownComplianceLGPD,
+        steps: [
+          'Baixe o Markdown e faça upload como Skill no Claude',
+          'Peça: "Analise a conformidade LGPD de [empresa/processo]"',
+          'Ou: "Gere uma política de privacidade para [site/app]"',
+          'O Claude gera análise ou documento com referências à legislação',
+        ],
+        tips: [
+          'Área em crescimento explosivo — todo escritório precisa dessa skill',
+          'O Markdown completo tem checklists detalhados por tipo de análise',
+          'Para startups: peça "pacote LGPD básico" (política + termos + mapeamento)',
+          'Combine com Minutas Contratuais para incluir cláusulas LGPD em todos os contratos',
         ],
       },
     ],
