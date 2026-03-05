@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Copy, Check, ExternalLink, ArrowRight, Lightbulb, Terminal } from 'lucide-react'
+import { ChevronDown, Copy, Check, ExternalLink, ArrowRight, Lightbulb, Terminal, Download } from 'lucide-react'
 import { LevelBadge } from './LevelBadge'
 import { CardIcon, Icon } from './Icons'
 import type { Card } from '../data/sections'
@@ -310,6 +310,40 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+/* ── Download Markdown button ── */
+function DownloadMarkdownButton({ markdown, title }: { markdown: string; title: string }) {
+  const handleDownload = () => {
+    const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'skill-' + title
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '') + '.md'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  return (
+    <button
+      onClick={handleDownload}
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer border hover:border-[var(--border-accent)] hover:text-[var(--fg-accent)] hover:bg-[var(--bg-accent-subtle)]"
+      style={{
+        borderColor: 'var(--border-line)',
+        color: 'var(--fg-secondary)',
+        background: 'var(--bg-surface)',
+      }}
+    >
+      <Download className="w-3 h-3" />
+      Baixar Markdown
+    </button>
+  )
+}
+
 /* ══════════════════════════════════════
    MAIN COMPONENT
    ══════════════════════════════════════ */
@@ -613,6 +647,27 @@ export function ExpandableCard({ card, isOpen, onToggle }: ExpandableCardProps) 
                   background: 'var(--bg-page)',
                 }}>
                   {card.prompt}
+                </pre>
+              </div>
+            )}
+
+            {/* ── Markdown download + copy ── */}
+            {card.markdown && (
+              <div className="mt-4 rounded-lg border overflow-hidden" style={{ borderColor: 'var(--border-accent)' }}>
+                <div className="flex items-center justify-between px-3.5 py-2" style={{ background: 'var(--bg-surface)', borderBottom: '1px solid var(--border-line)' }}>
+                  <h4 className="text-[11px] font-bold text-[var(--fg-accent)] uppercase tracking-[0.08em] font-mono flex items-center gap-1.5">
+                    <Download className="w-3 h-3" />
+                    Skill em Markdown
+                  </h4>
+                  <div className="flex items-center gap-2">
+                    <CopyButton text={card.markdown} />
+                    <DownloadMarkdownButton markdown={card.markdown} title={card.title} />
+                  </div>
+                </div>
+                <pre className="px-3.5 py-3 text-[12px] text-[var(--fg-secondary)] whitespace-pre-wrap font-mono leading-relaxed overflow-x-auto max-h-[300px] overflow-y-auto" style={{
+                  background: 'var(--bg-page)',
+                }}>
+                  {card.markdown}
                 </pre>
               </div>
             )}
