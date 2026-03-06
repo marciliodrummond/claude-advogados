@@ -294,22 +294,30 @@ Use Haiku para pré-processamento → Sonnet para análise → Opus para decisõ
         analogy: {
           text: 'ChatGPT é o **advogado carismático** (popular, bom em tudo, às vezes superficial). Gemini é o **pesquisador com acesso à biblioteca** (conectado ao Google, bom em busca). Claude é o **redator técnico meticuloso** (melhor texto, mais seguro, mais profundo). **Cada um tem força — mas para advocacia, a diferença é real.**',
         },
-        content: `Comparação prática focada no que importa para advogados brasileiros:
+        content: `Comparação prática focada no que importa para advogados brasileiros (atualizado em março/2026):
 
 **Comparativo geral:**
 
 | Critério | **Claude** | **ChatGPT** | **Gemini** |
 |----------|-----------|------------|-----------|
-| **Qualidade de redação** | Excelente | Boa | Boa |
-| **Raciocínio jurídico** | Excelente | Bom | Bom |
-| **Instrução longa (>5 págs)** | Excelente | Limitado | Bom |
-| **Janela de contexto** | 1M tokens | 128K tokens | 2M tokens |
-| **Análise de PDFs** | Nativa, até 32MB | Sim | Sim |
-| **Segurança de dados** | Alta (não treina com dados) | Variável | Variável |
-| **Pesquisa na web** | Integrada | Integrada | Nativa (Google) |
-| **Plugins/integrações** | Crescendo rápido | Maduro (GPTs) | Limitado |
-| **Desktop agent** | Cowork (muito poderoso) | Operator | Limitado |
-| **Preço Pro** | $20/mês | $20/mês | $19.99/mês |
+| **Qualidade de redação** | Excelente | Boa (melhorou com GPT-5.3) | Boa |
+| **Raciocínio jurídico** | Excelente | Muito bom (GPT-5.4) | Bom |
+| **Instrução longa (>5 págs)** | Excelente | Bom (400K-1M tokens agora) | Bom |
+| **Janela de contexto** | 1M tokens | 400K (GPT-5.3) / 1M (GPT-5.4) | 2M tokens |
+| **Análise de PDFs** | Nativa, até 32MB | Sim (até 20 arquivos por vez) | Sim |
+| **Segurança de dados** | Alta (não treina com dados) | Variável (anúncios no plano Free) | Variável |
+| **Pesquisa na web** | Integrada | Integrada + Atlas (navegador próprio) | Nativa (Google) |
+| **Plugins/integrações** | Crescendo rápido | Maduro (GPTs + Skills) | Limitado |
+| **Desktop agent** | Cowork (muito poderoso) | Computer Use nativo (GPT-5.4) | Limitado |
+| **Preço Pro** | $20/mês | $20/mês (Plus) / $200/mês (Pro) | $19.99/mês |
+
+**Modelos atuais (março/2026):**
+
+| | **Claude** | **ChatGPT** | **Gemini** |
+|--|-----------|------------|-----------|
+| **Modelo principal** | Opus 4.6 | GPT-5.4 Thinking | Gemini 2.5 Pro |
+| **Modelo rápido** | Sonnet 4.6 | GPT-5.3 Instant | Gemini 2.5 Flash |
+| **Modelo econômico** | Haiku 4.5 | GPT-5 Mini | Gemini 2.0 Flash |
 
 **Onde o Claude se destaca para advogados:**
 - **Redação de peças processuais** — Texto mais fluido, menos "robotizado", melhor estrutura
@@ -318,19 +326,24 @@ Use Haiku para pré-processamento → Sonnet para análise → Opus para decisõ
 - **Segurança** — Dados não usados para treino (Pro+), Enterprise com confidencialidade total
 - **Cowork** — Agent desktop que lê seus arquivos, cria documentos e automatiza fluxos
 - **Legal Plugin** — Plugin oficial para análise de contratos com classificação de risco
+- **SWE-bench líder** — Opus 4.6 lidera benchmarks de código com 80.8%
 
 **Onde ChatGPT vence:**
-- Ecossistema de GPTs (milhares de assistentes prontos)
-- Geração de imagens (DALL-E integrado)
+- Computer Use nativo no GPT-5.4 (75% OSWorld — supera humanos)
+- Ecossistema maduro de GPTs + nova feature Skills
+- Geração de imagens (DALL-E integrado, 4x mais rápido)
+- ChatGPT Atlas — navegador web integrado
 - Mais popular = mais tutoriais disponíveis
+- GPT-5.3 Instant é o modelo mais barato do mercado para uso geral
 
 **Onde Gemini vence:**
 - Integração nativa com Google Workspace
 - Busca web mais natural (é o Google)
-- Janela de contexto de 2M tokens
+- Janela de contexto de 2M tokens (a maior)
+- Melhor custo-benefício em benchmarks (7.5x mais barato que Opus)
 
 **Veredicto para advogados brasileiros:**
-Para **redação jurídica**, **análise de contratos** e **raciocínio complexo**, o Claude é superior. Para **pesquisa web rápida**, Gemini tem vantagem. Para quem já usa o ecossistema Google intensamente, Gemini é mais conveniente. **A recomendação: Claude como ferramenta principal + Gemini/Perplexity como complemento para pesquisa.**`,
+Para **redação jurídica**, **análise de contratos** e **raciocínio complexo**, o Claude continua superior. O ChatGPT evoluiu muito com GPT-5.3/5.4 (especialmente em raciocínio e computer use), mas o Claude mantém a liderança em qualidade de texto e fidelidade a instruções. Para **pesquisa web rápida**, Gemini e o novo ChatGPT Atlas são boas opções. **A recomendação: Claude como ferramenta principal + Gemini/Perplexity como complemento para pesquisa.**`,
         tips: [
           'Não é preciso escolher apenas um — use cada IA onde ela é melhor',
           'Claude para redação e análise profunda, Perplexity/Gemini para pesquisa rápida',
@@ -353,44 +366,62 @@ Para **redação jurídica**, **análise de contratos** e **raciocínio complexo
 
 | No ChatGPT | No Claude | Diferença |
 |------------|-----------|-----------|
-| **GPTs personalizados** | **Skills** | Skills são ativados *automaticamente* — não precisa trocar de assistente. Pode combinar vários na mesma conversa |
+| **GPTs personalizados** | **Skills** | Skills do Claude são ativados *automaticamente* — não precisa trocar de assistente. Pode combinar vários na mesma conversa |
+| **Skills (ChatGPT)** *(novo!)* | **Skills (Claude)** | O ChatGPT lançou Skills em 2026 — são componentes executáveis (com Python, templates, etc). No Claude, Skills são instruções em texto puro (.md), mais simples e flexíveis |
 | **Custom Instructions** | **Personalizar** (Instruções Globais) | Mesmo conceito. No Claude, mais espaço e mais granular |
 | **GPT Builder** | **Criar Skill** (arquivo .md) | No Claude você escreve instruções em texto simples — mais flexível que o builder visual |
 | **Canvas** | **Artefatos** | Artefatos geram documentos, tabelas, código e diagramas dentro da conversa |
-| **Projects** | **Projetos** | Muito similar! Base de conhecimento + instruções + conversas organizadas |
+| **Projects** | **Projetos** | Muito similar! Base de conhecimento + instruções + conversas organizadas. ChatGPT agora oferece Projects no plano Free (até 5 arquivos) |
 | **Memory** | **Memória** | Funciona igual — o Claude lembra suas preferências entre conversas |
-| **Operator** | **Claude in Chrome** | Extensão que navega na web, lê telas, preenche formulários |
-| **ChatGPT Desktop** | **Cowork (Desktop)** | Cowork é MUITO mais poderoso: lê arquivos locais, cria Word/Excel/PowerPoint, executa automações |
+| **Computer Use (GPT-5.4)** | **Cowork (Desktop)** | GPT-5.4 tem computer use nativo (controle de tela). Cowork do Claude lê arquivos locais, cria Word/Excel/PowerPoint, executa automações — abordagens diferentes |
+| **ChatGPT Atlas** *(novo!)* | **Pesquisa Web** | Atlas é um navegador web completo integrado ao ChatGPT. Claude usa pesquisa web integrada com fontes citadas |
 | **GPT Store** | **Plugins** | Plugins oficiais do Claude (Legal, Productivity, Finance, etc.) |
 | **Actions (API)** | **MCP (Conectores)** | MCP conecta a APIs externas: Google Drive, Gmail, DataJud, PJe |
 | **Code Interpreter** | **Execução de Código** | Claude executa Python, cria gráficos, calcula valores |
-| **DALL-E** | *(não tem)* | Claude não gera imagens — use Gamma.app ou Canva como complemento |
+| **DALL-E (4x mais rápido)** | *(não tem)* | Claude não gera imagens — use Gamma.app ou Canva como complemento |
 | **Voice Mode** | *(em desenvolvimento)* | Claude ainda não tem modo de voz nativo |
 | **Web Browsing** | **Pesquisa Web** | Integrada, com fontes citadas |
 | **Plugins (ChatGPT)** | **MCP + Plugins** | No Claude, separados em Plugins (funcionalidades) e MCP (conexões externas) |
+| **Conversation Branching** *(novo!)* | *(não tem equivalente direto)* | ChatGPT permite ramificar conversas em qualquer ponto — recurso útil para testar abordagens diferentes |
+
+**O que mudou no ChatGPT em 2026:**
+
+→ **GPT-5.3 Instant** (março/2026) — Modelo padrão do ChatGPT. Mais natural, menos "cringe", 26.8% menos alucinações em buscas web. Janela de 400K tokens.
+
+→ **GPT-5.4 Thinking** (março/2026) — Modelo avançado com computer use nativo (controla tela, navega sites, preenche formulários). Janela de 1M+ tokens. Superou performance humana em navegação desktop (75% vs 72.4%).
+
+→ **ChatGPT Skills** (2026) — Nova feature que vai além dos GPTs: componentes executáveis com Python, templates e automações. Ativados via slash commands. Podem ser combinados entre si.
+
+→ **ChatGPT Atlas** — Navegador web próprio integrado ao ChatGPT (macOS). Navega sites dentro da interface.
+
+→ **Conversation Branching** — Agora dá para ramificar conversas a partir de qualquer mensagem.
+
+→ **Anúncios no plano Free** — OpenAI começou a testar anúncios nos EUA para usuários gratuitos.
 
 **O que muda na prática do dia a dia:**
 
-→ **Não precisa trocar de GPT:** No ChatGPT você abre um GPT diferente para cada tarefa. No Claude, os Skills são ativados automaticamente — tudo na mesma conversa.
+→ **Skills do Claude ainda são mais simples de criar:** No ChatGPT, Skills são componentes executáveis complexos. No Claude, você escreve instruções em texto puro (.md) — mais acessível para advogados.
 
-→ **Projetos funcionam igual:** Se você já organizava por Projects no ChatGPT, faz a mesma coisa no Claude.
+→ **Projetos funcionam igual:** Se você já organizava por Projects no ChatGPT, faz a mesma coisa no Claude. Agora o ChatGPT também oferece Projects no plano gratuito.
 
-→ **Cowork > Desktop do ChatGPT:** O Cowork lê seus arquivos locais, cria documentos Office e automatiza fluxos. É significativamente mais poderoso.
+→ **Cowork vs Computer Use:** Abordagens diferentes — o Cowork lê arquivos locais e cria documentos Office. O GPT-5.4 controla a tela do computador diretamente. Ambos poderosos, mas para uso jurídico o Cowork é mais prático.
 
 → **Instruções são mais flexíveis:** Em vez de um builder visual limitado, você escreve instruções em markdown — pode ser tão detalhado quanto quiser.`,
         tips: [
           'Se já tinha GPTs no ChatGPT, recrie como Skills no Claude — geralmente ficam melhores',
           'Custom Instructions → Personalizar: copie e cole suas instruções — funciona igual',
           'Seus Projects migram facilmente: crie o projeto, suba os mesmos documentos',
-          'O maior ganho é não precisar trocar de GPT — Skills são automáticos',
+          'O maior ganho é não precisar trocar de GPT — Skills do Claude são automáticos',
+          'O ChatGPT agora também tem Skills, mas são mais complexos (código Python) — os do Claude são texto puro, mais fáceis para advogados',
         ],
         elementGrid: [
           { icon: 'book-open', name: 'GPTs → Skills', description: 'Ativação automática, combina vários, sem trocar de assistente', whenToUse: 'Qualquer especialização (petições, contratos, pareceres)', highlight: true },
           { icon: 'settings', name: 'Custom Instructions → Personalizar', description: 'Mesmo conceito, mais espaço, mais controle', whenToUse: 'Definir estilo, formato, preferências permanentes' },
           { icon: 'folder-open', name: 'Projects → Projetos', description: 'Base de conhecimento + instruções + conversas', whenToUse: 'Organizar por cliente, caso ou área' },
-          { icon: 'monitor', name: 'Desktop → Cowork', description: 'Lê arquivos, cria Office, automatiza fluxos', whenToUse: 'Trabalho pesado com documentos locais', highlight: true },
+          { icon: 'monitor', name: 'Desktop/Computer Use → Cowork', description: 'GPT-5.4 controla tela; Cowork lê arquivos e cria Office', whenToUse: 'Trabalho pesado com documentos locais', highlight: true },
           { icon: 'plug', name: 'Actions → MCP', description: 'Conexão com APIs: Google Drive, Gmail, DataJud', whenToUse: 'Integrar com ferramentas externas' },
           { icon: 'brain', name: 'Memory → Memória', description: 'Lembra preferências entre conversas', whenToUse: 'Personalização progressiva automática' },
+          { icon: 'globe', name: 'Atlas → Pesquisa Web', description: 'ChatGPT tem navegador próprio; Claude tem pesquisa integrada', whenToUse: 'Pesquisar informações atualizadas' },
         ],
       },
       {
@@ -439,7 +470,7 @@ Quando algo não funcionar, faça exatamente isso:
 
 **Problema 7 — Tokens acabaram / limite atingido:**
 → **Causa:** Atingiu o limite diário do plano
-→ **Solução:** Aguarde o reset (geralmente à meia-noite). Para emergências: use DeepSeek ou ChatGPT Free. Para evitar: siga as dicas de otimização do guia
+→ **Solução:** Aguarde o reset (geralmente à meia-noite). Para emergências: use DeepSeek ou ChatGPT Free (agora com GPT-5.3 Instant — bem melhor). Para evitar: siga as dicas de otimização do guia
 
 **Problema 8 — Formatação estranha no resultado:**
 → **Causa:** O Claude usa Markdown por padrão
@@ -2715,17 +2746,26 @@ Salve cada documento em uma subpasta "Onboarding" dentro desta pasta.`,
         },
         content: `Skills são **instruções escritas em arquivo de texto simples** (.md) que ensinam o Claude a fazer tarefas específicas do jeito que você quer. Quando você conversa, ele lê automaticamente todos os seus Skills e decide **sozinho** qual usar.
 
-**Skills vs GPTs do ChatGPT:**
+**Atenção:** Em 2026, o ChatGPT também lançou uma feature chamada "Skills" — mas funciona de forma bem diferente das Skills do Claude. Veja a comparação:
 
-| Característica | Claude Skills | GPTs do ChatGPT |
-|----------------|--------------|-----------------|
-| Como ativa? | Automático | Manual (abrir GPT específico) |
-| Combinar vários? | Sim! Juntos na mesma conversa | Não. Cada GPT é isolado |
-| Onde funcionam? | Em qualquer conversa | Apenas naquele GPT |
-| Como criar? | Arquivo .md com instruções | Criador visual (limitado) |
-| Limite de instruções? | Amplo (milhares de tokens) | 8.000 caracteres |
+**Skills do Claude vs Skills do ChatGPT vs GPTs:**
 
-No ChatGPT, você troca de "assistente" para cada tarefa. No Claude, você trabalha em uma conversa só e o Claude ativa os Skills corretos automaticamente.`,
+| Característica | Claude Skills | Skills do ChatGPT *(novo!)* | GPTs do ChatGPT |
+|----------------|--------------|---------------------------|-----------------|
+| **O que é?** | Instrução em texto (.md) | Componente executável | Assistente personalizado |
+| **Como ativa?** | Automático | Via slash command | Manual (abrir GPT específico) |
+| **Combinar vários?** | Sim! Juntos na mesma conversa | Sim (composable) | Não. Cada GPT é isolado |
+| **Onde funciona?** | Em qualquer conversa | Web, mobile, API | Apenas naquele GPT |
+| **Pode ter código?** | Não (só texto) | Sim (Python, scripts) | Não |
+| **Como criar?** | Arquivo .md com instruções | Builder + código | Criador visual (limitado) |
+| **Facilidade** | Muito fácil (texto puro) | Requer conhecimento técnico | Fácil |
+
+**Para advogados, o que importa:**
+- As Skills do Claude são **mais fáceis de criar** — basta escrever instruções em texto puro. Ideal para quem não programa.
+- As Skills do ChatGPT são **mais poderosas tecnicamente** — podem executar Python, gerar gráficos e automatizar fluxos complexos. Mas exigem conhecimento técnico.
+- Os GPTs do ChatGPT estão sendo gradualmente substituídos pelas Skills (GPTs podem ser convertidos em Skills).
+
+No Claude, você trabalha em uma conversa só e o Claude ativa os Skills corretos automaticamente. No ChatGPT, as novas Skills são ativadas via slash commands (/nome-da-skill).`,
       },
       {
         title: 'Criando uma Skill: 3 Formas',
@@ -4644,7 +4684,7 @@ Cada ferramenta abaixo é **100% gratuita** e pode fazer o trabalho pesado ANTES
           { icon: 'globe', name: 'Google Docs', tech: 'Google (Grátis)', description: 'OCR automático para PDFs escaneados. Abra o PDF no Drive → "Abrir com Google Docs" → texto extraído. **Economiza 50% dos tokens.**', whenToUse: 'OCR de PDFs escaneados, conversão de formatos' },
           { icon: 'message-square', name: 'Microsoft Copilot', tech: 'Grátis', description: 'IA da Microsoft com acesso à web em tempo real. Excelente para **pesquisa com fontes atualizadas**, verificação de legislação vigente e busca de notícias jurídicas.', whenToUse: 'Pesquisa atualizada, verificação de legislação, notícias' },
           { icon: 'presentation', name: 'Gamma.app', tech: 'Grátis (com limite)', description: 'Cria **apresentações profissionais** a partir de texto. Ideal para sustentações orais, reuniões com cliente e apresentações de caso. Design automático.', whenToUse: 'Slides para audiências, reuniões e sustentações orais' },
-          { icon: 'sparkles', name: 'ChatGPT Free', tech: 'Grátis (com limite)', description: 'Versão gratuita do ChatGPT com GPT-4o mini. Útil para **tarefas complementares** e rascunhos quando os tokens do Claude acabam.', whenToUse: 'Rascunhos rápidos, brainstorming quando tokens acabam' },
+          { icon: 'sparkles', name: 'ChatGPT Free', tech: 'Grátis (com limite)', description: 'Versão gratuita do ChatGPT com **GPT-5.3 Instant** (modelo padrão desde março/2026). Muito melhor que antes — menos alucinações, janela de 400K tokens. Faz fallback para GPT-5 Mini quando atinge o limite (~10 msgs/5h). Agora com Projects gratuitos (até 5 arquivos) e navegador Atlas.', whenToUse: 'Rascunhos rápidos, brainstorming quando tokens acabam' },
         ],
         flowSteps: [
           { title: 'Trabalho Pesado (Grátis)', description: 'NotebookLM resume, Perplexity pesquisa, ilovepdf converte' },
