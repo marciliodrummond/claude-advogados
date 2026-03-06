@@ -14,6 +14,7 @@ interface ExpandableCardProps {
 function formatInline(text: string): string {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong class="text-[var(--fg-primary)] font-semibold">$1</strong>')
+    .replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em class="italic">$1</em>')
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[var(--fg-accent)] underline decoration-[var(--border-accent)] underline-offset-2 hover:decoration-[var(--fg-accent)] transition-colors">$1</a>')
     .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded text-[11px] font-mono font-medium" style="background:var(--bg-surface);color:var(--fg-accent);border:1px solid var(--border-line)">$1</code>')
 }
@@ -241,7 +242,7 @@ function TableBlock({ lines }: { lines: string[] }) {
   const rows = lines.filter(r => !r.match(/^\|[\s-:|]+\|$/))
   if (rows.length === 0) return null
 
-  const headerCells = rows[0].split('|').filter(c => c.trim())
+  const headerCells = rows[0].split('|').slice(1, -1)
   const bodyRows = rows.slice(1)
 
   return (
@@ -261,7 +262,7 @@ function TableBlock({ lines }: { lines: string[] }) {
         </thead>
         <tbody>
           {bodyRows.map((row, ri) => {
-            const cells = row.split('|').filter(c => c.trim())
+            const cells = row.split('|').slice(1, -1)
             return (
               <tr
                 key={ri}
