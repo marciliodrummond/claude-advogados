@@ -1,13 +1,24 @@
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Copy, Check, ExternalLink, ArrowRight, Lightbulb, Terminal, Download } from 'lucide-react'
+import { ChevronDown, Copy, Check, ExternalLink, ArrowRight, Lightbulb, Terminal, Download, Heart, CheckCircle2 } from 'lucide-react'
 import { LevelBadge } from './LevelBadge'
 import { CardIcon, Icon } from './Icons'
 import type { Card } from '../data/sections'
+
+interface ChecklistHook {
+  isChecked: (checklistId: string, itemIndex: number) => boolean
+  toggleCheck: (checklistId: string, itemIndex: number) => void
+  getChecklistProgress: (checklistId: string, totalItems: number) => { checked: number; total: number }
+}
 
 interface ExpandableCardProps {
   card: Card
   isOpen: boolean
   onToggle: () => void
+  viewed?: boolean
+  isFavorite?: boolean
+  onToggleFavorite?: (e: React.MouseEvent) => void
+  sectionId?: string
+  checklist?: ChecklistHook
 }
 
 /* ── Inline formatting helper ── */
@@ -349,7 +360,7 @@ function DownloadMarkdownButton({ markdown, title }: { markdown: string; title: 
    MAIN COMPONENT
    ══════════════════════════════════════ */
 
-export function ExpandableCard({ card, isOpen, onToggle }: ExpandableCardProps) {
+export function ExpandableCard({ card, isOpen, onToggle, viewed, isFavorite, onToggleFavorite, checklist }: ExpandableCardProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
 
@@ -371,18 +382,41 @@ export function ExpandableCard({ card, isOpen, onToggle }: ExpandableCardProps) 
       {/* ── Card header (always visible) ── */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center gap-3 px-4 py-3.5 cursor-pointer bg-transparent border-none text-left"
+        aria-expanded={isOpen}
+        className="w-full flex items-center gap-3 px-4 py-3.5 cursor-pointer bg-transparent border-none text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fg-accent)] focus-visible:ring-offset-1 rounded-xl"
       >
         <CardIcon name={card.icon} />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="text-sm font-semibold text-[var(--fg-primary)] truncate">{card.title}</h3>
             <LevelBadge level={card.level} />
+            {viewed && (
+              <CheckCircle2 className="w-3.5 h-3.5 text-[var(--fg-accent)] opacity-60 shrink-0" />
+            )}
           </div>
           {card.subtitle && (
             <p className="text-xs text-[var(--fg-muted)] mt-0.5 truncate">{card.subtitle}</p>
           )}
         </div>
+        {/* Favorite button */}
+        {onToggleFavorite && (
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={(e) => { e.stopPropagation(); onToggleFavorite(e) }}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); e.preventDefault(); onToggleFavorite(e as unknown as React.MouseEvent) } }}
+            className="p-1.5 rounded-md hover:bg-[var(--bg-surface)] transition-all duration-200 shrink-0"
+            aria-label={isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+          >
+            <Heart
+              className="w-4 h-4"
+              style={{
+                color: isFavorite ? '#f43f5e' : 'var(--fg-muted)',
+                fill: isFavorite ? '#f43f5e' : 'none',
+              }}
+            />
+          </span>
+        )}
         <ChevronDown
           className="w-4 h-4 shrink-0 text-[var(--fg-muted)] transition-transform duration-300"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -509,22 +543,39 @@ export function ExpandableCard({ card, isOpen, onToggle }: ExpandableCardProps) 
             {/* ── Checklist ── */}
             {card.checklist && card.checklist.length > 0 && (
               <div className="mt-5 space-y-3">
-                {card.checklist.map((group, gi) => (
-                  <div key={gi} className="rounded-lg border p-3.5" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-line)' }}>
-                    <h4 className="text-[11px] font-bold text-[var(--fg-accent)] uppercase tracking-[0.08em] mb-2.5 font-mono flex items-center gap-2">
-                      <Icon name="calendar" size={13} className="text-[var(--fg-accent)]" />
-                      {group.title}
-                    </h4>
-                    <div className="space-y-0">
-                      {group.items.map((item, ii) => (
-                        <label key={ii} className="flex items-center gap-2.5 py-1.5 cursor-pointer border-b last:border-b-0" style={{ borderColor: 'var(--border-line)' }}>
-                          <input type="checkbox" className="w-3.5 h-3.5 rounded accent-[var(--fg-accent)]" />
-                          <span className="text-sm text-[var(--fg-secondary)]">{item}</span>
-                        </label>
-                      ))}
+                {card.checklist.map((group, gi) => {
+                  const checklistId = `${card.title}::${group.title}`
+                  const progress = checklist?.getChecklistProgress(checklistId, group.items.length)
+                  return (
+                    <div key={gi} className="rounded-lg border p-3.5" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-line)' }}>
+                      <h4 className="text-[11px] font-bold text-[var(--fg-accent)] uppercase tracking-[0.08em] mb-2.5 font-mono flex items-center gap-2">
+                        <Icon name="calendar" size={13} className="text-[var(--fg-accent)]" />
+                        {group.title}
+                        {progress && (
+                          <span className="font-mono text-[10px] text-[var(--fg-muted)] font-normal ml-auto">
+                            {progress.checked}/{progress.total}
+                          </span>
+                        )}
+                      </h4>
+                      <div className="space-y-0">
+                        {group.items.map((item, ii) => {
+                          const checked = checklist ? checklist.isChecked(checklistId, ii) : false
+                          return (
+                            <label key={ii} className="flex items-center gap-2.5 py-1.5 cursor-pointer border-b last:border-b-0" style={{ borderColor: 'var(--border-line)' }}>
+                              <input
+                                type="checkbox"
+                                className="w-3.5 h-3.5 rounded accent-[var(--fg-accent)]"
+                                checked={checked}
+                                onChange={() => checklist?.toggleCheck(checklistId, ii)}
+                              />
+                              <span className={`text-sm ${checked ? 'line-through text-[var(--fg-muted)]' : 'text-[var(--fg-secondary)]'}`}>{item}</span>
+                            </label>
+                          )
+                        })}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             )}
 
