@@ -3,14 +3,37 @@ import { ExpandableCard } from './ExpandableCard'
 import { SectionIcon } from './Icons'
 import { sections } from '../data/sections'
 
+interface ChecklistHook {
+  isChecked: (checklistId: string, itemIndex: number) => boolean
+  toggleCheck: (checklistId: string, itemIndex: number) => void
+  getChecklistProgress: (checklistId: string, totalItems: number) => { checked: number; total: number }
+}
+
 interface SectionContentProps {
   activeTab: string
   openCardIndex: number | null
   onCardToggle: (index: number | null) => void
   levelFilter: string
+  onCardOpened?: (sectionId: string, cardIndex: number) => void
+  isCardViewed?: (sectionId: string, cardIndex: number) => boolean
+  isFavorite?: (sectionId: string, cardIndex: number) => boolean
+  onToggleFavorite?: (sectionId: string, cardIndex: number, title: string) => void
+  sectionProgress?: { viewed: number; total: number; percent: number }
+  checklist?: ChecklistHook
 }
 
-export function SectionContent({ activeTab, openCardIndex, onCardToggle, levelFilter }: SectionContentProps) {
+export function SectionContent({
+  activeTab,
+  openCardIndex,
+  onCardToggle,
+  levelFilter,
+  onCardOpened,
+  isCardViewed,
+  isFavorite,
+  onToggleFavorite,
+  sectionProgress,
+  checklist,
+}: SectionContentProps) {
   const section = sections.find(s => s.id === activeTab)
   const [animateKey, setAnimateKey] = useState(0)
 
@@ -30,7 +53,15 @@ export function SectionContent({ activeTab, openCardIndex, onCardToggle, levelFi
   const sectionNumber = String(sectionIndex + 1).padStart(2, '0')
 
   return (
-    <div key={animateKey} className="space-y-3 relative" style={{ animation: 'fadeUp 0.4s ease both' }}>
+    <div
+      key={animateKey}
+      role="tabpanel"
+      id="section-panel"
+      aria-labelledby={`tab-${activeTab}`}
+      tabIndex={0}
+      className="space-y-3 relative"
+      style={{ animation: 'fadeUp 0.4s ease both' }}
+    >
       {/* Section number watermark */}
       <div className="absolute -top-2 right-0 pointer-events-none select-none font-display text-[80px] sm:text-[100px] font-extrabold leading-none" style={{
         color: 'var(--fg-accent)',
@@ -53,6 +84,26 @@ export function SectionContent({ activeTab, openCardIndex, onCardToggle, levelFi
           </h2>
         </div>
         <p className="text-sm text-[var(--fg-secondary)] ml-[52px]">{section.description}</p>
+
+        {/* Section progress bar */}
+        {sectionProgress && sectionProgress.viewed > 0 && (
+          <div className="mt-3 ml-[52px]">
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--border-line)' }}>
+                <div
+                  className="h-full rounded-full transition-all duration-700 ease-out"
+                  style={{
+                    width: `${sectionProgress.percent}%`,
+                    background: 'var(--fg-accent)',
+                  }}
+                />
+              </div>
+              <span className="text-[11px] text-[var(--fg-muted)] shrink-0">
+                {sectionProgress.viewed} de {sectionProgress.total} cards explorados
+              </span>
+            </div>
+          </div>
+        )}
       </div>
 
       {filteredCards.length === 0 ? (
@@ -67,7 +118,17 @@ export function SectionContent({ activeTab, openCardIndex, onCardToggle, levelFi
               <ExpandableCard
                 card={card}
                 isOpen={openCardIndex === originalIndex}
-                onToggle={() => onCardToggle(openCardIndex === originalIndex ? null : originalIndex)}
+                onToggle={() => {
+                  const opening = openCardIndex !== originalIndex
+                  onCardToggle(opening ? originalIndex : null)
+                  if (opening && onCardOpened) {
+                    onCardOpened(activeTab, originalIndex)
+                  }
+                }}
+                viewed={isCardViewed ? isCardViewed(activeTab, originalIndex) : false}
+                isFavorite={isFavorite ? isFavorite(activeTab, originalIndex) : false}
+                onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(activeTab, originalIndex, card.title) : undefined}
+                checklist={checklist}
               />
             </div>
           )
